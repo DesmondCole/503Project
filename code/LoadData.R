@@ -6,26 +6,49 @@ library(data.table)
 #This Pulls the initial csv files exported from Kaggle. 
 #Probably unnecessary to include the root code used to generate the csv files themselves.
 setwd("/Users/Desmond/Desktop/Work/503 Project")
+datasetnames = c("accident.csv",
+                 "cevent.csv",
+                 "damage.csv",
+                 "distract.csv",
+                 "drimpair.csv",
+                 "factor.csv",
+                 "maneuver.csv",
+                 "nmcrash.csv",
+                 "nmimpair.csv",
+                 "nmprior.csv",
+                 "parkwork.csv",
+                 "pbtype.csv",
+                 "person.csv",
+                 "safetyeq.csv",
+                 "vehicle.csv",
+                 "vevent.csv",
+                 "vindecode.csv",
+                 "violatn.csv",
+                 "vision.csv",
+                 "vsoe.csv")
 
 #Pull 2015 data
 setwd("./2015")
 temp = list.files(pattern = "*.csv")
-allfiles = lapply(temp,fread)
-allfiles = lapply(allfiles, function(x) x = x[,-1])
+files_2015 = lapply(temp,fread)
+files_2015 = lapply(files_2015, function(x) x = cbind(Year=rep("2015",nrow(x)), x[,-1]))
 
-#Data.table merge
-require(data.table)
-keep = union(names(allfiles[[1]]),names(allfiles[[2]]))
-master2015 = allfiles[[1]][allfiles[[2]],mget(keep),on="consecutive_number"]
-for (i in 3:7){
-  keep = union(names(master2015),names(allfiles[[i]]))
-  master2015 = master2015[allfiles[[i]],mget(keep),on="consecutive_number",allow.cartesian=TRUE]
+#Pull2016 data
+setwd("../2016")
+temp = list.files(pattern = "*.csv")
+files_2016 = lapply(temp,fread)
+files_2016 = lapply(files_2016, function(x) x = cbind(Year=rep("2016",nrow(x)),x[,-1]))
+
+allfiles = list()
+
+for(i in 1:20){
+  allfiles[[i]] = rbind(files_2015[[i]],files_2016[[i]])
 }
+names(allfiles) = datasetnames
 
-
-#Merge/combine data
-master2015 = join(allfiles[[1]],allfiles[[2]],by="consecutive_number",type='left',match='all')
-for(i in 3:7){
-  master2015 = join(master2015,allfiles[[i]],by="consecutive_number",type='left',match='all')
-  master2015 = master2015[,!duplicated(colnames(master2015),fromLast=TRUE)]
+setwd("/Users/Desmond/Desktop/Work/503 Project/AllData")
+for(i in 1:length(allfiles)){
+  write.csv(allfiles[[i]],file=names(allfiles)[i],row.names=FALSE)
 }
+zip("/Users/Desmond/Documents/GitHub/503Project/data/AllData",datasetnames)
+
