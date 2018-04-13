@@ -32,13 +32,17 @@ datasetnames = c("accident.csv",
 setwd("./2015")
 temp = list.files(pattern = "*.csv")
 files_2015 = lapply(temp,fread)
-files_2015 = lapply(files_2015, function(x) x = cbind(Year=rep(2015,nrow(x)), x[,-1]))
+files_2015 = lapply(files_2015, function(x) x = cbind(Year=rep(2015,nrow(x)),
+                                                      uniqueID = 2015*1000000 + x$consecutive_number,
+                                                      x[,-1]))
 
 #Pull2016 data
 setwd("../2016")
 temp = list.files(pattern = "*.csv")
 files_2016 = lapply(temp,fread)
-files_2016 = lapply(files_2016, function(x) x = cbind(Year=rep(2016,nrow(x)),x[,-1]))
+files_2016 = lapply(files_2016, function(x) x = cbind(Year=rep(2016,nrow(x)),
+                                                      uniqueID = 2016*1000000 + x$consecutive_number,
+                                                      x[,-1]))
 
 allfiles = list()
 
