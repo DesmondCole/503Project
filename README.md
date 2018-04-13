@@ -5,7 +5,7 @@ Data:
 https://www.kaggle.com/usdot/nhtsa-traffic-fatalities
 
 Keep in mind:
--The consecutive number uniquely identifies an accident in a given year. Thus, a true unique accident identifier in the datasets in the zip file is the year-consecnumber combination.
+- The consecutive number uniquely identifies an accident in a given year. Thus, a true unique accident identifier in the datasets in the zip file is the year-consecnumber combination.
 
 
 To include in Analysis:
@@ -15,15 +15,17 @@ To include in Analysis:
 - Classification of car model by death rate (would have to incorporate counts of cars of that model sold)
 - Classification of deadliest road types (e.g. intersections, traffic circles)
 - Prediction
+
+
 Variables to include in final dataset (smart to build indicators off of these. For example, whether or not driver's vision was obscured, whether or not there was at least one drunk driver, etc.):
--Location/Timing (state, consec number, city, county, day/month/year/hour/minute,lat/long for heatmap)
--Number of fatalities
--Driver conditions (disability, BAC, drugs, distraction, etc.)
--Road characteristics
--atmospheric/environmental conditions (weather, vision, etc.)
+- Location/Timing (state, consec number, city, county, day/month/year/hour/minute,lat/long for heatmap)
+- Number of fatalities
+- Driver conditions (disability, BAC, drugs, distraction, etc.)
+- Road characteristics
+- atmospheric/environmental conditions (weather, vision, etc.)
 
 
 Variables I think we can ignore:
--Everything from following:
---violatn.csv
---
+- Everything from following:
+  - violatn.csv
+  -
