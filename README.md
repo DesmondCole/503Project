@@ -10,8 +10,10 @@ Keep in mind:
 
 To include in Analysis:
 - Map of traffic fatalities by county, (ideally) weighted by population.
-- Plot of traffic fatalities by time of day / time of week / season (to see periods with relatively high-fatality incidence.
+- Plot of traffic fatalities by time of day / time of week / season (to see periods with relatively high-fatality incidence).
 - (potentially) time series clustering of weekly fatal traffic accidents by state, if returning decent results.
+- damage areas that may correlated with high fatality, aka weak spot of car structure 
+- safety equippment of motorists, possible clustering??? to see how effective to protect people, or see any difference with different time/ season/road condition
 - Classification of car model by death rate (would have to incorporate counts of cars of that model sold)
 - Classification of deadliest road types (e.g. intersections, traffic circles)
 - Prediction
