@@ -32,13 +32,13 @@ datasetnames = c("accident.csv",
 setwd("./2015")
 temp = list.files(pattern = "*.csv")
 files_2015 = lapply(temp,fread)
-files_2015 = lapply(files_2015, function(x) x = cbind(Year=rep("2015",nrow(x)), x[,-1]))
+files_2015 = lapply(files_2015, function(x) x = cbind(Year=rep(2015,nrow(x)), x[,-1]))
 
 #Pull2016 data
 setwd("../2016")
 temp = list.files(pattern = "*.csv")
 files_2016 = lapply(temp,fread)
-files_2016 = lapply(files_2016, function(x) x = cbind(Year=rep("2016",nrow(x)),x[,-1]))
+files_2016 = lapply(files_2016, function(x) x = cbind(Year=rep(2016,nrow(x)),x[,-1]))
 
 allfiles = list()
 
@@ -49,7 +49,7 @@ names(allfiles) = datasetnames
 
 #Load county-level population
 allfiles[[1]] = allfiles[[1]] %>%
-  .[,`:=` (FIPS = state_number*1000 + county),]
+  .[,`:=` (FIPS = as.factor(state_number*1000 + county)),]
 
 censusdata = fread("/Users/Desmond/Desktop/Work/503 Project/cc-est2016-alldata.csv") %>% 
   .[,`:=` (FIPS = as.factor(1000*STATE + COUNTY))] %>%
