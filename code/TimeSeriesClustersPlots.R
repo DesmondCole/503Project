@@ -8,6 +8,7 @@ library(dtwclust)
 setwd("/Users/Desmond/Desktop/Work/503 Project/AllData")
 temp = list.files(pattern = "*.csv")
 allfiles = lapply(temp,fread)
+names(allfiles) = temp
 
 setwd("/Users/Desmond/Documents/GitHub/503Project")
 TimeData =  allfiles[[1]] %>%
