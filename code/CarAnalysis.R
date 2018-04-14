@@ -122,6 +122,8 @@ ModelVars = c("Distracted","Drugs","NoRestraint","MultiFatality","Fire","HitAndR
               "Speeding","Makers","previous_recorded_crashes","previous_dwi_convictions",
               "previous_recorded_suspensions_and_revocations")
 
+AnalysisData = ClassificationData[,ModelVars,with=FALSE]
+
 #Binary rebalancing and Classification
 BinClassData = SMOTE(MultiFatality ~ ., data=AnalysisData)
 basicmodel = glm(MultiFatality ~ ., data=BinClassData,family="binomial")
@@ -132,3 +134,25 @@ MakerModel = maboost(Makers ~ .,data=AnalysisData,C50tree=TRUE)
 MakerModel = maboost(Makers ~ .,data=AnalysisData,C50tree=TRUE,C5.0Control(minCases=10,CF=.4))
 
 
+
+#Data for MDS
+MDSData = ClassificationData[,`:=` (Distracted = 1*(driver_distracted_by_name != "Not Distracted"),
+                                               Drugs = 1*(police_reported_drug_involvement == "Yes (Drugs Involved)"),
+                                               NoRestraint = 1*(restraint_system_helmet_use_name == "None Used"),
+                                               MultiFatality = 1*(number_of_fatalities > 1),
+                                               Fire = 1*(fire_occurrence == "Yes"),
+                                               HitAndRun = 1*(hit_and_run == "Yes"),
+                                               Speeding = 1*(!(speeding_related %in% c("No","Unknown"))),
+                                               Makers = factor(Makers))] %>%
+  .[,c(ModelVars,"MarketNumbers"),with=FALSE] %>%
+  .[,.(Distracted = sum(Distracted)/MarketNumbers,Drugs = sum(Drugs)/MarketNumbers,
+       NoRestraint = sum(NoRestraint)/MarketNumbers,MultiFataity = sum(MultiFatality)/MarketNumbers,
+       Fire = sum(Fire)/MarketNumbers,MarketNumbers,HitAndRun = sum(HitAndRun)/MarketNumbers,MarketNumbers,Speeding = sum(Speeding)/MarketNumbers),
+    by=.(Makers,MarketNumbers)]
+
+Makers = MDSData$Makers
+
+MDSData = MDSData[,-c("Makers","MarketNumbers"),with=FALSE]
+
+distancemat = dist(MDSData)
+mdsresults = cmdscale(distancemat)

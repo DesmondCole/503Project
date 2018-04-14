@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  14 APR 2018 18:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  14 APR 2018 19:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -261,6 +261,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 52--53
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--56
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--58
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--62
+
+ []
+
 [2] [3] (./503FinalReport.aux) ) 
 Here is how much of TeX's memory you used:
  2665 strings out of 492995
@@ -281,7 +301,7 @@ fonts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmr9.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmti9.pfb>
-Output written on 503FinalReport.pdf (3 pages, 127316 bytes).
+Output written on 503FinalReport.pdf (3 pages, 127941 bytes).
 PDF statistics:
  54 PDF objects out of 1000 (max. 8388607)
  38 compressed objects within 1 object stream
