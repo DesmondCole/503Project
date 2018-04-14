@@ -6,6 +6,9 @@
 \usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
 								% TeX will automatically convert eps --> pdf in pdflatex		
 \usepackage{amssymb}
+\usepackage{etoolbox}
+    \AfterEndEnvironment{hangparas}{\addvspace{0.67\baselineskip}}
+    \usepackage[notquote]{hanging}
 
 
 \title{Analysis of US Traffic Fatalities}
@@ -14,12 +17,44 @@
 \begin{document}
 \maketitle
 \section*{Introduction}
+We analyze traffic fatality data provided by the National Highway Traffic Safety Administration (NHTSA) to assess various predictors of traffic fatalities and develop a limited profile of the circumstances associated with traffic fatalities.
 
 \section*{Exploratory Analysis and Visualization}
 
+\subsection*{Geographic Patterns}
+
+\subsection*{Time Trends}
+\textbf{Daily Cycle} \\
+At the national and state level, the cycle of fatal accidents throughout the day is fairly consistent. There is a local maximum in the early morning, correlating with morning rush hour. Beginning just before noon, the level of fatal accidents rises consistently to peak at between 7 and 8PM, before declining steadily through to about 3 or 4 in the morning. \\
+\\
+(Insert National graphic)
+\\
+
+With State-by-State plots, the daily fatal accident cycle is roughly similar, without significant change. The below plots show results from shape-based time series clustering of different states, according to daily fatal accident patterns. \\
+
+(Insert side-by-side state-level centroid plots)
+
+\textbf{Weekly Cycle} \\
+
 \section*{Key Predictors of Traffic Fatalities}
 
+
+
+
+
 \section*{Conclusion}
+
+\section*{References}
+\begin{hangparas}{1.27cm}{1}
+Batterman, Stuart, Richard Cook, and Thomas Justin. "Temporal variation of traffic on highways and the development of accurate temporal allocation factors for air pollution analyses." \textit{Atmos Environ}. Apr. 2015.
+
+Zador, P.L, S.A. Krawchuk, and R.B. Voas. "Relative Risk of Fatal Crash Involvement by BAC, Age, and Gender." \textit{U.S. Department of Transportation - National Highway Traffic Safety Administration}. Apr. 2000.
+
+
+
+
+\end{hangparas}
+
 
 
 
