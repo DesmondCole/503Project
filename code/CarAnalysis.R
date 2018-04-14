@@ -75,3 +75,19 @@ CarPlot = ggplot(MakeData,aes(x=reorder(Makers,-shareaccidents))) +
   ggtitle("Ranking of Manufacturer by Fatal Accidents")
 CarPlot
 ggsave("./report/ManufacturerRankingPlot",plot=CarPlot,device="png",width=15.2,height=7.69,units="in")
+
+
+
+#Numerical Analysis. To whether there are differences among car manufacturers w/r/t certain behavioral characteristics, it is first necessary to 
+#appropriately sample from the data based on the frequency with which automakers appear. 
+
+#Generate automaker-specific dataset with relevant indicators. 
+
+#This portion is time-permitting. multiclass imbalance is tricker to address than binary class imbalance.
+
+
+library(caret)
+
+
+
+
