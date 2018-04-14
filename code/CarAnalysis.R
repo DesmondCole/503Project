@@ -64,7 +64,7 @@ VehicleData = allfiles[[15]][!(vehicle_configuration_name %in%
                                    "Bus (Seats for More Than 15 Occupants, Including Driver, 2010-Later",
                                    "Single-Unit Truck (3 or More axles)",
                                    "Single-Unit Truck (2 axles and GVWR more\nthan 10,000 lbs."))] %>%
-  .[(previous_dwi_convictions < 99 & previous_recorded_crashes < 99 & previous_recorded_suspensions_and_revocations < 99),] %>%
+  .[(previous_dwi_convictions < 99 & previous_recorded_crashes < 98 & previous_recorded_suspensions_and_revocations < 99),] %>%
   .[(travel_speed < 300 & speed_limit < 98),] %>%
   .[,`:=` (Maker = 1*(vehicle_make_name %in% c("Chevrolet","Saturn","Pontiac","Oldsmobile","Saab","Buick/Opel","Cadillac","GMC")) + 
              2*(vehicle_make_name %in% c("Ford","Lincoln","Mercury")) + 
@@ -102,15 +102,33 @@ CarPlot
 ggsave("./report/ManufacturerRankingPlot",plot=CarPlot,device="png",width=15.2,height=7.69,units="in")
 
 
-
-
-
 #Numerical Analysis. Even with observed differences among car manufacturers, it is unclear 
 #whether or not unobservables account for the majority of the differences. To explore this further, 
-#will use multi-class boosting (to account for class imbalance) for classification.
+#will use multi-class boosting and the DMwR package's SMOTE algorithm to tackle class imbalance.
 library(maboost)
+library(DMwR)
 
 
+ClassificationData = ClassificationData[,`:=` (Distracted = factor(driver_distracted_by_name != "Not Distracted"),
+                                               Drugs = factor(police_reported_drug_involvement == "Yes (Drugs Involved)"),
+                                               NoRestraint = factor(restraint_system_helmet_use_name == "None Used"),
+                                               MultiFatality = factor((number_of_fatalities > 1)),
+                                               Fire = factor(fire_occurrence == "Yes"),
+                                               HitAndRun = factor(hit_and_run == "Yes"),
+                                               Speeding = factor(speeding_related),
+                                               Makers = factor(Makers))]
 
+ModelVars = c("Distracted","Drugs","NoRestraint","MultiFatality","Fire","HitAndRun",
+              "Speeding","Makers","previous_recorded_crashes","previous_dwi_convictions",
+              "previous_recorded_suspensions_and_revocations")
+
+#Binary rebalancing and Classification
+BinClassData = SMOTE(MultiFatality ~ ., data=AnalysisData)
+basicmodel = glm(MultiFatality ~ ., data=BinClassData,family="binomial")
+
+
+#Multiclass Rebalancing and Classification
+MakerModel = maboost(Makers ~ .,data=AnalysisData,C50tree=TRUE)
+MakerModel = maboost(Makers ~ .,data=AnalysisData,C50tree=TRUE,C5.0Control(minCases=10,CF=.4))
 
 

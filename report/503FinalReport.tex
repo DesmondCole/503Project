@@ -37,12 +37,23 @@ With State-by-State plots, the daily fatal accident cycle is roughly similar, wi
 \textbf{Weekly Cycle} \\
 
 \section*{Selected Predictors of Traffic Fatalities}
+We used a mix of classifiers to assess factors relevant to incident fatalities, with a particular focus on driver behavior, environmental conditions, and vehicle manufacturer. In many cases, we had to grapple with significant class imbalance. For example, in predicting whether an accident results in multiple fatalities
 
 \subsection*{Driver Behavior}
 \textbf{Drugs/Alcohol}
 \textbf{Distraction}
 
-\subsection*{Car Manufacturer}
+\subsection*{Car Type}
+
+This section explores in some detail different fatality rates for different car types (by automaker, vehicle body, etc.).\footnote{Note that the numbers in this assessment focus on car brands \textit{involved} in fatal incidents. Thus, they do not imply specifically that the vehicle types considered here actually caused death(s), or that the driver(s) of the vehicle(s) themselves died.} For this assessment, we focused on the 15 largest automakers that together produce more than 95\% of the cars and light trucks on American roads. In addition, we subsetted the data to focus specifically on smaller vehicles, excluding commercial vehicles, semi-trucks, etc. \\
+
+The plot below shows a basic ranking of car manufacturers according to the number of fatalities per million vehicles.
+
+(Insert graph of fatalities/fatal accidents by car manufacturer) \\
+
+The plot above, although suggestive of meaningful difference across manufacturers, fails to fully account for the various contextual differences which may be unobservable. To further explore the relevance of car manufacturer, we consider the relationships between car model and various fatality-related predictors, to understand if a given manufacturers' products tend to be associated with high-risk behaviors or other crash factors. The table below shows the results from various multi-class classifications of car manufacturer ran using a set of crash-relevant predictors .... The results do not suggest any substantial mechanism(s) by which a car's make determines the risk of it being involved in a fatal incident. 
+
+(Insert table of classifications and results)
 
 \subsection*{Environmental Conditions}
 
