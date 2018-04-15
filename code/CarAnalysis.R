@@ -112,7 +112,7 @@ CarPlot = ggplot(SummaryData,aes(x=reorder(Makers,-deathspermillion))) +
   labs(y = "Fatalities per Million Cars",x = "Manufacturer") + 
   ggtitle("Ranking of Manufacturer by Fatal Accidents")
 CarPlot
-ggsave("./report/ManufacturerRankingPlot",plot=CarPlot,device="png",width=15.2,height=7.69,units="in")
+ggsave("./report/ManufacturerRankingPlot.png",plot=CarPlot,device="png",width=15.2,height=7.69,units="in")
 
 
 
@@ -179,7 +179,7 @@ MDSPlot = ggplot(data=mdsresults,aes(x=X1,y=X2,label=Makers)) +
   scale_x_continuous(limits=c(-.05,.12))
   ggtitle("Distance of Manufacturers according to Driver Behavior in Fatal Accidents")
 MDSPlot
-ggsave("./report/ManufacturerMDSPlot",plot=MDSPlot,device="png",
+ggsave("./report/ManufacturerMDSPlot.png",plot=MDSPlot,device="png",
        width=9.32,height=8.38,units="in")
 
 
@@ -222,7 +222,7 @@ MDSPlot_type = ggplot(data=mdsresults_type,aes(x=X1,y=X2,label=Types)) +
   ggtitle("Distance of Types according to Driver Behavior in Fatal Accidents")
 MDSPlot_type
 
-ggsave("./report/VehicleTypeMDSPlot",plot=MDSPlot_type,device="png",
+ggsave("./report/VehicleTypeMDSPlot.png",plot=MDSPlot_type,device="png",
        width=9.32,height=8.38,units="in")
 
 
@@ -258,6 +258,7 @@ AnalysisData = ClassificationData[,`:=` (Distracted = 1*(driver_distracted_by_na
 write.csv(AnalysisData,file = "./data/DataForClassification.csv",row.names=FALSE)
 
 #Risk of multi-fatality accident
+
 BinClassData = SMOTE(MultiFatality ~ . -date_of_crash, data=AnalysisData)
 basicmodel = glm(MultiFatality ~ ., data=BinClassData,family="binomial")
 
