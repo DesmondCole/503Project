@@ -39,15 +39,20 @@ MakerData = data.table(Maker = seq(1:15),Makers = Makers,MarketNumbers = RelMark
 
 
 
-#Generate Vehicle data
+#Generate Aggregate Classification Dataset
 keepVars = c("uniqueID","number_of_drunk_drivers","police_reported_drug_involvement","driver_distracted_by_name",
              "impairment_at_time_of_crash_driver_name","previous_recorded_crashes","previous_recorded_suspensions_and_revocations",
              "previous_dwi_convictions","restraint_system_helmet_use_name","fire_occurrence","number_of_fatalities",
-             "hit_and_run","travel_speed","speed_limit","speeding_related")
-
+             "hit_and_run","travel_speed","speed_limit","speeding_related","atmospheric_conditions_1_name","FIPS","Population",
+             "timestamp_of_crash","hour_of_crash","day_of_week","state_name")
 
 ClassificationData = allfiles[[1]] %>%
-  .[,intersect(keepVars,names(allfiles[[1]])),with=FALSE]
+  .[,intersect(keepVars,names(allfiles[[1]])),with=FALSE] %>%
+  .[,`:=` (date_of_crash = as.Date(timestamp_of_crash))]
+
+
+
+
 
 for (i in c(4,5,13)){
   tokeep = intersect(keepVars,names(allfiles[[i]]))
@@ -85,6 +90,8 @@ VehicleData = allfiles[[15]][!(vehicle_configuration_name %in%
   .[,c(intersect(keepVars,names(allfiles[[15]])),"Maker"),with=FALSE] %>%
   .[MakerData,on="Maker"]
 
+AltVehicleData = 
+
 ClassificationData = unique(ClassificationData)
 
 ClassificationData = ClassificationData[VehicleData,on="uniqueID"]
@@ -102,9 +109,9 @@ CarPlot
 ggsave("./report/ManufacturerRankingPlot",plot=CarPlot,device="png",width=15.2,height=7.69,units="in")
 
 
-#Numerical Analysis. Even with observed differences among car manufacturers, it is unclear 
+#Automaker Analysis. Even with observed differences among car manufacturers, it is unclear 
 #whether or not unobservables account for the majority of the differences. To explore this further, 
-#will use multi-class boosting and the DMwR package's SMOTE algorithm to tackle class imbalance.
+#will use multi-class boosting and weighting techniques to perform classification of car type based on behavioral characteristics.
 library(maboost)
 library(DMwR)
 
@@ -149,6 +156,21 @@ MDSData = ClassificationData[,`:=` (Distracted = 1*(driver_distracted_by_name !=
        NoRestraint = sum(NoRestraint)/MarketNumbers,MultiFataity = sum(MultiFatality)/MarketNumbers,
        Fire = sum(Fire)/MarketNumbers,MarketNumbers,HitAndRun = sum(HitAndRun)/MarketNumbers,MarketNumbers,Speeding = sum(Speeding)/MarketNumbers),
     by=.(Makers,MarketNumbers)]
+
+MDSData = ClassificationData[,`:=` (Distracted = 1*(driver_distracted_by_name != "Not Distracted"),
+                                    Drugs = 1*(police_reported_drug_involvement == "Yes (Drugs Involved)"),
+                                    NoRestraint = 1*(restraint_system_helmet_use_name == "None Used"),
+                                    MultiFatality = 1*(number_of_fatalities > 1),
+                                    Fire = 1*(fire_occurrence == "Yes"),
+                                    HitAndRun = 1*(hit_and_run == "Yes"),
+                                    Speeding = 1*(!(speeding_related %in% c("No","Unknown"))),
+                                    Makers = factor(Makers))] %>%
+  .[,c(ModelVars,"MarketNumbers"),with=FALSE] %>%
+  .[,.(Distracted = sum(Distracted),Drugs = sum(Drugs),
+       NoRestraint = sum(NoRestraint),MultiFataity = sum(MultiFatality),
+       Fire = sum(Fire),HitAndRun = sum(HitAndRun),MarketNumbers,Speeding = sum(Speeding)),
+    by=.(Makers,MarketNumbers)]
+
 
 Makers = MDSData$Makers
 
