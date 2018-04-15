@@ -174,7 +174,7 @@ mdsresults = cmdscale(distancemat)
 mdsresults = data.frame(mdsresults,Makers)
 MDSPlot = ggplot(data=mdsresults,aes(x=X1,y=X2,label=Makers)) + 
   geom_point(shape=21,fill=NA,colour=NA) + 
-  geom_text(aes(label=Makers)) + 
+  geom_text_repel(aes(label=Makers),size=4.5) + 
   labs(x="Dim. 1",y="Dim. 2") + 
   scale_x_continuous(limits=c(-.05,.12))
   ggtitle("Distance of Manufacturers according to Driver Behavior in Fatal Accidents")
@@ -216,7 +216,7 @@ mdsresults_type = cmdscale(distancemat)
 mdsresults_type = data.frame(mdsresults_type,Types)
 MDSPlot_type = ggplot(data=mdsresults_type,aes(x=X1,y=X2,label=Types)) + 
   geom_point(shape=21,fill=NA,colour=NA) + 
-  geom_text(aes(label=Types),size=3) + 
+  geom_text_repel(aes(label=Types),size=4.5,segment.alpha=0) + 
   labs(x="Dim. 1",y="Dim. 2") + 
   scale_x_continuous(limits=c(-.15,.20))
   ggtitle("Distance of Types according to Driver Behavior in Fatal Accidents")
@@ -224,9 +224,6 @@ MDSPlot_type
 
 ggsave("./report/VehicleTypeMDSPlot.png",plot=MDSPlot_type,device="png",
        width=9.32,height=8.38,units="in")
-
-
-
 
 
 #Automaker Analysis. Even with observed differences among car manufacturers, it is unclear 
@@ -316,6 +313,8 @@ SVMIMPPlot = ggplot(data=SVMImpData,aes(x=reorder(Var,-Imp))) +
   theme(axis.text.x = element_text(size=10))
 ggsave("./report/ImportancePlot_SVM.png",SVMIMPPlot,device="png",
        width=12.3,height=6.21,units="in")
+
+
 
 
 #Adaboost

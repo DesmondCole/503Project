@@ -12,6 +12,7 @@
 \usepackage{subcaption}
 \usepackage{float}
 \usepackage[all]{nowidow}
+\usepackage[hang,flushmargin]{footmisc}
 
     \AfterEndEnvironment{hangparas}{\addvspace{0.67\baselineskip}}
     \usepackage[notquote]{hanging}
@@ -41,24 +42,32 @@ The data used for this analysis are gathered by the National Highway Traffic Saf
 \subsection*{Time Trends}
 \textbf{Daily Cycle} \\
 At the national and state level, the cycle of fatal accidents throughout the day is fairly consistent. The below plot shows aggregate fatal accidents per thousand vehicles per hour for the United States, between 2015 and 2016. To account for traffic variability, we weighted the rate of fatal incidents according to hour-by-hour traffic flow allocations estimated by Batterman, et al. (see references). These same flow allocations are used to weight state-by-state hourly trends. \\
-\\
-\begin{center}
-\includegraphics[width=.75\textwidth,height=8cm,keepaspectratio]{WeightedNationalDayTrends.png}
-\end{center}
 
 At the state level, the daily fatal accident cycle is roughly similar. Estimating the overall traffic flow for each state using state-level vehicle registrations, combined with the flow allocations estimated by Batterman, et al. (2015), returns state-level cycles that closely mirror the overall national trend.
 
-\begin{center}
-\includegraphics[width=.75\textwidth, height=8cm,keepaspectratio]{WeightedStatePlot.png}
-\end{center}
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.5\textwidth}
+	\centering
+	\includegraphics[width=.9\textwidth,height=9cm,keepaspectratio]{WeightedNationalDayTrends.png}
+	\label{fig:sub1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+	\includegraphics[width=.9\textwidth, height=9cm,keepaspectratio]{WeightedStatePlot.png}
+  \label{fig:sub2}
+\end{subfigure}
+\label{fig:test}
+\end{figure}
 
-To tease out potential state-level variation in daily cycles, we used a shape-based time series clustering, available in R's dtwclust package. Roughly speaking, this method clusters different time series based on their similarity to different centroids, where a centroid in this case is some typical time trend. Further detail on relevant methods is available in work by Gravano and Paparrizos (2015). Testing different numbers of clusters yielded little overall diversity in terms of performance. A plot of results obtained using 2 clusters is below.\footnote{Across multiple iterations, a 2-cluster separation tends to yield the best performance. For reference in the Validity Index table, optimal clustering will minimize the Silhouette ("Sil"), Davies-Bouldin ("DB" and "DBstar") indices, and maximize the Dunn index ("D"), Calinski-Harabasz index ("CH"), and Score Function ("SF"). 2 clusters were chosen to be optimal on this basis.} There is little indication of significant variation across clusters, and the clustering results (and performance statistics, shown in the below table) are highly sensitive to initial randomization. 
+
+To tease out potential state-level variation in daily cycles, we used shape-based time series clustering, available in R's dtwclust package. Roughly speaking, this method clusters different time series based on their similarity to different centroids, where a centroid in this case is some typical time trend. Further detail on relevant methods is available in work by Gravano and Paparrizos (2015). Testing different numbers of clusters yielded little overall diversity in terms of performance. A plot of results obtained using 2 clusters is below.\footnote{Across multiple iterations, a 2-cluster separation tends to yield the best performance. For reference in the Validity Index table, optimal clustering will minimize the Silhouette ("Sil"), Davies-Bouldin ("DB" and "DBstar") indices, and maximize the Dunn index ("D"), Calinski-Harabasz index ("CH"), and Score Function ("SF"). 2 clusters were chosen to be optimal on this basis.} There is little indication of significant variation across clusters, and the clustering results (and performance statistics, shown in the below table) are highly sensitive to initial randomization. 
 
 \begin{center}
 \includegraphics[width=.75\textwidth,height=6cm,keepaspectratio]{StateClusterPlot_Hourly.png}
 \end{center}
 
-\begin{table}[ht]
+\begin{table}[H]
 \centering
 \begin{tabular}{rrrrrrrrr}
   \hline
@@ -98,13 +107,13 @@ The plot above, although suggestive of meaningful difference across manufacturer
 \centering
 \begin{subfigure}{.5\textwidth}
 	\centering
-	\includegraphics[width=.8\linewidth]{ManufacturerMDSPlot.png}
+	\includegraphics[width=1\linewidth]{ManufacturerMDSPlot.png}
 	\caption{Manufacturer MDS}
 	\label{fig:sub1}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[width=.8\linewidth]{VehicleTypeMDSPlot.png}
+  \includegraphics[width=1\linewidth]{VehicleTypeMDSPlot.png}
   \caption{Vehicle Type MDS}
   \label{fig:sub2}
 \end{subfigure}
@@ -112,7 +121,7 @@ The plot above, although suggestive of meaningful difference across manufacturer
 \label{fig:test}
 \end{figure}
 
-The plots don't indicate strong patterns of differentiation, but there are some noteworthy indicators. In particular, these results suggest the behavior of luxury sport/SUV vehicles to be somewhat distinct, as noted by the outlying values for BMW/Land Rover in figure (a), and for Luxury SUV and Sport vehicles in figure (b).
+The plots don't indicate strong patterns of differentiation, but there are some noteworthy indicators. In particular, these results suggest the behavior of luxury sport/SUV drivers to be somewhat distinct, as noted by the outlying values for the BMW/Land Rover\footnote{Note that this analysis considers all Jaguar models to be part of Land Rover} in figure (a), and for Luxury SUV and Sport vehicles in figure (b).
 
 To numerically explore this issue more fully, we draw on results of a logistic regression model (discussed more fully in the next section) to consider how a vehicle's manufacturer affects the likelihood of a multi-fatality collision.\footnote{Note again that the data here are drawn solely from accidents involving at least one fatality. Therefore, classification methods such as this are predicting the severity of an accident, \textit{given that one has already occurred.}}
 
