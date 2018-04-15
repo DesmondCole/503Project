@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  15 APR 2018 18:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  15 APR 2018 19:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -395,20 +395,26 @@ File: ImportancePlot_ADABoost.png Graphic file (type png)
 <use ImportancePlot_ADABoost.png>
 Package pdftex.def Info: ImportancePlot_ADABoost.png used on input line 181.
 (pdftex.def)             Requested size: 426.75185pt x 215.45763pt.
- [6 <./ImportancePlot_SVM.png> <./ImportancePlot_ADABoost.png>] [7] (./503Final
-Report.aux)
+ [6 <./ImportancePlot_SVM.png> <./ImportancePlot_ADABoost.png>] <Environmental.
+png, id=51, 2878.755pt x 1583.9175pt>
+File: Environmental.png Graphic file (type png)
+
+<use Environmental.png>
+Package pdftex.def Info: Environmental.png used on input line 190.
+(pdftex.def)             Requested size: 413.69702pt x 227.6199pt.
+ [7 <./Environmental.png>] [8] (./503FinalReport.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4213 strings out of 492995
- 63620 string characters out of 6132704
+ 4218 strings out of 492995
+ 63724 string characters out of 6132704
  233178 words of memory out of 5000000
- 7695 multiletter control sequences out of 15000+600000
+ 7699 multiletter control sequences out of 15000+600000
  14233 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,7n,39p,1174b,441s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,7n,39p,1180b,441s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
@@ -419,10 +425,10 @@ al/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/
 texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
 live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texl
 ive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on 503FinalReport.pdf (8 pages, 2442614 bytes).
+Output written on 503FinalReport.pdf (9 pages, 2531390 bytes).
 PDF statistics:
- 88 PDF objects out of 1000 (max. 8388607)
- 51 compressed objects within 1 object stream
+ 93 PDF objects out of 1000 (max. 8388607)
+ 53 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

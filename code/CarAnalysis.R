@@ -348,9 +348,18 @@ result = xtable(Accuracy,caption="Test Set Prediction Accuracy")
 
 # Environmental Conditions
 EnvironmentalData = allfiles[[1]] %>%
-  +   .[atmospheric_conditions_1_name != "Unknown",] %>%
-  +   .[,.(fatalaccidents = .N),by=.(FIPS,atmospheric_conditions_1_name)] %>%
-  + .[FIPS %in% c("48201","48113","1703"),]
+  .[atmospheric_conditions_1_name != "Unknown",] %>%
+  .[,.(fatalaccidents = .N),by=.(FIPS,atmospheric_conditions_1_name)] %>%
+  .[FIPS %in% c("17031"),]
+
+SimpleEnvironPlot = ggplot(data=EnvironmentalData,
+                           aes(x = reorder(atmospheric_conditions_1_name,-fatalaccidents))) + 
+  geom_bar(aes(weight=fatalaccidents),fill="dark green") + 
+  labs(x = "Atmospheric Conditions",y="Fatal Accidents")
+ggsave("./report/Environmental.png",SimpleEnvironPlot,device="png",
+       width=9.56,height=5.26,units='in')
+
+
 
 
 

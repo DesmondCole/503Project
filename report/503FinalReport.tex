@@ -61,7 +61,7 @@ At the state level, the daily fatal accident cycle is roughly similar. Estimatin
 \end{figure}
 
 
-To tease out potential state-level variation in daily cycles, we used shape-based time series clustering, available in R's dtwclust package. Roughly speaking, this method clusters different time series based on their similarity to different centroids, where a centroid in this case is some typical time trend. Further detail on relevant methods is available in work by Gravano and Paparrizos (2015). Testing different numbers of clusters yielded little overall diversity in terms of performance. A plot of results obtained using 2 clusters is below.\footnote{Across multiple iterations, a 2-cluster separation tends to yield the best performance. For reference in the Validity Index table, optimal clustering will minimize the Silhouette ("Sil"), Davies-Bouldin ("DB" and "DBstar") indices, and maximize the Dunn index ("D"), Calinski-Harabasz index ("CH"), and Score Function ("SF"). 2 clusters were chosen to be optimal on this basis.} There is little indication of significant variation across clusters, and the clustering results (and performance statistics, shown in the below table) are highly sensitive to initial randomization. 
+To tease out potential state-level variation in daily cycles, we used shape-based time series clustering, available in R's dtwclust package. Roughly speaking, this method clusters different time series based on their similarity to different centroids, where a centroid in this case is some typical time trend. Further detail on relevant methods is available in work by Gravano and Paparrizos (2015). Testing different numbers of clusters yielded little overall diversity in terms of performance. A plot of results obtained using 2 clusters is below.\footnote{Across multiple iterations, a 2-cluster separation tends to yield the best performance. For reference in the Validity Index table, optimal clustering will minimize the Silhouette (``Sil"), Davies-Bouldin (``DB" and ``DBstar") indices, and maximize the Dunn index (``D"), Calinski-Harabasz index (``CH"), and Score Function (``SF"). 2 clusters were chosen to be optimal on this basis.} There is little indication of significant variation across clusters, and the clustering results (and performance statistics, shown in the below table) are highly sensitive to initial randomization. 
 
 \begin{center}
 \includegraphics[width=.75\textwidth,height=6cm,keepaspectratio]{StateClusterPlot_Hourly.png}
@@ -182,26 +182,31 @@ We also examine the importance of certain features in predicting an accident wit
 \caption{Variable Importance - AdaBoost Algorithm}
 \end{figure}
 
+\section*{Environmental Factors}
+A proper analysis of environmental factors is both beyond the scope of this analysis, and requires incorporating a richer set of weather data than the handful of indicators available in the FARS system. A quick initial check of the relevance of environmental conditions doesn't return many relevant results. The plot below shows data from Cook County, Illinois, chosen for its high number of traffic fatalities and variable weather\footnote{Especially when compared to Dallas, Phoenix, and LA County}. The vast majority of fatal collisions occur in clear weather, which is due in large part no doubt to the fact that it is simply clear much more often in Chicago than it is rainy or snowy! 
 
-
-
+\begin{figure}[H]
+\centering
+  \includegraphics[width=15cm,height=8cm,keepaspectratio]{Environmental.png}
+\caption{Fatal Accidents in Cook County, by Atmospheric Condition}
+\end{figure}
 
 
 \section*{Conclusion}
 
 \section*{References}
 \begin{hangparas}{1.27cm}{1}
-Batterman, Stuart, Richard Cook, and Thomas Justin. "Temporal variation of traffic on highways and the development of accurate temporal allocation factors for air pollution analyses." \textit{Atmos Environ}. Apr. 2015.
+Batterman, Stuart, Richard Cook, and Thomas Justin. ``Temporal variation of traffic on highways and the development of accurate temporal allocation factors for air pollution analyses." \textit{Atmos Environ}. Apr. 2015.
 
 Chawla, Nitesh, Kevin Bowyer, Lawrence Hall, and W. Philip Kegelmeyer. "SMOTE: Synthetic Minority Over-sampling Technique." \textit{Journal of Artificial Intelligence Research}. 2002.
 
-Choi, Eun-Ha. "Crash Factors in Intersection-Related Crashes: An On-Scene Perspective." \textit{U.S. Department of Transportation - National Highway Traffic Safety Administration}. Sept. 2010.
+Choi, Eun-Ha. ``Crash Factors in Intersection-Related Crashes: An On-Scene Perspective." \textit{U.S. Department of Transportation - National Highway Traffic Safety Administration}. Sept. 2010.
 
-Gravano, Luis and John Paparrizos. "k-Shape: Efficient and Accurate Clustering of Time Series." \textit{SIGMOD}. June 2015.
+Gravano, Luis and John Paparrizos. ``k-Shape: Efficient and Accurate Clustering of Time Series." \textit{SIGMOD}. June 2015.
 
-Zador, P.L, S.A. Krawchuk, and R.B. Voas. "Relative Risk of Fatal Crash Involvement by BAC, Age, and Gender." \textit{U.S. Department of Transportation - National Highway Traffic Safety Administration}. Apr. 2000.
+Zador, P.L, S.A. Krawchuk, and R.B. Voas. ``Relative Risk of Fatal Crash Involvement by BAC, Age, and Gender." \textit{U.S. Department of Transportation - National Highway Traffic Safety Administration}. Apr. 2000.
 
-"National Motor Vehicle Crash Causation Survey: Report to Congress." \textit{U.S. Department of Transportation - National Highway Traffic Safety Administration}. July 2008.
+``National Motor Vehicle Crash Causation Survey: Report to Congress." \textit{U.S. Department of Transportation - National Highway Traffic Safety Administration}. July 2008.
 
 
 \end{hangparas}
