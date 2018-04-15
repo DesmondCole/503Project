@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  15 APR 2018 12:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  15 APR 2018 13:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -359,21 +359,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 105--106
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--108
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 109--110
+Underfull \hbox (badness 10000) in paragraph at lines 119--120
 
  []
 
 [5] [6] (./503FinalReport.aux) ) 
 Here is how much of TeX's memory you used:
- 4070 strings out of 492995
- 61122 string characters out of 6132704
- 227268 words of memory out of 5000000
- 7562 multiletter control sequences out of 15000+600000
+ 4072 strings out of 492995
+ 61145 string characters out of 6132704
+ 228268 words of memory out of 5000000
+ 7564 multiletter control sequences out of 15000+600000
  14233 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  39i,8n,39p,798b,440s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -388,7 +383,7 @@ fonts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmr9.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmti9.pfb>
-Output written on 503FinalReport.pdf (6 pages, 2473090 bytes).
+Output written on 503FinalReport.pdf (6 pages, 2473605 bytes).
 PDF statistics:
  76 PDF objects out of 1000 (max. 8388607)
  45 compressed objects within 1 object stream

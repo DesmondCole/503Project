@@ -104,11 +104,21 @@ Another specific category of interest is multi-fatality incidents. Every observa
 
 The below table shows relative test error rates for classification using the logistic regression, support vector machine, and adaptive boosting methods. \\
 
-(Insert table of test error rates) \\
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrr}
+  \hline
+ & Logistic Regression & Support Vector Machine & AdaBoost \\ 
+  \hline
+Accuracy & 0.77 & 0.80 & 0.80 \\ 
+   \hline
+\end{tabular}
+\caption{Test Set Prediction Accuracy} 
+\end{table}
 
-Given that a key interest in this paper is inference about relevant variables, we also examine the importance of certain features in predicting an accident with multiple fatalities. \\
+Given that a key interest in this paper is inference about relevant variables, we also examine the importance of certain features in predicting an accident with multiple fatalities. The below output shows both numerical and graphical representations of variable importance. \\
 
-(Insert table of variable importance, using adaboost and (if relevant) SVM/Logit results.)
+
 
 
 \section*{Conclusion}

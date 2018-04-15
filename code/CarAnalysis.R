@@ -235,7 +235,7 @@ ggsave("./report/VehicleTypeMDSPlot.png",plot=MDSPlot_type,device="png",
 library(maboost)
 library(DMwR)
 
-ModelVars = c("Distracted","Drugs","NoRestraint","MultiFatality","Fire","HitAndRun",
+ModelVars = c("Distracted","Drugs","NoRestraint","MultiFatality","HitAndRun",
               "Speeding","previous_recorded_crashes","previous_dwi_convictions",
               "previous_recorded_suspensions_and_revocations","travel_speed","Makers",
               "DrunkDrivers","Incl_Weather","Intersection","date_of_crash","hour_of_crash")
@@ -268,18 +268,34 @@ AnalysisData_Train = AnalysisData[-testinds,] %>% .[,-c("date_of_crash"),with=FA
 AnalysisData_Train_Rebal = SMOTE(MultiFatality ~ ., data=AnalysisData_Train)
 
 #Logistic Regression
-logitmodel_multi = glm(MultiFatality ~ ., data=AnalysisData_Train_Rebal,family="binomial")
-logitmodel_testerror = 
+logitmodel_multi = glm(MultiFatality ~ ., 
+                       data=AnalysisData_Train_Rebal[flds[[i]],],family="binomial")
+logitprobs = predict(logitmodel_multi,newdata=AnalysisData_Test,type="response")
+logitpreds = round(logitprobs)
+logitaccuracy = mean(logitpreds == AnalysisData_Test$MultiFatality)
+logitaccuracy
 
 #SVM
 svmmodel_multi = svm(MultiFatality ~ .,data=AnalysisData_Train_Rebal,cross=5)
-svmmodel_testerror_multi = 
+svmmodel_testerror_multi = predict(svmmodel_multi,newdata=AnalysisData_Test[,-c("MultiFatality"),with=FALSE])
+svmaccuracy = mean(svmmodel_testerror_multi == AnalysisData_Test$MultiFatality)
+svmaccuracy
 
 #Adaboost
-adamodel_multi = boosting(MultiFatality ~ ., data=AnalysisData_Train_Rebal)
-adamodel_testerror_multi = 
+
+adamodel_multi = boosting.cv(MultiFatality ~ ., data=AnalysisData_Train_Rebal,v=5,
+                             par=TRUE)
+adamodelaccuracy = predict(adamodel_multi,newdata=AnalysisData_Test)
+adamodelaccuracy_rate = mean(adamodelaccuracy$class == AnalysisData_Test$MultiFatality)
+adamodelaccuracy_rate
+adavariableplot = importanceplot(adamodel_multi)
 
 
+Accuracy = data.frame(t(c(logitaccuracy,svmaccuracy,adamodelaccuracy_rate)))
+names(Accuracy) = c("Logistic Regression","Support Vector Machine","AdaBoost")
+row.names(Accuracy) = "Accuracy"
+library(xtable)
+result = xtable(Accuracy,caption="Test Set Prediction Accuracy")
 
 
 #Risk of Hit and Run
