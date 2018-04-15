@@ -20,7 +20,7 @@ TimeData =  allfiles[[1]] %>%
   .[,week_of_crash := week(date_of_crash)]
  
 
-#Nationwide Daily
+#Nationwide Hourly
 NationalData = TimeData[,.(fatalaccidents=sum(fatalaccidents)),by=.(hour_of_crash)] %>%
   .[order(hour_of_crash)]
 NationalPlot = ggplot(data=NationalData,aes(x=hour_of_crash,y=fatalaccidents)) + 
@@ -28,7 +28,7 @@ NationalPlot = ggplot(data=NationalData,aes(x=hour_of_crash,y=fatalaccidents)) +
   labs(x="Time of Day",y="Fatal Accidents") + 
   ggtitle("Accidents by Time of Day - Nationwide") + 
   scale_y_continuous(limits=c(1000,4000))
-ggsave("./report/NationalDayTrends",plot=NationalPlot,device="png")
+ggsave("./report/NationalDayTrends.png",plot=NationalPlot,device="png")
 
 NationalTraffic = data.table(Hour=seq(0,23,1),
                              Share = c(.0081,.0052,
@@ -51,12 +51,10 @@ WeightedNationalPlot = ggplot(data=NationalData,aes(x=hour_of_crash,y=WeightedAc
   geom_line() + 
   labs(x="Time of Day",y="Fatal Accidents per Thousand Vehicles") + 
   ggtitle("Accidents by Time of Day - Nationwide")
-ggsave("./report/WeightedNationalDayTrends",plot=WeightedNationalPlot,
+ggsave("./report/WeightedNationalDayTrends.png",plot=WeightedNationalPlot,
        device="png",width=9.47,height=7.9,units='in')
 
-
-
-#State-level Daily - Plot
+#State-level Hourly - Plot
 TotalAccidents_State = TimeData[,.(totalaccidents=sum(fatalaccidents)),
                           by = .(state_name)]
 StateData = TimeData %>%
@@ -69,7 +67,6 @@ StatePlot = ggplot(data=StateData,
   labs(x = "Time of Day",y="Total Fatal Accidents") + 
   ggtitle("Fatal Accidents by Time of Day - State-by-State")
 StatePlot
-
 
 StateTraffic = fread("/Users/Desmond/Documents/GitHub/503Project/data/carsperstate.csv") %>%
   .[,c("state_name","Cars Per State"),with=FALSE]
@@ -87,30 +84,30 @@ WeightedStatePlot = ggplot(data=StateData,
   labs(x = "Time of Day",y="Fatal Accidents per Thousand Vehicles") + 
   ggtitle("Fatal Accidents by Time of Day - State-by-State")
 WeightedStatePlot
-ggsave("./report/WeightedStatePlot",plot=WeightedStatePlot,
+ggsave("./report/WeightedStatePlot.png",plot=WeightedStatePlot,
        device="png",width=9.47,height=7.9,units='in')
 
 
-#State-level Daily - Clustering
-
-
-
+#State-level Hourly - Clustering
+StateTimeSeries = dcast(StateData,state_name ~ Hour,value.var="weightedaccidents")
+StateTimeSeries[is.na(StateTimeSeries)] = 0
+stateclust = tsclust(StateTimeSeries[,-1],type="partitional",
+                     k=2:4,preproc=zscore,distance="sbd",
+                     centroid="shape")
+ClusterPlot_Hourly = plot(stateclust[[2]],"centroids")
+ClusterAssignments = cbind(StateTimeSeries$state_name,stateclust[[2]]@cluster)
+ggsave("./report/StateClusterPlot_Hourly.png",plot=ClusterPlot_Hourly,
+       device='png',width=11.3,height=6.87,units='in')
 
 
 
 
 
 #Nationwide Weekly
-NationalData = TimeData[,.(fatalaccidents=sum(fatalaccidents)),by=.(hour_of_crash)]
-NationalPlot = ggplot(data=NationalData,aes(x=hour_of_crash,y=fatalaccidents)) + 
-  geom_line() + 
-  labs(x="Time of Day",y="Fatal Accidents") + 
-  ggtitle("Accidents by Time of Day - Nationwide") + 
-  scale_y_continuous(limits=c(1000,4000))
-ggsave("./report/NationalDayTrends",plot=NationalPlot,device="png")
-
-
-#State-level Weekly - Plot
+NationalWeekly = TimeData[,.(fatalaccidents=sum(fatalaccidents)),by=.(week_of_crash)] %>%
+  .[]
+  NationalData = TimeData[,.(fatalaccidents=sum(fatalaccidents)),by=.(hour_of_crash)] %>%
+  .[order(hour_of_crash)]
 
 
 

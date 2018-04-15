@@ -32,28 +32,30 @@ At the national and state level, the cycle of fatal accidents throughout the day
 \includegraphics[width=.75\textwidth]{WeightedNationalDayTrends.png}
 \end{center}
 
-At the state level, the daily fatal accident cycle is roughly similar. Estimating the overall traffic flow for each state using state-level vehicle registrations, combined with the flow allocations estimated by Batterman, et al., returns state-level cycles that closely mirror the overall national trend.
+At the state level, the daily fatal accident cycle is roughly similar. Estimating the overall traffic flow for each state using state-level vehicle registrations, combined with the flow allocations estimated by Batterman, et al. (2015), returns state-level cycles that closely mirror the overall national trend.
 
 \begin{center}
 \includegraphics[width=.75\textwidth]{WeightedStatePlot.png}
 \end{center}
 
+To tease out any potential state-level variation in daily cycles, we used shape-based time series clustering, available in R's dtwclust package. Roughly speaking, this method clusters different time series based on their similarity to different centroids, where a centroid in this case is defined as a typical time series. Further detail on relevant methods is available in work by Gravano and Paparrizos (2015). Testing several different numbers of clusters yielded little overall diversity in terms of performance. A plot of results obtained using 3 clusters is below. There is little indication of significant variation across clusters, suggesting that hourly fatal incident cycles vary little across the United States.
 
+\begin{center}
+\includegraphics[width=.75\textwidth]{StateClusterPlot_Hourly.png}
+\end{center}
 
- results from shape-based time series clustering of different states, according to daily fatal accident patterns. \\
-
-(Insert side-by-side state-level centroid plots)
+(Insert table of clustering performance)
 
 \textbf{Weekly Cycle} \\
 
 \section*{Selected Predictors of Traffic Fatalities}
-We used a mix of classifiers to assess factors relevant to incident fatalities, with a particular focus on driver behavior, environmental conditions, and vehicle manufacturer. In many cases, we had to grapple with significant class imbalance. For example, in predicting whether an accident results in multiple fatalities
+We used a mix of classifiers to assess factors relevant to incident fatalities, with a particular focus on driver behavior, environmental conditions, and vehicle manufacturer. In many cases, we had to grapple with significant class imbalance. For example, there are far more single-fatality incidents than multi-fatality incidents. As a result, optimal classification in the naive setting without any resampling will occasionally identify all incidents as single-fatality.   
 
 \subsection*{Driver Behavior}
 \textbf{Drugs/Alcohol}
 \textbf{Distraction}
 
-\subsection*{Car Type}
+\subsection*{Automakers}
 
 This section explores in some detail different fatality rates for different car types (by automaker, vehicle body, etc.).\footnote{Note that the numbers in this assessment focus on car brands \textit{involved} in fatal incidents. Thus, they do not imply specifically that the vehicle types considered here actually caused death(s), or that the driver(s) of the vehicle(s) themselves died.} For this assessment, we focused on the 15 largest automakers that together produce more than 95\% of the cars and light trucks on American roads. In addition, we subsetted the data to focus specifically on smaller vehicles, excluding commercial vehicles, semi-trucks, etc. \\
 
@@ -81,6 +83,8 @@ As an alternative to classification, we applied multidimensional scaling to asse
 Batterman, Stuart, Richard Cook, and Thomas Justin. "Temporal variation of traffic on highways and the development of accurate temporal allocation factors for air pollution analyses." \textit{Atmos Environ}. Apr. 2015.
 
 Choi, Eun-Ha. "Crash Factors in Intersection-Related Crashes: An On-Scene Perspective." \textit{U.S. Department of Transportation - National Highway Traffic Safety Administration}. Sept. 2010.
+
+Gravano, Luis and John Paparrizos. "k-Shape: Efficient and Accurate Clustering of Time Series." \textit{SIGMOD}. June 2015.
 
 Zador, P.L, S.A. Krawchuk, and R.B. Voas. "Relative Risk of Fatal Crash Involvement by BAC, Age, and Gender." \textit{U.S. Department of Transportation - National Highway Traffic Safety Administration}. Apr. 2000.
 
