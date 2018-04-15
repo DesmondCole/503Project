@@ -269,12 +269,17 @@ AnalysisData_Train_Rebal = SMOTE(MultiFatality ~ ., data=AnalysisData_Train)
 
 #Logistic Regression
 logitmodel_multi = glm(MultiFatality ~ ., data=AnalysisData_Train_Rebal,family="binomial")
+logitmodel_testerror = 
 
 #SVM
 svmmodel_multi = svm(MultiFatality ~ .,data=AnalysisData_Train_Rebal,cross=5)
+svmmodel_testerror_multi = 
 
 #Adaboost
 adamodel_multi = boosting(MultiFatality ~ ., data=AnalysisData_Train_Rebal)
+adamodel_testerror_multi = 
+
+
 
 
 #Risk of Hit and Run

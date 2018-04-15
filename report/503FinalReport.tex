@@ -102,6 +102,13 @@ we consider the relationships between car model and various fatality-related pre
 \subsection*{Multi-fatality Incidents}
 Another specific category of interest is multi-fatality incidents. Every observation in the available data describes an instance of a given person dying, but what about multiple deaths? To explore this issue, we generated a binary 1-0 indicator for whether an incident involved more than 1 fatality, and tested the classification performance of a series of different models, the results of which are shown below. The resampling procedure used here is the SMOTE algorithm (for "Synthetic Minority Over-sampling TEchnique"), developed by Chawla, et al. (2002). SMOTE uses a combination of over-sampling of the minority class and under-sampling of the majority to improve class balance. \\
 
+The below table shows relative test error rates for classification using the logistic regression, support vector machine, and adaptive boosting methods. \\
+
+(Insert table of test error rates) \\
+
+Given that a key interest in this paper is inference about relevant variables, we also examine the importance of certain features in predicting an accident with multiple fatalities. \\
+
+(Insert table of variable importance, using adaboost and (if relevant) SVM/Logit results.)
 
 
 \section*{Conclusion}
