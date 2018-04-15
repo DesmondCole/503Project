@@ -29,19 +29,19 @@ We analyze traffic fatality data provided by the National Highway Traffic Safety
 At the national and state level, the cycle of fatal accidents throughout the day is fairly consistent. The below plot shows aggregate fatal accidents per thousand vehicles per hour for the United States, between 2015 and 2016. To account for traffic variability, we weighted the rate of fatal incidents according to hour-by-hour traffic flow allocations estimated by Batterman, et al. (see references). These same flow allocations are used to weight state-by-state hourly trends. \\
 \\
 \begin{center}
-\includegraphics[width=.75\textwidth]{WeightedNationalDayTrends.png}
+\includegraphics[width=.75\textwidth,height=8cm,keepaspectratio]{WeightedNationalDayTrends.png}
 \end{center}
 
 At the state level, the daily fatal accident cycle is roughly similar. Estimating the overall traffic flow for each state using state-level vehicle registrations, combined with the flow allocations estimated by Batterman, et al. (2015), returns state-level cycles that closely mirror the overall national trend.
 
 \begin{center}
-\includegraphics[width=.75\textwidth]{WeightedStatePlot.png}
+\includegraphics[width=.75\textwidth, height=8cm,keepaspectratio]{WeightedStatePlot.png}
 \end{center}
 
 To tease out any potential state-level variation in daily cycles, we used shape-based time series clustering, available in R's dtwclust package. Roughly speaking, this method clusters different time series based on their similarity to different centroids, where a centroid in this case is defined as a typical time series. Further detail on relevant methods is available in work by Gravano and Paparrizos (2015). Testing several different numbers of clusters yielded little overall diversity in terms of performance. A plot of results obtained using 3 clusters is below. There is little indication of significant variation across clusters, suggesting that hourly fatal incident cycles vary little across the United States.
 
 \begin{center}
-\includegraphics[width=.75\textwidth]{StateClusterPlot_Hourly.png}
+\includegraphics[width=.75\textwidth,height=8cm,keepaspectratio]{StateClusterPlot_Hourly.png}
 \end{center}
 
 (Insert table of clustering performance)
@@ -59,9 +59,11 @@ We used a mix of classifiers to assess factors relevant to incident fatalities, 
 
 This section explores in some detail different fatality rates for different car types (by automaker, vehicle body, etc.).\footnote{Note that the numbers in this assessment focus on car brands \textit{involved} in fatal incidents. Thus, they do not imply specifically that the vehicle types considered here actually caused death(s), or that the driver(s) of the vehicle(s) themselves died.} For this assessment, we focused on the 15 largest automakers that together produce more than 95\% of the cars and light trucks on American roads. In addition, we subsetted the data to focus specifically on smaller vehicles, excluding commercial vehicles, semi-trucks, etc. \\
 
-The plot below shows a basic ranking of car manufacturers according to the number of fatalities per million vehicles.
-
-(Insert graph of fatalities/fatal accidents by car manufacturer) \\
+The plot below shows a basic ranking of car manufacturers according to the number of fatalities per million vehicles. This is scaled according to an approximation of the number of vehicles each manufacturer has on the road, but due to a lack of thorough data, 
+\\
+\begin{center}
+\includegraphics[width=.75\textwidth,height=9cm,keepaspectratio]{ManufacturerRankingPlot.png}
+\end{center}
 
 
 The plot above, although suggestive of meaningful difference across manufacturers, fails to fully account for the various contextual differences which may be unobservable. To further explore the relevance of car manufacturer, we consider the relationships between car model and various fatality-related predictors, to understand if a given manufacturers' products tend to be associated with high-risk behaviors or other crash factors. The table below shows the results from various multi-class classifications of car manufacturer ran using a set of crash-relevant predictors .... The results do not suggest any substantial mechanism(s) by which a car's make determines the risk of it being involved in a fatal incident. \\
@@ -75,7 +77,7 @@ As an alternative to classification, we applied multidimensional scaling to asse
 
 
 \subsection*{Multi-fatality Incidents}
-Another specific category of interest is multi-fatality incidents. Every observation in the available data describes an instance of a given person dying, but what about multiple deaths? To explore this issue, we generated a binary 1-0 indicator for whether an incident involved more than 1 fatality, and tested the classification performance of a series of different models, the results of which are shown below.
+Another specific category of interest is multi-fatality incidents. Every observation in the available data describes an instance of a given person dying, but what about multiple deaths? To explore this issue, we generated a binary 1-0 indicator for whether an incident involved more than 1 fatality, and tested the classification performance of a series of different models, the results of which are shown below. The resampling procedure used here is the SMOTE algorithm (for "Synthetic Minority Over-sampling TEchnique"), developed by Chawla, et al. (2002). SMOTE uses a combination of over-sampling of the minority class and under-sampling of the majority to improve class balance. \\
 
 
 
@@ -84,6 +86,8 @@ Another specific category of interest is multi-fatality incidents. Every observa
 \section*{References}
 \begin{hangparas}{1.27cm}{1}
 Batterman, Stuart, Richard Cook, and Thomas Justin. "Temporal variation of traffic on highways and the development of accurate temporal allocation factors for air pollution analyses." \textit{Atmos Environ}. Apr. 2015.
+
+Chawla, Nitesh, Kevin Bowyer, Lawrence Hall, and W. Philip Kegelmeyer. "SMOTE: Synthetic Minority Over-sampling Technique." \textit{Journal of Artificial Intelligence Research}. 2002.
 
 Choi, Eun-Ha. "Crash Factors in Intersection-Related Crashes: An On-Scene Perspective." \textit{U.S. Department of Transportation - National Highway Traffic Safety Administration}. Sept. 2010.
 

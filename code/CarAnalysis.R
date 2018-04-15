@@ -258,6 +258,8 @@ AnalysisData = ClassificationData[,`:=` (Distracted = factor(1*(driver_distracte
 write.csv(AnalysisData,file = "./data/DataForClassification.csv",row.names=FALSE)
 
 
+library(adabag)
+library(e1071)
 #Risk of multi-fatality accident
 set.seed(10)
 testinds = sample(1:nrow(AnalysisData),size=.20*nrow(AnalysisData))
@@ -265,7 +267,15 @@ AnalysisData_Test = AnalysisData[testinds,]
 AnalysisData_Train = AnalysisData[-testinds,] %>% .[,-c("date_of_crash"),with=FALSE]
 AnalysisData_Train_Rebal = SMOTE(MultiFatality ~ ., data=AnalysisData_Train)
 
-basicmodel = glm(MultiFatality ~ ., data=BinClassData,family="binomial")
+#Logistic Regression
+logitmodel_multi = glm(MultiFatality ~ ., data=AnalysisData_Train_Rebal,family="binomial")
+
+#SVM
+svmmodel_multi = svm(MultiFatality ~ .,data=AnalysisData_Train_Rebal,cross=5)
+
+#Adaboost
+adamodel_multi
+
 
 #Risk of Hit and Run
 
