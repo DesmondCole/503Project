@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  15 APR 2018 01:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  15 APR 2018 10:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -100,6 +100,10 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 Package: etoolbox 2017/01/02 v2.4 e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count91
 )
+(/usr/local/texlive/2017/texmf-dist/tex/latex/lipsum/lipsum.sty
+Package: lipsum 2014/07/27 v1.3 150 paragraphs of Lorem Ipsum dummy text
+\c@lips@count=\count92
+)
 (/usr/local/texlive/2017/texmf-dist/tex/latex/hanging/hanging.sty
 Package: hanging 2009/09/02 v1.2b hanging paragraphs and punctuation
 \h@ngcommawd=\skip43
@@ -114,18 +118,18 @@ Package: hanging 2009/09/02 v1.2b hanging paragraphs and punctuation
 (./503FinalReport.aux)
 \openout1 = `503FinalReport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -163,16 +167,16 @@ LaTeX Font Info:    ... okay on input line 17.
 
 (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count92
+\scratchcounter=\count93
 \scratchdimen=\dimen113
 \scratchbox=\box26
-\nofMPsegments=\count93
-\nofMParguments=\count94
+\nofMPsegments=\count94
+\nofMParguments=\count95
 \everyMPshowfont=\toks17
-\MPscratchCnt=\count95
+\MPscratchCnt=\count96
 \MPscratchDim=\dimen114
-\MPnumerator=\count96
-\makeMPintoPDFobject=\count97
+\MPnumerator=\count97
+\makeMPintoPDFobject=\count98
 \everyMPtoPDFconversion=\toks18
 ) (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
@@ -220,91 +224,104 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for U+msa on input line 18.
+LaTeX Font Info:    Try loading font information for U+msa on input line 19.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 18.
+LaTeX Font Info:    Try loading font information for U+msb on input line 19.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 27--32
+Underfull \hbox (badness 10000) in paragraph at lines 28--31
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 27--32
+Underfull \hbox (badness 10000) in paragraph at lines 28--31
 
  []
 
+<WeightedNationalDayTrends.png, id=1, 2851.65375pt x 2378.8875pt>
+File: WeightedNationalDayTrends.png Graphic file (type png)
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--34
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 37--38
-
- []
-
-[1
+<use WeightedNationalDayTrends.png>
+Package pdftex.def Info: WeightedNationalDayTrends.png used on input line 32.
+(pdftex.def)             Requested size: 352.31625pt x 293.87552pt.
+ [1
 
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 48--49
+<WeightedStatePlot.png, id=13, 2851.65375pt x 2378.8875pt>
+File: WeightedStatePlot.png Graphic file (type png)
+
+<use WeightedStatePlot.png>
+Package pdftex.def Info: WeightedStatePlot.png used on input line 38.
+(pdftex.def)             Requested size: 352.31625pt x 293.87552pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
+
+ []
+
+[2 <./WeightedNationalDayTrends.png> <./WeightedStatePlot.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--53
+Underfull \hbox (badness 10000) in paragraph at lines 58--59
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--56
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 57--58
+Underfull \hbox (badness 10000) in paragraph at lines 65--66
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--60
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 61--62
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
 
  []
 
-[2] [3] (./503FinalReport.aux) ) 
+[4] (./503FinalReport.aux) ) 
 Here is how much of TeX's memory you used:
- 2665 strings out of 492995
- 36892 string characters out of 6132704
- 103746 words of memory out of 5000000
- 6180 multiletter control sequences out of 15000+600000
+ 2867 strings out of 492995
+ 39473 string characters out of 6132704
+ 204578 words of memory out of 5000000
+ 6375 multiletter control sequences out of 15000+600000
  14233 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,8n,32p,845b,193s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2017/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr17.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr9.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmti9.pfb>
-Output written on 503FinalReport.pdf (3 pages, 128504 bytes).
+ 39i,8n,32p,798b,193s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2017/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr17.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr9.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mti10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ti9.pfb>
+Output written on 503FinalReport.pdf (4 pages, 984738 bytes).
 PDF statistics:
- 54 PDF objects out of 1000 (max. 8388607)
- 38 compressed objects within 1 object stream
+ 62 PDF objects out of 1000 (max. 8388607)
+ 41 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

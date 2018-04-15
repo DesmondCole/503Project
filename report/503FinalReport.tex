@@ -7,6 +7,7 @@
 								% TeX will automatically convert eps --> pdf in pdflatex		
 \usepackage{amssymb}
 \usepackage{etoolbox}
+\usepackage{lipsum}
     \AfterEndEnvironment{hangparas}{\addvspace{0.67\baselineskip}}
     \usepackage[notquote]{hanging}
 
@@ -25,12 +26,21 @@ We analyze traffic fatality data provided by the National Highway Traffic Safety
 
 \subsection*{Time Trends}
 \textbf{Daily Cycle} \\
-At the national and state level, the cycle of fatal accidents throughout the day is fairly consistent. There is a local maximum in the early morning, correlating with morning rush hour. Beginning just before noon, the level of fatal accidents rises consistently to peak at between 7 and 8PM, before declining steadily through to about 3 or 4 in the morning. \\
+At the national and state level, the cycle of fatal accidents throughout the day is fairly consistent. The below plot shows aggregate fatal accidents per thousand vehicles per hour for the United States, between 2015 and 2016. To account for traffic variability, we weighted the rate of fatal incidents according to hour-by-hour traffic flow allocations estimated by Batterman, et al. (see references). These same flow allocations are used to weight state-by-state hourly trends. \\
 \\
-(Insert National graphic)
-\\
+\begin{center}
+\includegraphics[width=.75\textwidth]{WeightedNationalDayTrends.png}
+\end{center}
 
-With State-by-State plots, the daily fatal accident cycle is roughly similar, without significant change. The below plots show results from shape-based time series clustering of different states, according to daily fatal accident patterns. \\
+At the state level, the daily fatal accident cycle is roughly similar. Estimating the overall traffic flow for each state using state-level vehicle registrations, combined with the flow allocations estimated by Batterman, et al., returns state-level cycles that closely mirror the overall national trend.
+
+\begin{center}
+\includegraphics[width=.75\textwidth]{WeightedStatePlot.png}
+\end{center}
+
+
+
+ results from shape-based time series clustering of different states, according to daily fatal accident patterns. \\
 
 (Insert side-by-side state-level centroid plots)
 
