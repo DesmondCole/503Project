@@ -44,7 +44,7 @@ keepVars = c("uniqueID","number_of_drunk_drivers","police_reported_drug_involvem
              "impairment_at_time_of_crash_driver_name","previous_recorded_crashes","previous_recorded_suspensions_and_revocations",
              "previous_dwi_convictions","restraint_system_helmet_use_name","fire_occurrence","number_of_fatalities",
              "hit_and_run","travel_speed","speed_limit","speeding_related","atmospheric_conditions_1_name","FIPS","Population",
-             "timestamp_of_crash","hour_of_crash","day_of_week","state_name")
+             "timestamp_of_crash","hour_of_crash","day_of_week","state_name","type_of_intersection")
 
 ClassificationData = allfiles[[1]] %>%
   .[,intersect(keepVars,names(allfiles[[1]])),with=FALSE] %>%
@@ -235,14 +235,34 @@ ggsave("./report/VehicleTypeMDSPlot",plot=MDSPlot_type,device="png",
 library(maboost)
 library(DMwR)
 
+ModelVars = c("Distracted","Drugs","NoRestraint","MultiFatality","Fire","HitAndRun",
+              "Speeding","previous_recorded_crashes","previous_dwi_convictions",
+              "previous_recorded_suspensions_and_revocations","travel_speed","Makers",
+              "DrunkDrivers","Incl_Weather","Intersection","date_of_crash","hour_of_crash")
 
 
-AnalysisData = ClassificationData[,ModelVars,with=FALSE]
+AnalysisData = ClassificationData[,`:=` (Distracted = 1*(driver_distracted_by_name != "Not Distracted"),
+                                   Drugs = 1*(police_reported_drug_involvement == "Yes (Drugs Involved)"),
+                                   DrunkDrivers = 1*(number_of_drunk_drivers > 0),
+                                   NoRestraint = 1*(restraint_system_helmet_use_name == "None Used"),
+                                   MultiFatality = 1*(number_of_fatalities > 1),
+                                   Fire = 1*(fire_occurrence == "Yes"),
+                                   HitAndRun = 1*(hit_and_run == "Yes"),
+                                   Speeding = 1*(!(speeding_related %in% c("No","Unknown"))),
+                                   Incl_Weather = 1*(!(atmospheric_conditions_1_name %in% c("Clear",
+                                                                                            "Not Reported",
+                                                                                            "Unknown"))),
+                                   Intersection = 1*(!(type_of_intersection %in% c("Not an Intersection","Unknown","Not Reported")))),] %>%
+  .[,ModelVars,with=FALSE]
 
-#Binary rebalancing and Classification
-BinClassData = SMOTE(MultiFatality ~ ., data=AnalysisData)
+write.csv(AnalysisData,file = "./data/DataForClassification.csv",row.names=FALSE)
+
+#Risk of multi-fatality accident
+BinClassData = SMOTE(MultiFatality ~ . -date_of_crash, data=AnalysisData)
 basicmodel = glm(MultiFatality ~ ., data=BinClassData,family="binomial")
 
+
+#Risk of Hit and Run
 
 # #Multiclass Rebalancing and Classification
 # MakerModel = maboost(Makers ~ .,data=AnalysisData,C50tree=TRUE)
