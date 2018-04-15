@@ -6,6 +6,9 @@ library(rpart)
 library(heuristica)
 library(caret)
 library(stargazer)
+library(sjPlot)
+library(sjmisc)
+library(sjlabelled)
 
 DataForClassification <- read_csv("DataForClassification.csv")
 
@@ -49,37 +52,39 @@ working_data = working %>%
   mutate(time = factor(time)) %>%
   select(-hour_of_crash)
  
+train.index = sample(dim(working_data)[1], as.integer(dim(working_data)[1]*0.8))
+train_set = working_data[train.index, ]
+test_set = working_data[-train.index, ]
 
-run = working_data %>%
+run = train_set %>%
   filter(HitAndRun == 1)
-norun = working_data %>%
+norun = train_set %>%
   filter(HitAndRun == 0)
 
 run.index = sample(1:dim(run)[1], 10000, replace = TRUE)
 run.new = run[run.index, ]
 
-not.run.index = sample(1:dim(norun)[1], 40000, replace = FALSE)
+not.run.index = sample(1:dim(norun)[1], 30000, replace = FALSE)
 norun.new = norun[not.run.index, ]
 
 new.data = rbind(run.new, norun.new)
 
-test.index = sample(dim(new.data)[1], as.integer(dim(new.data)[1]*0.2))
-test_set = new.data[test.index, ]
-train_set = new.data[-test.index, ]
-
 
 logit = glm(HitAndRun ~ Distracted + Drugs + MultiFatality + Speeding +
               previous_recorded_crashes + previous_dwi_convictions + previous_recorded_suspensions_and_revocations +
-              DrunkDrivers + time, data=train_set, family='binomial')
+              DrunkDrivers + time, data=new.data, family='binomial')
 summary(logit)
+# save(logit, file = "HitRun_logit_regression.RData")
+
 
 logit.prob = predict(logit, test_set, type="response")
 logit.pred = rep(0, dim(test_set)[1])
 logit.pred[logit.prob >= 0.5] = 1
 
 confusion_matrix = confusionMatrix(as.factor(logit.pred), test_set$HitAndRun)
+# save(confusion_matrix, file = "HitRun_confusion_matrix.RData")
 
-
-
+# Latex table for regression summary 
+stargazer(logit)
 
 
