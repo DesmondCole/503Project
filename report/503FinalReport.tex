@@ -48,8 +48,8 @@ To tease out any potential state-level variation in daily cycles, we used shape-
 
 \textbf{Weekly Cycle} \\
 
-\section*{Selected Predictors of Traffic Fatalities}
-We used a mix of classifiers to assess factors relevant to incident fatalities, with a particular focus on driver behavior, environmental conditions, and vehicle manufacturer. In many cases, we had to grapple with significant class imbalance. For example, there are far more single-fatality incidents than multi-fatality incidents. As a result, optimal classification in the naive setting without any resampling will occasionally identify all incidents as single-fatality.   
+\section*{Risks of Traffic Fatalities}
+We used a mix of classifiers to assess factors relevant to incident fatalities, with a particular focus on driver behavior and vehicle manufacturer. In many cases, we had to grapple with significant class imbalance. For example, there are far more single-fatality incidents than multi-fatality incidents. As a result, optimal classification in the naive setting without any resampling will occasionally identify all incidents as single-fatality.   
 
 \subsection*{Driver Behavior}
 \textbf{Drugs/Alcohol}
@@ -74,7 +74,10 @@ As an alternative to classification, we applied multidimensional scaling to asse
 
 
 
-\subsection*{Environmental Conditions}
+\subsection*{Multi-fatality Incidents}
+Another specific category of interest is multi-fatality incidents. Every observation in the available data describes an instance of a given person dying, but what about multiple deaths? To explore this issue, we generated a binary 1-0 indicator for whether an incident involved more than 1 fatality, and tested the classification performance of a series of different models, the results of which are shown below.
+
+
 
 \section*{Conclusion}
 

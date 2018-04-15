@@ -241,27 +241,31 @@ ModelVars = c("Distracted","Drugs","NoRestraint","MultiFatality","Fire","HitAndR
               "DrunkDrivers","Incl_Weather","Intersection","date_of_crash","hour_of_crash")
 
 
-AnalysisData = ClassificationData[,`:=` (Distracted = 1*(driver_distracted_by_name != "Not Distracted"),
-                                   Drugs = 1*(police_reported_drug_involvement == "Yes (Drugs Involved)"),
-                                   DrunkDrivers = 1*(number_of_drunk_drivers > 0),
-                                   NoRestraint = 1*(restraint_system_helmet_use_name == "None Used"),
-                                   MultiFatality = 1*(number_of_fatalities > 1),
-                                   Fire = 1*(fire_occurrence == "Yes"),
-                                   HitAndRun = 1*(hit_and_run == "Yes"),
-                                   Speeding = 1*(!(speeding_related %in% c("No","Unknown"))),
-                                   Incl_Weather = 1*(!(atmospheric_conditions_1_name %in% c("Clear",
+AnalysisData = ClassificationData[,`:=` (Distracted = factor(1*(driver_distracted_by_name != "Not Distracted")),
+                                   Drugs = factor(1*(police_reported_drug_involvement == "Yes (Drugs Involved)")),
+                                   DrunkDrivers = factor(1*(number_of_drunk_drivers > 0)),
+                                   NoRestraint = factor(1*(restraint_system_helmet_use_name == "None Used")),
+                                   MultiFatality = factor(1*(number_of_fatalities > 1)),
+                                   Fire = factor(1*(fire_occurrence == "Yes")),
+                                   HitAndRun = factor(1*(hit_and_run == "Yes")),
+                                   Speeding = factor(1*(!(speeding_related %in% c("No","Unknown")))),
+                                   Incl_Weather = factor(1*(!(atmospheric_conditions_1_name %in% c("Clear",
                                                                                             "Not Reported",
-                                                                                            "Unknown"))),
-                                   Intersection = 1*(!(type_of_intersection %in% c("Not an Intersection","Unknown","Not Reported")))),] %>%
+                                                                                            "Unknown")))),
+                                   Intersection = factor(1*(!(type_of_intersection %in% c("Not an Intersection","Unknown","Not Reported"))))),] %>%
   .[,ModelVars,with=FALSE]
 
 write.csv(AnalysisData,file = "./data/DataForClassification.csv",row.names=FALSE)
 
+
 #Risk of multi-fatality accident
+set.seed(10)
+testinds = sample(1:nrow(AnalysisData),size=.20*nrow(AnalysisData))
+AnalysisData_Test = AnalysisData[testinds,]
+AnalysisData_Train = AnalysisData[-testinds,] %>% .[,-c("date_of_crash"),with=FALSE]
+AnalysisData_Train_Rebal = SMOTE(MultiFatality ~ ., data=AnalysisData_Train)
 
-BinClassData = SMOTE(MultiFatality ~ . -date_of_crash, data=AnalysisData)
 basicmodel = glm(MultiFatality ~ ., data=BinClassData,family="binomial")
-
 
 #Risk of Hit and Run
 
