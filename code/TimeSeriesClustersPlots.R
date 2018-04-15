@@ -3,6 +3,7 @@ library(data.table)
 library(magrittr)
 library(ggplot2)
 library(dtwclust)
+library(xtable)
 
 #Load data and aggregate
 setwd("/Users/Desmond/Desktop/Work/503 Project/AllData")
@@ -92,16 +93,27 @@ ggsave("./report/WeightedStatePlot.png",plot=WeightedStatePlot,
 StateTimeSeries = dcast(StateData,state_name ~ Hour,value.var="weightedaccidents")
 StateTimeSeries[is.na(StateTimeSeries)] = 0
 stateclust = tsclust(StateTimeSeries[,-1],type="partitional",
-                     k=2:4,preproc=zscore,distance="sbd",
-                     centroid="shape")
-ClusterPlot_Hourly = plot(stateclust[[2]],"centroids")
-ClusterAssignments = cbind(StateTimeSeries$state_name,stateclust[[2]]@cluster)
-ggsave("./report/StateClusterPlot_Hourly.png",plot=ClusterPlot_Hourly,
-       device='png',width=11.3,height=6.87,units='in')
+                     k=2:6,preproc=zscore,distance="sbd",
+                     centroid="shape",seed=5)
+clustplot = plot(stateclust[[1]]) + 
+  ggtitle("Hourly Fatal Accident Cycles by State Cluster") + 
+  labs(x = "",y="Fatal Accidents per Thousand Vehicles - Normalized")
+ggsave("./report/StateClusterPlot_Hourly.png",plot=clustplot,
+       device='png',width=12,height=4.61,units='in')
 
+ClusterAssignments = cbind(StateTimeSeries$state_name,stateclust[[1]]@cluster)
 
-
-
+FitStats = lapply(stateclust,cvi)
+ClusterStats = data.table(t(FitStats[[1]]))
+ClusterStats = rbind(ClusterStats,t(FitStats[[2]]))
+ClusterStats = rbind(ClusterStats,t(FitStats[[3]]))
+ClusterStats = rbind(ClusterStats,t(FitStats[[4]]))
+ClusterStats = rbind(ClusterStats,t(FitStats[[5]]))
+ClusterStats = cbind(NumClusters = c(2,3,4,5,6),ClusterStats)
+ClusterResult = xtable(ClusterStats,caption="Time Series Cluster Validity Indices (CVIs)",
+                       digits = c(0,0,3,3,3,3,3,3,3),include.rownames=FALSE)
+ClusterResult
+stateclust[[2]]
 
 #Nationwide Weekly
 NationalWeekly = TimeData[,.(fatalaccidents=sum(fatalaccidents)),by=.(week_of_crash)] %>%

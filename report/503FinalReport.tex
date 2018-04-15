@@ -11,6 +11,8 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{float}
+\usepackage[all]{nowidow}
+
     \AfterEndEnvironment{hangparas}{\addvspace{0.67\baselineskip}}
     \usepackage[notquote]{hanging}
 
@@ -21,6 +23,7 @@ Teerth Patel - \\
 Yunbin Peng}
 
 \begin{document}
+\interfootnotelinepenalty=10000
 \maketitle
 \section*{Introduction}
 \subsection*{Executive Summary}
@@ -49,15 +52,28 @@ At the state level, the daily fatal accident cycle is roughly similar. Estimatin
 \includegraphics[width=.75\textwidth, height=8cm,keepaspectratio]{WeightedStatePlot.png}
 \end{center}
 
-To tease out any potential state-level variation in daily cycles, we used shape-based time series clustering, available in R's dtwclust package. Roughly speaking, this method clusters different time series based on their similarity to different centroids, where a centroid in this case is defined as a typical time series. Further detail on relevant methods is available in work by Gravano and Paparrizos (2015). Testing several different numbers of clusters yielded little overall diversity in terms of performance. A plot of results obtained using 3 clusters is below. There is little indication of significant variation across clusters, suggesting that hourly fatal incident cycles vary little across the United States.
+To tease out potential state-level variation in daily cycles, we used a shape-based time series clustering, available in R's dtwclust package. Roughly speaking, this method clusters different time series based on their similarity to different centroids, where a centroid in this case is some typical time trend. Further detail on relevant methods is available in work by Gravano and Paparrizos (2015). Testing different numbers of clusters yielded little overall diversity in terms of performance. A plot of results obtained using 2 clusters is below.\footnote{Across multiple iterations, a 2-cluster separation tends to yield the best performance. For reference in the Validity Index table, optimal clustering will minimize the Silhouette ("Sil"), Davies-Bouldin ("DB" and "DBstar") indices, and maximize the Dunn index ("D"), Calinski-Harabasz index ("CH"), and Score Function ("SF"). 2 clusters were chosen to be optimal on this basis.} There is little indication of significant variation across clusters, and the clustering results (and performance statistics, shown in the below table) are highly sensitive to initial randomization. 
 
 \begin{center}
-\includegraphics[width=.75\textwidth,height=8cm,keepaspectratio]{StateClusterPlot_Hourly.png}
+\includegraphics[width=.75\textwidth,height=6cm,keepaspectratio]{StateClusterPlot_Hourly.png}
 \end{center}
 
-(Insert table of clustering performance)
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrrr}
+  \hline
+ & NumClusters & Sil & SF & CH & DB & DBstar & D & COP \\ 
+  \hline
+1 & 2 & 0.508 & 0.602 & 23.664 & 0.899 & 0.899 & 0.072 & 0.181 \\ 
+  2 & 3 & 0.267 & 0.595 & 17.453 & 1.461 & 2.080 & 0.013 & 0.135 \\ 
+  3 & 4 & 0.167 & 0.589 & 12.171 & 1.929 & 2.510 & 0.019 & 0.121 \\ 
+  4 & 5 & 0.133 & 0.572 & 9.163 & 1.345 & 2.451 & 0.017 & 0.153 \\ 
+  5 & 6 & 0.391 & 0.576 & 15.172 & 0.683 & 1.219 & 0.056 & 0.084 \\ 
+   \hline
+\end{tabular}
+\caption{Time Series Cluster Validity Indices (CVIs)} 
+\end{table}
 
-\textbf{Weekly Cycle} \\
 
 \section*{Risks of Traffic Fatalities}
 We used a mix of classifiers to assess factors relevant to incident fatalities, with a particular focus on driver behavior and vehicle manufacturer. In many cases, we had to grapple with significant class imbalance. For example, there are far more single-fatality incidents than multi-fatality incidents. As a result, optimal classification in the naive setting without any resampling will occasionally identify all incidents as single-fatality.   
