@@ -272,12 +272,18 @@ logitpreds = round(logitprobs)
 logitaccuracy = mean(logitpreds == AnalysisData_Test$MultiFatality)
 logitaccuracy
 
+OtherCoeffs
+
 #Automaker odds ratios
 OddsRatios = data.frame(`Odds Ratios` = logitmodel_multi$coefficients)
 OddsRatios = cbind(OddsRatios,Names = as.character(row.names(OddsRatios)))
 
+OtherCoeffs = copy(OddsRatios)
+
+
 OddsRatios = data.table(OddsRatios) %>%
   .[(11:24),]
+
 
 Automaker = c("Daimler","FCA/Chrysler","Ford","GM",
           "Honda","Hyundai-Kia","Land Rover",
@@ -291,7 +297,17 @@ OddsRatios = cbind(OddsRatios,Automaker) %>%
 library(xtable)
 result = xtable(OddsRatios,caption="Automaker Odds Ratios")
 
+OtherCoeffs = data.table(OtherCoeffs) %>%
+  .[-c(1,11:24),]
 
+Coeffs = c("Distracted","On Drugs","No Restraint","Hit and Run","Speeding",
+           "Previous Recorded Crashes","Previous DWI Convictions",
+           "Previous Recorded Suspensions And Revocations","Travel Speed","Drunk",
+           "Inclement Weather","Intersection","Hour of Crash")
+
+OtherCoeffs = data.table(OddsRatio = OtherCoeffs$Odds.Ratios,Variable = Coeffs)
+library(xtable)
+Othercoeffsresult = xtable(OtherCoeffs,caption="Predictor Odds Ratios")
 
 #SVM
 svmmodel_multi = svm(MultiFatality ~ .,data=AnalysisData_Train_Rebal,cross=5)

@@ -168,7 +168,34 @@ Accuracy & 0.75 & 0.80 & 0.79 \\
 \caption{Test Set Prediction Accuracy} 
 \end{table}
 
-We also examine the importance of certain features in predicting an accident with multiple fatalities. The below output illustrates variable importance rankings for the SVM and AdaBoost classifiers. The models don't completely agree on relative variable importance, but there are some key patterns. For example, key for both models is the fact that the hour of the crash is a dominant predictor of the likelihood a fatal accident resulted in multiple deaths. In addition, a driver's record, potential drug use, and driving speed are especially significant for predicting multi-fatality accidents. Interestingly, whether or not a driver was distracted (using a cellphone, for example), and whether the weather was clear or not, appear to be relatively less significant determinants of the likelihood that a fatal accident involved multiple deaths. Further assessment of this question would consider the affect of these less important predictors on non-fatal accidents, as well as fatal ones. \\
+For interpreting the sign of a given predictor's relationship with the incidence of multi-fatality accidents, we leverage the logistic regression results, which allow for easier interpretation of estimated coefficients when compared to SVM and AdaBoost methods. The below table lists odds ratios for various predictors considered here.\footnote{Note that these results are obtained from the same logistic regression model described above containing the automaker odds ratio values}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrl}
+  \hline
+ & OddsRatio & Variable \\ 
+  \hline
+1 & 0.26 & Distracted \\ 
+  2 & 1.40 & On Drugs \\ 
+  3 & 0.73 & No Restraint \\ 
+  4 & 0.85 & Hit and Run \\ 
+  5 & 0.66 & Speeding \\ 
+  6 & -0.29 & Previous Recorded Crashes \\ 
+  7 & -0.33 & Previous DWI Convictions \\ 
+  8 & -0.04 & Previous Recorded Suspensions And Revocations \\ 
+  9 & 0.01 & Travel Speed \\ 
+  10 & 0.66 & Drunk \\ 
+  11 & 0.68 & Inclement Weather \\ 
+  12 & 0.44 & Intersection \\ 
+  13 & -0.00 & Hour of Crash \\ 
+   \hline
+\end{tabular}
+\caption{Predictor Odds Ratios} 
+\end{table}
+
+
+ examine the importance of certain features in predicting an accident with multiple fatalities. The below output illustrates variable importance rankings for the SVM and AdaBoost classifiers. The models don't completely agree on relative variable importance, but there are some key patterns. For example, key for both models is the fact that the hour of the crash is a dominant predictor of the likelihood a fatal accident resulted in multiple deaths. In addition, a driver's record, potential drug use, and driving speed are especially significant for predicting multi-fatality accidents. Interestingly, whether or not a driver was distracted (using a cellphone, for example), and whether the weather was clear or not, appear to be relatively less significant determinants of the likelihood that a fatal accident involved multiple deaths. Further assessment of this question would consider the affect of these less important predictors on non-fatal accidents, as well as fatal ones. \\
 
 \begin{figure}[H]
 \centering
