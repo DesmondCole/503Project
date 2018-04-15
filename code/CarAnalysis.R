@@ -346,10 +346,11 @@ result = xtable(Accuracy,caption="Test Set Prediction Accuracy")
 
 #Risk of Hit and Run
 
-# #Multiclass Rebalancing and Classification
-# MakerModel = maboost(Makers ~ .,data=AnalysisData,C50tree=TRUE)
-# MakerModel = maboost(Makers ~ .,data=AnalysisData,C50tree=TRUE,C5.0Control(minCases=10,CF=.4))
-# 
+# Environmental Conditions
+EnvironmentalData = allfiles[[1]] %>%
+  +   .[atmospheric_conditions_1_name != "Unknown",] %>%
+  +   .[,.(fatalaccidents = .N),by=.(FIPS,atmospheric_conditions_1_name)] %>%
+  + .[FIPS %in% c("48201","48113","1703"),]
 
 
 
