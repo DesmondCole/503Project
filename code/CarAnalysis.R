@@ -285,10 +285,16 @@ svmaccuracy
 svmmodelrminer = fit(MultiFatality ~ ., model="svm",data=AnalysisData_Train_Rebal,C=1,cross=5)
 svm.imp = Importance(svmmodelrminer,data=AnalysisData_Train_Rebal)
 SVMImpData = data.table(Imp = svm.imp$imp,Var = names(AnalysisData_Train_Rebal)) %>%
-  .[Var != "MultiFatality",]
+  .[Var != "MultiFatality",] %>%
+  as.data.frame()
+SVMImpData$Var = gsub("_","\n",SVMImpData$Var)
 SVMIMPPlot = ggplot(data=SVMImpData,aes(x=reorder(Var,-Imp))) + 
-  geom_bar(aes(weight=Imp))
-ggsave("ImportancePlot_SVM.png",SVMIMPPlot,device="png")
+  geom_bar(aes(weight=Imp),fill="dark green") + 
+  labs(x = "Variable",y="Importance") + 
+  ggtitle("Variable Importance - SVM Classification") + 
+  theme(axis.text.x = element_text(size=10))
+ggsave("./report/ImportancePlot_SVM.png",SVMIMPPlot,device="png",
+       width=12.3,height=6.21,units="in")
 
 
 #Adaboost
@@ -299,15 +305,20 @@ adamodelaccuracy_rate
 ADAImpData = data.frame(Imp = adamodel_multi$importance)
 ADAImpData = data.frame(ADAImpData,Var = row.names(ADAImpData))
 row.names(ADAImpData) = NULL
+levels(ADAImpData$Var) = gsub("_","\n",levels(ADAImpData$Var))
 ADAIMPPlot = ggplot(data=ADAImpData,aes(x=reorder(Var,-Imp))) + 
-  geom_bar(aes(weight=Imp))
-ggsave("ImportancePlot_ADABoost.png",ADAIMPPlot,device="png")
+  geom_bar(aes(weight=Imp),fill="dark green") + 
+  labs(x = "Variable",y="Importance") + 
+  ggtitle("Variable Importance - AdaBoost Classification") + 
+  theme(axis.text.x = element_text(size=10))
+ggsave("./report/ImportancePlot_ADABoost.png",ADAIMPPlot,device="png",
+       width=12.3,height=6.21,units="in")
 
 
 
 
 Accuracy = data.frame(t(c(logitaccuracy,svmaccuracy,adamodelaccuracy_rate)))
-names(Accuracy) = c("Logistic Regression","Support Vector Machine","AdaBoost")
+names(Accuracy) = c("Logistic Regression","Supp. Vec. Machine","AdaBoost")
 row.names(Accuracy) = "Accuracy"
 library(xtable)
 result = xtable(Accuracy,caption="Test Set Prediction Accuracy")

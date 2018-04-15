@@ -116,15 +116,29 @@ The below table shows relative test error rates for classification using the log
 \centering
 \begin{tabular}{rrrr}
   \hline
- & Logistic Regression & Support Vector Machine & AdaBoost \\ 
+ & Logistic Regression & Supp. Vec. Machine & AdaBoost \\ 
   \hline
-Accuracy & 0.77 & 0.80 & 0.80 \\ 
+Accuracy & 0.75 & 0.80 & 0.79 \\ 
    \hline
 \end{tabular}
 \caption{Test Set Prediction Accuracy} 
 \end{table}
 
-Given that a key interest in this paper is inference about relevant variables, we also examine the importance of certain features in predicting an accident with multiple fatalities. The below output shows both numerical and graphical representations of variable importance. \\
+We also examine the importance of certain features in predicting an accident with multiple fatalities. The below output illustrates variable importance rankings for the SVM and AdaBoost classifiers. The models don't completely agree on relative variable importance, but there are some key patterns. For example, key for both models is the fact that the hour of the crash is a dominant predictor of the likelihood a fatal accident resulted in multiple deaths. In addition, drivers listed as under the influence of drugs, traveling at high speeds, or with a lengthier record of license revocations, accidents, etc., are especially significant for predicting multi-fatality accidents. Interestingly, whether or not a driver was distracted (using a cellphone, for example), and whether the weather was clear or not, appear to be relatively less significant determinants of the likelihood that a fatal accident involved multiple deaths.\\
+
+\begin{figure}[H]
+\centering
+  \includegraphics[width=15cm,height=8cm,keepaspectratio]{ImportancePlot_SVM.png}
+\caption{Variable Importance - Support Vector Machine}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+  \includegraphics[width=15cm,height=8cm,keepaspectratio]{ImportancePlot_ADABoost.png}
+\caption{Variable Importance - AdaBoost Algorithm}
+\end{figure}
+
+
 
 
 
