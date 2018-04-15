@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  15 APR 2018 13:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  15 APR 2018 15:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -147,18 +147,18 @@ Package: hanging 2009/09/02 v1.2b hanging paragraphs and punctuation
 (./503FinalReport.aux)
 \openout1 = `503FinalReport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -256,95 +256,95 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 22.
+LaTeX Font Info:    Try loading font information for U+msa on input line 24.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 22.
+LaTeX Font Info:    Try loading font information for U+msb on input line 24.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Underfull \hbox (badness 10000) in paragraph at lines 31--34
+) [1
+
+{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--34
+Underfull \hbox (badness 10000) in paragraph at lines 39--42
 
  []
 
-<WeightedNationalDayTrends.png, id=1, 2851.65375pt x 2378.8875pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--42
+
+ []
+
+<WeightedNationalDayTrends.png, id=8, 2851.65375pt x 2378.8875pt>
 File: WeightedNationalDayTrends.png Graphic file (type png)
 
 <use WeightedNationalDayTrends.png>
-Package pdftex.def Info: WeightedNationalDayTrends.png used on input line 35.
+Package pdftex.def Info: WeightedNationalDayTrends.png used on input line 43.
 (pdftex.def)             Requested size: 272.82448pt x 227.59381pt.
- [1
-
-{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<WeightedStatePlot.png, id=13, 2851.65375pt x 2378.8875pt>
+ [1]
+<WeightedStatePlot.png, id=16, 2851.65375pt x 2378.8875pt>
 File: WeightedStatePlot.png Graphic file (type png)
 
 <use WeightedStatePlot.png>
-Package pdftex.def Info: WeightedStatePlot.png used on input line 41.
+Package pdftex.def Info: WeightedStatePlot.png used on input line 49.
 (pdftex.def)             Requested size: 272.82448pt x 227.59381pt.
 
-<StateClusterPlot_Hourly.png, id=14, 3402.7125pt x 2068.72874pt>
+<StateClusterPlot_Hourly.png, id=17, 3402.7125pt x 2068.72874pt>
 File: StateClusterPlot_Hourly.png Graphic file (type png)
 
 <use StateClusterPlot_Hourly.png>
-Package pdftex.def Info: StateClusterPlot_Hourly.png used on input line 47.
+Package pdftex.def Info: StateClusterPlot_Hourly.png used on input line 55.
 (pdftex.def)             Requested size: 352.28497pt x 214.17679pt.
  [2 <./WeightedNationalDayTrends.png> <./WeightedStatePlot.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 52--53
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 63--64
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 65--67
-
- []
-
-[3 <./StateClusterPlot_Hourly.png>]
-<ManufacturerRankingPlot.png, id=28, 4577.1pt x 2315.65125pt>
-File: ManufacturerRankingPlot.png Graphic file (type png)
-
-<use ManufacturerRankingPlot.png>
-Package pdftex.def Info: ManufacturerRankingPlot.png used on input line 68.
-(pdftex.def)             Requested size: 352.27716pt x 178.22443pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 71--72
 
  []
 
-<ManufacturerMDSPlot.png, id=29, 2806.485pt x 2523.4275pt>
-File: ManufacturerMDSPlot.png Graphic file (type png)
 
-<use ManufacturerMDSPlot.png>
-Package pdftex.def Info: ManufacturerMDSPlot.png used on input line 77.
-(pdftex.def)             Requested size: 187.90271pt x 168.9186pt.
-
-<VehicleTypeMDSPlot.png, id=30, 2806.485pt x 2523.4275pt>
-File: VehicleTypeMDSPlot.png Graphic file (type png)
-
-<use VehicleTypeMDSPlot.png>
-Package pdftex.def Info: VehicleTypeMDSPlot.png used on input line 83.
-(pdftex.def)             Requested size: 187.90271pt x 168.9186pt.
- [4 <./ManufacturerRankingPlot.png> <./ManufacturerMDSPlot.png> <./VehicleTypeM
-DSPlot.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 93--94
+Underfull \hbox (badness 10000) in paragraph at lines 73--75
 
  []
 
+[3 <./StateClusterPlot_Hourly.png>]
+<ManufacturerRankingPlot.png, id=31, 4577.1pt x 2315.65125pt>
+File: ManufacturerRankingPlot.png Graphic file (type png)
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
+<use ManufacturerRankingPlot.png>
+Package pdftex.def Info: ManufacturerRankingPlot.png used on input line 76.
+(pdftex.def)             Requested size: 352.27716pt x 178.22443pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
+
+ []
+
+<ManufacturerMDSPlot.png, id=32, 2806.485pt x 2523.4275pt>
+File: ManufacturerMDSPlot.png Graphic file (type png)
+
+<use ManufacturerMDSPlot.png>
+Package pdftex.def Info: ManufacturerMDSPlot.png used on input line 85.
+(pdftex.def)             Requested size: 187.90271pt x 168.9186pt.
+
+<VehicleTypeMDSPlot.png, id=33, 2806.485pt x 2523.4275pt>
+File: VehicleTypeMDSPlot.png Graphic file (type png)
+
+<use VehicleTypeMDSPlot.png>
+Package pdftex.def Info: VehicleTypeMDSPlot.png used on input line 91.
+(pdftex.def)             Requested size: 187.90271pt x 168.9186pt.
+ [4 <./ManufacturerRankingPlot.png> <./ManufacturerMDSPlot.png> <./VehicleTypeM
+DSPlot.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
 
  []
 
@@ -354,20 +354,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 103--104
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 105--106
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--120
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
 
  []
 
 [5] [6] (./503FinalReport.aux) ) 
 Here is how much of TeX's memory you used:
  4072 strings out of 492995
- 61145 string characters out of 6132704
- 228268 words of memory out of 5000000
+ 61150 string characters out of 6132704
+ 227216 words of memory out of 5000000
  7564 multiletter control sequences out of 15000+600000
  14233 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -383,10 +388,10 @@ fonts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmr9.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmti9.pfb>
-Output written on 503FinalReport.pdf (6 pages, 2473605 bytes).
+Output written on 503FinalReport.pdf (7 pages, 2475056 bytes).
 PDF statistics:
- 76 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+ 81 PDF objects out of 1000 (max. 8388607)
+ 49 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

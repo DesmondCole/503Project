@@ -1,4 +1,4 @@
-\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\documentclass[11pt, oneside,titlepage]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
 \usepackage[margin=1in]{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
 \geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
 %\geometry{landscape}                		% Activate for rotated page geometry
@@ -15,13 +15,21 @@
     \usepackage[notquote]{hanging}
 
 
-\title{Here's What (and Whom) to Avoid On the Roads}
-\author{Desmond Cole, Teerth Patel, Yunbin Peng}
+\title{What (and Whom) to Avoid On the Roads}
+\author{Desmond Cole - \\
+Teerth Patel - \\ 
+Yunbin Peng}
 
 \begin{document}
 \maketitle
 \section*{Introduction}
-We analyze traffic fatality data provided by the National Highway Traffic Safety Administration (NHTSA) to assess various predictors of traffic fatalities and develop a limited profile of the circumstances associated with traffic fatalities.
+\subsection*{Executive Summary}
+In the United States, approximately 35-40,000 people die in vehicle-related incidents every year. The fatality rate declined significantly in the second half of the 20th century, and continued to decline in the 21st, however the decline has plateaued in recent years, to a rate of just over 1 death per 100 million vehicle miles traveled (VMT). Understanding and tackling the problem of crash fatalities has motivated considerable improvements and investments in vehicle design, road design, and our knowledge of human motor skills and reaction times. \\ 
+
+With this analysis, we set out to survey the distribution of vehicle-related fatalities across geography and time, and explore a number of driver-specific characteristics to assess dominant contributors to the incidence and extent of vehicle-related deaths. We use this analysis to develop a limited profile of the circumstances associated with traffic fatalities, and of things to avoid if you're considering taking a drive.
+
+\subsection*{Data}
+The data used for this analysis are gathered by the National Highway Traffic Safety Administration (NHTSA), a branch of the U.S. Department of Transportation. Traffic fatality data is contained within NHTSA's Fatality Analysis Reporting System (FARS), a nationwide census of various information regarding fatalities occurring in motor vehicle crashes. FARS contains a rich set of different features, with information on crash circumstances, areas of damage, police reports, emergency response times, and vehicle characteristics. We focus specifically on data from 2015 and 2016, and subset a choice set of predictors of interest, paying particular attention to indicators of driver behavior.
 
 \section*{Exploratory Analysis and Visualization}
 
@@ -135,7 +143,7 @@ Gravano, Luis and John Paparrizos. "k-Shape: Efficient and Accurate Clustering o
 
 Zador, P.L, S.A. Krawchuk, and R.B. Voas. "Relative Risk of Fatal Crash Involvement by BAC, Age, and Gender." \textit{U.S. Department of Transportation - National Highway Traffic Safety Administration}. Apr. 2000.
 
-
+"National Motor Vehicle Crash Causation Survey: Report to Congress." \textit{U.S. Department of Transportation - National Highway Traffic Safety Administration}. July 2008.
 
 
 \end{hangparas}

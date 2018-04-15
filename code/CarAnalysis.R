@@ -269,7 +269,7 @@ AnalysisData_Train_Rebal = SMOTE(MultiFatality ~ ., data=AnalysisData_Train)
 
 #Logistic Regression
 logitmodel_multi = glm(MultiFatality ~ ., 
-                       data=AnalysisData_Train_Rebal[flds[[i]],],family="binomial")
+                       data=AnalysisData_Train_Rebal,family="binomial")
 logitprobs = predict(logitmodel_multi,newdata=AnalysisData_Test,type="response")
 logitpreds = round(logitprobs)
 logitaccuracy = mean(logitpreds == AnalysisData_Test$MultiFatality)
@@ -281,14 +281,29 @@ svmmodel_testerror_multi = predict(svmmodel_multi,newdata=AnalysisData_Test[,-c(
 svmaccuracy = mean(svmmodel_testerror_multi == AnalysisData_Test$MultiFatality)
 svmaccuracy
 
-#Adaboost
+#SVM (using Rminer)
+svmmodelrminer = fit(MultiFatality ~ ., model="svm",data=AnalysisData_Train_Rebal,C=1,cross=5)
+svm.imp = Importance(svmmodelrminer,data=AnalysisData_Train_Rebal)
+SVMImpData = data.table(Imp = svm.imp$imp,Var = names(AnalysisData_Train_Rebal)) %>%
+  .[Var != "MultiFatality",]
+SVMIMPPlot = ggplot(data=SVMImpData,aes(x=reorder(Var,-Imp))) + 
+  geom_bar(aes(weight=Imp))
+ggsave("ImportancePlot_SVM.png",SVMIMPPlot,device="png")
 
-adamodel_multi = boosting.cv(MultiFatality ~ ., data=AnalysisData_Train_Rebal,v=5,
-                             par=TRUE)
+
+#Adaboost
+adamodel_multi = boosting(MultiFatality ~ ., data=AnalysisData_Train_Rebal)
 adamodelaccuracy = predict(adamodel_multi,newdata=AnalysisData_Test)
 adamodelaccuracy_rate = mean(adamodelaccuracy$class == AnalysisData_Test$MultiFatality)
 adamodelaccuracy_rate
-adavariableplot = importanceplot(adamodel_multi)
+ADAImpData = data.frame(Imp = adamodel_multi$importance)
+ADAImpData = data.frame(ADAImpData,Var = row.names(ADAImpData))
+row.names(ADAImpData) = NULL
+ADAIMPPlot = ggplot(data=ADAImpData,aes(x=reorder(Var,-Imp))) + 
+  geom_bar(aes(weight=Imp))
+ggsave("ImportancePlot_ADABoost.png",ADAIMPPlot,device="png")
+
+
 
 
 Accuracy = data.frame(t(c(logitaccuracy,svmaccuracy,adamodelaccuracy_rate)))
