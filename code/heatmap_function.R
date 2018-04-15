@@ -29,8 +29,10 @@ data(county.regions)
 
 zip1$FIPS <- as.character(zip1$FIPS)
 
-county.regions$county.fips.character
+zip1 <- zip1 %>% s
 
-county <- left_join(zip, county.regions, by = c("FIPS" = "county.fips.character"))
+county <- left_join(zip1, county.regions, by = c("FIPS" = "county.fips.character"))
 
 county_map <- county_choropleth(county, legend = "Proportions")
+
+colnames(zip1)
