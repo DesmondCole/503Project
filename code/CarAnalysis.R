@@ -274,7 +274,7 @@ logitmodel_multi = glm(MultiFatality ~ ., data=AnalysisData_Train_Rebal,family="
 svmmodel_multi = svm(MultiFatality ~ .,data=AnalysisData_Train_Rebal,cross=5)
 
 #Adaboost
-adamodel_multi
+adamodel_multi = boosting(MultiFatality ~ ., data=AnalysisData_Train_Rebal)
 
 
 #Risk of Hit and Run

@@ -8,11 +8,14 @@
 \usepackage{amssymb}
 \usepackage{etoolbox}
 \usepackage{lipsum}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
     \AfterEndEnvironment{hangparas}{\addvspace{0.67\baselineskip}}
     \usepackage[notquote]{hanging}
 
 
-\title{Here's What (and Whom) to Avoid When Driving}
+\title{Here's What (and Whom) to Avoid On the Roads}
 \author{Desmond Cole, Teerth Patel, Yunbin Peng}
 
 \begin{document}
@@ -59,20 +62,40 @@ We used a mix of classifiers to assess factors relevant to incident fatalities, 
 
 This section explores in some detail different fatality rates for different car types (by automaker, vehicle body, etc.).\footnote{Note that the numbers in this assessment focus on car brands \textit{involved} in fatal incidents. Thus, they do not imply specifically that the vehicle types considered here actually caused death(s), or that the driver(s) of the vehicle(s) themselves died.} For this assessment, we focused on the 15 largest automakers that together produce more than 95\% of the cars and light trucks on American roads. In addition, we subsetted the data to focus specifically on smaller vehicles, excluding commercial vehicles, semi-trucks, etc. \\
 
-The plot below shows a basic ranking of car manufacturers according to the number of fatalities per million vehicles. This is scaled according to an approximation of the number of vehicles each manufacturer has on the road, but due to a lack of thorough data, 
+The plot below shows a basic ranking of car manufacturers according to the number of fatalities per million vehicles. This is scaled and subsetted according to an approximation of the number and types of vehicles each manufacturer has on the road, but due to a lack of thorough data, it is likely that not all variation simply attributable to manufacturer size and vehicle class has been accounted for. With that said, this plot does suggest that there is meaningful variation across manufacturers in terms of their safety record, with makers such as Subaru and luxury makers such as BMW and Land Rover having significantly less involvement in fatal incidents than carmakers like GM, Ford, and Volvo.
 \\
 \begin{center}
 \includegraphics[width=.75\textwidth,height=9cm,keepaspectratio]{ManufacturerRankingPlot.png}
 \end{center}
 
+The plot above, although suggestive of meaningful difference across manufacturers, fails to fully account for the various contextual differences across vehicle types which may be unobservable. To further explore the potential relevance of car manufacturer and car type to crash risks, we applied multidimensional scaling to assess visually the differences between vehicles in terms of various driver-specific crash-relevant pieces of information, such as use of restraints, drug/alcohol use, fires, and speeding, with the goal being to assess whether a certain vehicle type or manufacturer predicts the behavior of the vehicle's driver.\\
 
-The plot above, although suggestive of meaningful difference across manufacturers, fails to fully account for the various contextual differences which may be unobservable. To further explore the relevance of car manufacturer, we consider the relationships between car model and various fatality-related predictors, to understand if a given manufacturers' products tend to be associated with high-risk behaviors or other crash factors. The table below shows the results from various multi-class classifications of car manufacturer ran using a set of crash-relevant predictors .... The results do not suggest any substantial mechanism(s) by which a car's make determines the risk of it being involved in a fatal incident. \\
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.5\textwidth}
+	\centering
+	\includegraphics[width=.8\linewidth]{ManufacturerMDSPlot.png}
+	\caption{Manufacturer MDS}
+	\label{fig:sub1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{VehicleTypeMDSPlot.png}
+  \caption{Vehicle Type MDS}
+  \label{fig:sub2}
+\end{subfigure}
+\caption{Multidimensional Scaling for Vehicle Manufacturer and Vehicle Type}
+\label{fig:test}
+\end{figure}
+
+The plots don't indicate strong patterns of differentiation, but there are some noteworthy indicators. In particular, these results suggest the behavior of luxury sport/SUV vehicles to be somewhat distinct, as noted by the outlying values for BMW/Land Rover in figure (a), and for Luxury SUV and Sport vehicles in figure (b).
+
+we consider the relationships between car model and various fatality-related predictors, to understand if a given manufacturers' products tend to be associated with high-risk behaviors or other crash factors. The table below shows the results from various multi-class classifications of car manufacturer ran using a set of crash-relevant predictors .... The results do not suggest any substantial mechanism(s) by which a car's make determines the risk of it being involved in a fatal incident. \\
 
 (Insert table of classifications and results) \\
 
-As an alternative to classification, we applied multidimensional scaling to assess visually the differences between the major automakers in terms of various crash-relevant pieces of information. These results suggest some moderate clustering of driver behavior. BMW and Jaguar-Land Rover, both of which are luxury brands, are spaced relatively far from more truck-oriented manufacturers such as GM and Ford. In addition, Mitsubishi, which as a brand appears to include many heavier-duty vehicles, is an outlier from the majority of the other automakers.\\
 
-(Insert MDS plot) \\
+
 
 
 
