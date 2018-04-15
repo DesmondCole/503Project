@@ -174,7 +174,7 @@ mdsresults = cmdscale(distancemat)
 mdsresults = data.frame(mdsresults,Makers)
 MDSPlot = ggplot(data=mdsresults,aes(x=X1,y=X2,label=Makers)) + 
   geom_point(shape=21,fill=NA,colour=NA) + 
-  geom_text(aes(label=Makers)) + 
+  geom_text_repel(aes(label=Makers),size=4.5) + 
   labs(x="Dim. 1",y="Dim. 2") + 
   scale_x_continuous(limits=c(-.05,.12))
   ggtitle("Distance of Manufacturers according to Driver Behavior in Fatal Accidents")
@@ -216,7 +216,7 @@ mdsresults_type = cmdscale(distancemat)
 mdsresults_type = data.frame(mdsresults_type,Types)
 MDSPlot_type = ggplot(data=mdsresults_type,aes(x=X1,y=X2,label=Types)) + 
   geom_point(shape=21,fill=NA,colour=NA) + 
-  geom_text(aes(label=Types),size=3) + 
+  geom_text_repel(aes(label=Types),size=4.5,segment.alpha=0) + 
   labs(x="Dim. 1",y="Dim. 2") + 
   scale_x_continuous(limits=c(-.15,.20))
   ggtitle("Distance of Types according to Driver Behavior in Fatal Accidents")
@@ -224,9 +224,6 @@ MDSPlot_type
 
 ggsave("./report/VehicleTypeMDSPlot.png",plot=MDSPlot_type,device="png",
        width=9.32,height=8.38,units="in")
-
-
-
 
 
 #Automaker Analysis. Even with observed differences among car manufacturers, it is unclear 
@@ -275,6 +272,27 @@ logitpreds = round(logitprobs)
 logitaccuracy = mean(logitpreds == AnalysisData_Test$MultiFatality)
 logitaccuracy
 
+#Automaker odds ratios
+OddsRatios = data.frame(`Odds Ratios` = logitmodel_multi$coefficients)
+OddsRatios = cbind(OddsRatios,Names = as.character(row.names(OddsRatios)))
+
+OddsRatios = data.table(OddsRatios) %>%
+  .[(11:24),]
+
+Automaker = c("Daimler","FCA/Chrysler","Ford","GM",
+          "Honda","Hyundai-Kia","Land Rover",
+          "Mazda","Mitsubishi","Nissan",
+          "Subaru","Toyota","Volkswagen",
+          "Volvo")
+
+OddsRatios = cbind(OddsRatios,Automaker) %>%
+  .[,-c("Names"),with=FALSE] %>%
+  .[order(-Odds.Ratios)]
+library(xtable)
+result = xtable(OddsRatios,caption="Automaker Odds Ratios")
+
+
+
 #SVM
 svmmodel_multi = svm(MultiFatality ~ .,data=AnalysisData_Train_Rebal,cross=5)
 svmmodel_testerror_multi = predict(svmmodel_multi,newdata=AnalysisData_Test[,-c("MultiFatality"),with=FALSE])
@@ -295,6 +313,8 @@ SVMIMPPlot = ggplot(data=SVMImpData,aes(x=reorder(Var,-Imp))) +
   theme(axis.text.x = element_text(size=10))
 ggsave("./report/ImportancePlot_SVM.png",SVMIMPPlot,device="png",
        width=12.3,height=6.21,units="in")
+
+
 
 
 #Adaboost
@@ -326,10 +346,20 @@ result = xtable(Accuracy,caption="Test Set Prediction Accuracy")
 
 #Risk of Hit and Run
 
-# #Multiclass Rebalancing and Classification
-# MakerModel = maboost(Makers ~ .,data=AnalysisData,C50tree=TRUE)
-# MakerModel = maboost(Makers ~ .,data=AnalysisData,C50tree=TRUE,C5.0Control(minCases=10,CF=.4))
-# 
+# Environmental Conditions
+EnvironmentalData = allfiles[[1]] %>%
+  .[atmospheric_conditions_1_name != "Unknown",] %>%
+  .[,.(fatalaccidents = .N),by=.(FIPS,atmospheric_conditions_1_name)] %>%
+  .[FIPS %in% c("17031"),]
+
+SimpleEnvironPlot = ggplot(data=EnvironmentalData,
+                           aes(x = reorder(atmospheric_conditions_1_name,-fatalaccidents))) + 
+  geom_bar(aes(weight=fatalaccidents),fill="dark green") + 
+  labs(x = "Atmospheric Conditions",y="Fatal Accidents")
+ggsave("./report/Environmental.png",SimpleEnvironPlot,device="png",
+       width=9.56,height=5.26,units='in')
+
+
 
 
 
