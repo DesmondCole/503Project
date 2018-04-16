@@ -32,12 +32,20 @@ Yunbin Peng}
 \subsection*{Executive Summary}
 In the United States, approximately 35-40,000 people die in vehicle-related incidents every year. The fatality rate declined significantly in the second half of the 20th century, and continued to decline in the 21st, however the decline has plateaued in recent years, to a rate of just over 1 death per 100 million vehicle miles traveled (VMT). Understanding and tackling the problem of crash fatalities has motivated considerable improvements and investments in vehicle design, road design, and scientific knowledge of human motor skills and reaction times. \\ 
 
-With this analysis, we set out to survey the distribution of vehicle-related fatalities across geography and time, and explore a number of driver-specific characteristics to assess dominant contributors to the incidence and extent of vehicle-related deaths. We use this analysis to develop a limited profile of the circumstances associated with traffic fatalities, and of things to avoid if you're considering taking a drive.
+With this analysis, we set out to survey the distribution of vehicle-related fatalities across geography and time, and explore a number of driver-specific characteristics to assess dominant contributors to the incidence and extent of vehicle-related deaths. We use this analysis to develop a limited profile of the circumstances associated with traffic fatalities, and a set of corresponding recommendations for the concerned motorist or non-motorist.
 
 \subsection*{Data}
 The data used for this analysis are gathered by the National Highway Traffic Safety Administration (NHTSA), a branch of the U.S. Department of Transportation. NHTSA gathers traffic fatality data using the Fatality Analysis Reporting System (FARS), a nationwide census of various information regarding fatalities occurring in motor vehicle crashes. FARS contains a rich set of different features, with information on crash circumstances, areas of damage, police reports, emergency response times, and vehicle characteristics. We focus specifically on data from 2015 and 2016, and subset a choice set of predictors of interest, paying particular attention to the following broad indicators of driver behavior:
 
 \begin{enumerate}
+\item Where do they drive?
+\begin{itemize}
+\item Key Variable: Geographic Location
+\end{itemize}
+\item When do they drive?
+\begin{itemize}
+\item Key Variable: Time of Day
+\end{itemize}
 \item What do they drive?
 \begin{itemize}
 \item Key Variables: Automaker, Vehicle Type
@@ -158,7 +166,7 @@ The below table shows relative test error rates for classification using logisti
 
 \begin{table}[H]
 \centering
-\begin{tabular}{rrrr}
+\begin{tabular}{cccc}
   \hline
  & Logistic Regression & Supp. Vec. Machine & AdaBoost \\ 
   \hline
@@ -173,7 +181,7 @@ The table immediately below shows odds ratio coefficients for each of the automa
 
 \begin{table}[H]
 \centering
-\begin{tabular}{rrl}
+\begin{tabular}{cl}
   \hline
  Odds Ratio & Automaker \\ 
   \hline
@@ -200,7 +208,7 @@ The below table consists of estimates of odds ratios for the other predictors co
 
 \begin{table}[H]
 \centering
-\begin{tabular}{ccc}
+\begin{tabular}{cl}
   \hline
  Odds Ratio & Variable \\ 
   \hline
@@ -245,7 +253,7 @@ The below two sections explore in further detail the issues of driver impairment
 (Teerth Insert Analysis Here)
 
 \section*{Hit-and-Run}
-In this section we will discuss hit-and-run behavior as it brings more risk of fatalities during traffic accident. According to a 2014 NHTSA traffic safety factsheet (see references), nearly one in five pedestrians killed in traffic crashes were involved in hit-and-runs. As such, it is an especially relevant factor to consider for non-motorists. To assess relationships of various predictors with hit-and-runs, we run a logistic regression, with a binary 0-1 indicator for hit-and-run as the outcome, and representative driver behavior and natural features such as spending, past driving history and time of the accident are used as independent variables. We employ logistic regression primarily because the focus is on inference rather than prediction. where hit-and-run as dependent variables . With some model selection, we get the following regression result.
+In this section we will discuss hit-and-run behavior as it brings more risk of fatalities during traffic accidents. According to a 2014 NHTSA traffic safety factsheet (see references), nearly one in five pedestrians killed in traffic crashes were involved in hit-and-runs. As such, it is an especially relevant factor to consider for non-motorists. To assess relationships of various predictors with hit-and-runs, we run a logistic regression, with a binary 0-1 indicator for hit-and-run as the outcome, and representative driver behavior and natural features such as spending, past driving history and time of the accident are used as independent variables. We employ logistic regression primarily because the focus is on inference rather than prediction. where hit-and-run as dependent variables . With some model selection, we get the following regression result.
 
 Hit-and-runs are a relatively rare event. Thus, we again employed resampling techniques to adjust for class imbalance, oversampling the minority class (hit-and-run = 1) and undersampling the majority class (hit-and-run = 0). In comparing resampled data (results shown below) with the original imbalanced data set, there did not appear to be significant difference in coefficient estimates.
 
@@ -275,13 +283,13 @@ Hit-and-runs are a relatively rare event. Thus, we again employed resampling tec
 	\caption{Predictors of Fatal Accidents Involving Hit-and-Runs}
 \end{table} 
 
-The results above suggest that speeding, previous DWI convictions and drugs are highly correlated with an increase in hit-and-runs. There is also a significant reduction in probability of hit-and-runs during the daytime (7am to 6pm) compared with the night and evening.
+The results above suggest that speeding, previous DWI convictions and drug use are positively correlated with hit-and-runs. There is also a significant reduction in probability of hit-and-runs during the daytime (7am to 6pm) compared with the night and evening.
 
 It is interesting to note that the indicator of multiple fatalities has a significantly negative coefficient. This may be due to the fact that hit-and-runs are commonly involved in collisions with pedestrians, which may be less likely to result in multiple fatalities when compared with multi-vehicle collisions. In addition, a multiple-fatality crash might mean a severe crash that is more likely to total a given car, preventing the driver from fleeing the crash.
 
 
 \section*{Environmental Factors}
-A proper analysis of environmental factors is both beyond the scope of this analysis, and requires incorporating a richer set of weather data than the handful of indicators available in the FARS system. A quick initial check of the relevance of environmental conditions doesn't return many relevant results. The plot below shows data from Cook County, Illinois, chosen for its high number of traffic fatalities and variable weather\footnote{Especially when compared to Dallas, Phoenix, and LA County}. The vast majority of fatal collisions occur in clear weather, which is due in large part no doubt to the fact that it is simply clear much more often in Chicago than it is rainy or snowy! 
+The concerned motorist may also worry about the weather, in addition to the issues we have considered throughout this report. A proper analysis of environmental factors is both beyond the scope of this analysis, and requires incorporating a richer set of weather data than the handful of indicators available in the FARS system. A quick initial check of the relevance of environmental conditions doesn't return many relevant results. The plot below shows data from Cook County, Illinois, chosen for its high number of traffic fatalities and variable weather\footnote{Especially when compared to Dallas, Phoenix, and LA County}. The vast majority of fatal collisions occur in clear weather, which is due in large part no doubt to the fact that it is simply clear much more often in Chicago than it is rainy or snowy! 
 
 \begin{figure}[H]
 \centering
@@ -292,7 +300,17 @@ A proper analysis of environmental factors is both beyond the scope of this anal
 
 \section*{Conclusion}
 
-(To be updated once final analyses are incorporated)
+(To be further updated once geographic analysis is incorporated) \\
+
+Many of the issues considered in this analysis will likely already have been considered by the well-prepared motorist or non-motorist. However, they bear repeating, alongside some recommendations that may surprise the average reader. In particular:
+
+Where to Drive: (TEERTH)
+
+When to Drive: Fatality rates are consistently highest between midnight and 5AM throughout much of the country. The hour of a crash is also a key determinant of the probability that an accident results in multiple fatalities.
+
+Which Cars to Avoid: Steer clear of the largest automakers, and rest easier among Subarus, BMWs, Jaguars, and Range Rovers.
+
+Which Drivers to Avoid: Drivers on drugs or alcohol, distracted drivers, drivers not wearing seatbelts, and drivers traveling at high speeds.
 
 
 \section*{References}
