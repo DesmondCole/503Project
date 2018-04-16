@@ -39,9 +39,9 @@ Yunbin Peng \\
 \maketitle
 \section*{Introduction}
 \subsection*{Executive Summary}
-In the United States, approximately 35-40,000 people die in vehicle-related incidents every year. The fatality rate declined significantly in the second half of the 20th century, and continued to decline in the 21st, however the decline has plateaued in recent years, to a rate of just over 1 death per 100 million vehicle miles traveled (VMT). Understanding and tackling the problem of crash fatalities has motivated considerable improvements and investments in vehicle design, road design, and scientific knowledge of human motor skills and reaction times. \\ 
+In the United States, approximately 35-40,000 people die in vehicle-related incidents every year. The fatality rate declined significantly in the second half of the 20th century, and continued to decline in the 21st. However, the decline has plateaued in recent years, to a rate of just over 1 death per 100 million vehicle miles traveled (VMT). Understanding and tackling the problem of crash fatalities has motivated considerable improvements and investments in vehicle design, road design, and scientific knowledge of human motor skills and reaction times. \\ 
 
-With this analysis, we set out to survey the distribution of vehicle-related fatalities across geography and time, and explore a number of driver-specific characteristics to assess dominant contributors to the incidence and extent of vehicle-related deaths. We use this analysis to develop a limited profile of the circumstances associated with traffic fatalities, and a set of corresponding recommendations for the concerned motorist or non-motorist.
+With this analysis, we set out to survey the distribution of vehicle-related fatalities across geography and time, and explore a number of driver-specific characteristics to assess dominant contributors to the incidence and extent of vehicle-related deaths. We use this analysis to develop a limited profile of the circumstances associated with traffic fatalities, and a set of corresponding recommendations for the concerned motorist or non-motorist. Our results suggest that luxury autos, daytime driving, and rural areas tend to be the safest circumstances for driving, and that drivers who are impaired (via drugs/alcohol or some mental/physical ailment) are to be avoided.  
 
 \subsection*{Data}
 The data used for this analysis are gathered by the National Highway Traffic Safety Administration (NHTSA), a branch of the U.S. Department of Transportation. NHTSA gathers traffic fatality data using the Fatality Analysis Reporting System (FARS), a nationwide census of various information regarding fatalities occurring in motor vehicle crashes. FARS contains a rich set of different features, with information on crash circumstances, areas of damage, police reports, emergency response times, and vehicle characteristics. We focus specifically on data from 2015 and 2016, and subset a choice set of predictors of interest, paying particular attention to the following broad indicators of driver behavior:
@@ -69,13 +69,13 @@ The data used for this analysis are gathered by the National Highway Traffic Saf
 \end{itemize}
 \end{enumerate}
 
-We begin with a geographic and time-based overview of patterns of fatal traffic incidents.
-
 \section*{Exploratory Analysis and Visualization}
+
+We begin with a geographic and time-based overview of patterns of fatal traffic incidents.
 
 \subsection*{Geographic Patterns}
 
-Geographical data is extremely important, especially when observing where high fatality accidents occur. We can use the geographical visualizations below to make some basic inferences about high fatality accidents. Plotting where fatal accidents occur allows us to determine which variables to evaluate.
+We begin with a geographical overview of where most fatal accidents occur, shown in the below plot of the United States. Plotting where fatal accidents occur provides both a measure of areas of high geographic risk and suggests certain variables to consider/evaluate (for example, urbanicity).
 
 \begin{figure}[H]
 \centering
@@ -83,7 +83,7 @@ Geographical data is extremely important, especially when observing where high f
 \caption{Heatmap of all fatal accidents}
 \end{figure}
 
-What is seen in Figure 1 is that the majority of fatal accidents happen on the East Coast, around the major cities and around areas that are much more populous. This could counter the fact that high speed may not be as large a factor of fatal accidents as expected, as areas of low population would be expected of having a higher rate of speeding. The interpretation that high populous areas have higher incidences of fatal accidents, of course, is somewhat obvious, however what is not obvious is the fact that the accidents actually occur on the major roads and highways much more often. Most of the accidents occur can be seen to occur on the highways in Figure 1. This suggests that an important variable to include is road type, as it will most likely show some significant relationship with the response variable.
+Figure 1 shows that the majority of fatal accidents happen on the East Coast, around major cities and areas that are much more populous. This weighs against the notion that that high speed may not be as large a factor of fatal accidents as expected, as areas of low population would be expected of having a higher rate of speeding. The notion that high populous areas have more fatal accidents is fairly trivial. However, what is not obvious is the fact that the accidents actually occur on the major roads and highways much more often. Most of the fatal accidents can be seen to occur on the highways in Figure 1. This suggests that road type is an important factor to consider.
 
 \begin{figure}[H]
 \centering
@@ -256,7 +256,7 @@ The below table consists of estimates of odds ratios for the other predictors co
 
 \textbf{SVM and AdaBoost}
 
-For our concerned motorist or non-motorist, it is worth addressing the level of attention that should actually be paid to the make of a given car, relative to other factors such as intoxication or distracted driving. To investigate this issue, we reference the below output, which illustrates variable importance rankings for the SVM and AdaBoost classifiers. The models don't completely agree on relative variable importance, but there are some key patterns. For example, key for both models is the fact that the hour of crash is a dominant predictor of the likelihood a fatal accident resulted in multiple deaths. In addition, a driver's record, potential drug use, and driving speed are especially significant for predicting multi-fatality accidents. Interestingly, whether or not a driver was distracted (using a cellphone, for example), and whether the weather was clear or not, appear to be relatively less significant determinants of the likelihood that a fatal accident involved multiple deaths. Further assessment of this question would consider the affect of these less important predictors on non-fatal accidents, as well as fatal ones. Finally, this analysis suggests that, within the context of other fatality-relevant predictors, automaker (labeled as "Makers" in the plot) is relatively unimportant. Accounting for various driver behaviors captures much of the meaningful risk in multi-fatality wrecks. \\
+For our concerned motorist or non-motorist, it is worth addressing the level of attention that should actually be paid to the make of a given car, relative to other factors such as intoxication or distracted driving. To investigate this issue, we reference the below output, which illustrates variable importance rankings for the SVM and AdaBoost classifiers. The models don't completely agree on relative variable importance, but there are some key patterns. For example, key for both models is the fact that the hour of crash is a dominant predictor of the likelihood a fatal accident resulted in multiple deaths. In addition, a driver's record, potential drug use, and driving speed are especially significant for predicting multi-fatality accidents. Interestingly, whether or not a driver was distracted (using a cellphone, for example), and whether the weather was clear or not, appear to be relatively less significant determinants of the likelihood that a fatal accident involved multiple deaths. Further assessment of this question would consider the affect of these less important predictors on non-fatal accidents, as well as fatal ones. Finally, this analysis suggests that, within the context of other fatality-relevant predictors, automaker (labeled as``Makers" in the plot) is relatively unimportant. Accounting for various driver behaviors captures much of the meaningful risk in multi-fatality wrecks. \\
 
 \begin{figure}[H]
 \centering
@@ -278,7 +278,7 @@ An important predictor for high fatality accidents seems to be driver impairment
 
 \textbf{Logistic Regression}
 
-The odds ratio of the logistic regression gives a relative measure of effect from the predictor variable to the response variable. Below is a table with the odds ratio given for each type of impairment in the impairment variable.  What is shown is that blind, deaf, and cane/crutches shows small/no effect on the response variable, but all of the other variable have a much larger effect on the response variable, with the impairment type of "Other Impairment" having the largest odds ratio. What is interesting is influence of alcohol or drugs seems to have the smallest positive measure of effect, with subjects being in a wheelchair, being emotional, or begin blacked out having a larger measure of effect.
+The odds ratio of the logistic regression gives a relative measure of effect from the predictor variable to the response variable. Below is a table with the odds ratio given for each type of impairment in the impairment variable.  What is shown is that blind, deaf, and cane/crutches shows small/no effect on the response variable, but all of the other variable have a much larger effect on the response variable, with the impairment type of ``Other Impairment" having the largest odds ratio. What is interesting is influence of alcohol or drugs seems to have the smallest positive measure of effect, with subjects being in a wheelchair, being emotional, or begin blacked out having a larger measure of effect.
 
 \begin{table}[ht]
 \centering
@@ -391,7 +391,7 @@ Which Drivers to Avoid: Drivers on drugs or alcohol, distracted drivers, drivers
 \begin{hangparas}{1.27cm}{1}
 Batterman, Stuart, Richard Cook, and Thomas Justin. ``Temporal variation of traffic on highways and the development of accurate temporal allocation factors for air pollution analyses." \textit{Atmos Environ}. Apr. 2015.
 
-Chawla, Nitesh, Kevin Bowyer, Lawrence Hall, and W. Philip Kegelmeyer. "SMOTE: Synthetic Minority Over-sampling Technique." \textit{Journal of Artificial Intelligence Research}. 2002.
+Chawla, Nitesh, Kevin Bowyer, Lawrence Hall, and W. Philip Kegelmeyer. ``SMOTE: Synthetic Minority Over-sampling Technique." \textit{Journal of Artificial Intelligence Research}. 2002.
 
 Choi, Eun-Ha. ``Crash Factors in Intersection-Related Crashes: An On-Scene Perspective." \textit{U.S. Department of Transportation - National Highway Traffic Safety Administration}. Sept. 2010.
 
