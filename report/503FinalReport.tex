@@ -40,12 +40,12 @@ All authors contributed to general editing and the conclusion}
 \maketitle
 \section*{Introduction}
 \subsection*{Executive Summary}
-In the United States, approximately 35-40,000 people die in vehicle-related incidents every year. The fatality rate declined significantly in the second half of the 20th century, and continued to decline in the 21st. However, the decline has plateaued in recent years, to a rate of just over 1 death per 100 million vehicle miles traveled (VMT). Understanding and tackling the problem of crash fatalities has motivated considerable improvements and investments in vehicle design, road design, and scientific knowledge of human motor skills and reaction times. \\ 
+Fatal vehicle collisions in the United States have been a public health problem for nearly a century. The earliest available data indicate a fatality rate of 20 people for every 100 million vehicle miles traveled (VMT). The fatality rate declined significantly in the second half of the 20th century, and continued to decline in the 21st. However, the decline has plateaued in recent years, to a rate of just over 1 death per 100 million VMT. Currently, 35-40,000 people die in vehicle-related incidents every year. Understanding and tackling the problem of crash fatalities has motivated considerable investments and improvements in vehicle design, road design, and scientific knowledge of human motor skills and reaction times. \\ 
 
-With this analysis, we set out to survey the distribution of vehicle-related fatalities across geography and time, and explore a number of driver-specific characteristics to assess dominant contributors to the incidence and extent of vehicle-related deaths. We use this analysis to develop a limited profile of the circumstances associated with traffic fatalities, and a set of corresponding recommendations for the concerned motorist or non-motorist. Our results suggest that luxury autos, daytime driving, and rural areas tend to be safer circumstances for driving, and that drivers who are impaired (via drugs/alcohol or some mental/physical ailment) are to be avoided.  
+With this analysis, we set out to survey the distribution of vehicle-related fatalities across geography and time, and explore a number of driver-specific characteristics to assess dominant contributors to the incidence and extent of vehicle-related deaths. We use this analysis to develop a limited profile of the circumstances associated with traffic fatalities, and a set of corresponding recommendations for the concerned motorist or non-motorist. Our results suggest that luxury autos, daytime driving, and rural areas tend to be safer circumstances for driving, and that drivers and pedestrians who are impaired (via drugs/alcohol or some mental/physical ailment) are to be avoided.  
 
 \subsection*{Data}
-The data used for this analysis are gathered by the National Highway Traffic Safety Administration (NHTSA), a branch of the U.S. Department of Transportation. NHTSA gathers traffic fatality data using the Fatality Analysis Reporting System (FARS), a nationwide census of various information regarding fatalities occurring in motor vehicle crashes. FARS contains a rich set of different features, with information on crash circumstances, areas of damage, police reports, emergency response times, and vehicle characteristics. We focus specifically on data from 2015 and 2016, and subset a choice set of predictors of interest, paying particular attention to the following broad indicators of driver behavior:
+The data used for this analysis are gathered by the National Highway Traffic Safety Administration (NHTSA), a branch of the U.S. Department of Transportation. NHTSA gathers traffic fatality data using the Fatality Analysis Reporting System (FARS), a nationwide census of various information regarding fatalities occurring in motor vehicle crashes. FARS contains a rich set of different features, with information on crash circumstances, areas of damage, involvement of non-motorists, police reports, emergency response times, and vehicle characteristics. We focus specifically on data from 2015 and 2016, and subset a choice set of predictors of interest, paying particular attention to the following broad indicators of driver behavior:
 
 \begin{enumerate}
 \item Where do they drive?
@@ -62,7 +62,7 @@ The data used for this analysis are gathered by the National Highway Traffic Saf
 \end{itemize}
 \item Are they impaired?
 \begin{itemize}
-\item Key Variable: Drug/Alcohol Consumption
+\item Key Variables: Drug/Alcohol Consumption, Mental/Physical Ailment
 \end{itemize}
 \item Do they flee collisions?
 \begin{itemize}
@@ -76,7 +76,7 @@ We begin with a geographic and time-based overview of patterns of fatal traffic 
 
 \subsection*{Geographic Patterns}
 
-We begin with a geographical overview of where most fatal accidents occur, shown in the below plot of the United States. Plotting where fatal accidents occur provides both a measure of areas of high geographic risk and suggests certain variables to consider/evaluate (for example, urbanicity).
+Below is a geographic overview of where most fatal accidents occur in the United States. Plotting where fatal accidents occur provides both a measure of areas of high geographic risk and suggests certain variables to consider/evaluate (for example, urbanicity).
 
 \begin{figure}[H]
 \centering
@@ -95,9 +95,9 @@ Figure 1 shows that the majority of fatal accidents happen on the East Coast, ar
 In Figure 2, we weight the number of accidents per state by the state's population. These results show a different perspective of where fatal accidents occur. Idaho, for instance, had few incidences of fatal accidents in Figure 1, but when we look at Figure 2, Idaho has one of the highest proportions of accidents. Similarly, we can see that places that have high concentrations of fatal accidents, such as New York, Michigan, Kentucky, and Maryland, actually have much lower proportion of accidents per capita. Also, the more densely populated areas seem to have the highest number of fatal accidents per capita.
 
 \subsection*{Time Trends}
-At the national and state level, the cycle of fatal accidents throughout the day is fairly consistent. The below plot shows aggregate fatal accidents per thousand vehicles per hour for the United States, between 2015 and 2016. To account for traffic variability, we weighted the rate of fatal incidents according to hour-by-hour traffic flow allocations estimated by Batterman, et al. (see references). These same flow allocations are used to weight state-by-state hourly trends, under the assumption that state-by-state traffic flow patterns tend to be similar. \\
+At the national and state level, the cycle of fatal accidents throughout the day is fairly consistent. The below plot shows aggregate fatal accidents per thousand vehicles per hour for the United States, between 2015 and 2016. To account for traffic variability, we weighted the rate of fatal incidents according to hour-by-hour traffic flow allocations estimated by Batterman, et al. (2015).\footnote{See references} These same flow allocations are used to weight state-by-state hourly trends, under the assumption that state-by-state traffic flow patterns tend to be similar. \\
 
-At the state level, the daily fatal accident cycle is roughly similar. Estimating the overall traffic flow for each state using state-level vehicle registrations, combined with the flow allocations estimated by Batterman, et al. (2015), returns state-level cycles that closely mirror the overall national trend.
+At the state level, the daily fatal accident cycle is roughly similar. Estimating the overall traffic flow for each state using state-level vehicle registrations, combined with the flow allocations estimated by Batterman, et al., returns state-level cycles that closely mirror the overall national trend.
 
 \begin{figure}[H]
 \centering
@@ -144,7 +144,7 @@ To tease out potential state-level variation in daily cycles, we used shape-base
 
 
 \section*{Traffic Fatality Risk Factor Analysis}
-We used a mix of classifiers to assess factors relevant to incident fatalities, with a particular focus on driver behavior and vehicle manufacturer. Our analysis begins with an overview of vehicle types/manufacturers, focusing on their relevance within the context of other predictors. We then separately examine different aspects of driver behavior, specifically driver impairment and whether a driver engaged in a hit-and-run during a given collision. Given that our dataset consists solely of fatal traffic incidents, we choose as a primary output incidents involving more than one fatality.
+We used a mix of classifiers to assess factors relevant to incident fatalities, with a particular focus on driver behavior and vehicle manufacturer. Our analysis begins with an overview of vehicle types/manufacturers, focusing on their relevance within the context of other predictors. We then separately examine different aspects of driver behavior, specifically driver impairment and whether a driver engaged in a hit-and-run during a given collision. Given that our dataset consists solely of fatal traffic incidents, we choose as a primary output incidents involving more than one fatality. Our hit-and-run analysis considers hit-and-runs as a binary output.
 
 In several cases, we had to grapple with significant class imbalance. For example, there are far more single-fatality incidents than multi-fatality incidents. As a result, optimal classification in the naive setting without any resampling will occasionally identify all incidents as single-fatality.   
 
@@ -161,7 +161,9 @@ The plot below shows a basic ranking of car manufacturers according to the numbe
 \caption{Ranking of Manufacturer by Fatal Accidents}
 \end{figure}
 
-Although suggestive of meaningful difference across manufacturers, a simple comparison of automakers fails to fully account for the various contextual differences across vehicle types which may be unobservable. To further explore the potential relevance of car manufacturer and car type to crash risks, we applied multidimensional scaling to visually assess the differences between vehicles in terms of various driver-specific crash-relevant pieces of information, such as use of restraints, drug/alcohol use, fires, and speeding, with the goal being to assess whether a certain vehicle type or manufacturer predicts the behavior of the vehicle's driver. To potentially support interpretation of this plot, we included in subfigure (b) a distance-based plot of different vehicle classifications (i.e. Luxury, Non-luxury). \\
+Although suggestive of meaningful difference across manufacturers, a simple comparison of automakers fails to fully account for the various contextual differences across vehicle types which may be unobservable. To further explore the potential relevance of car manufacturer and car type to crash risks, we employ two additional techniques. \\
+
+First, we apply multidimensional scaling to visually assess the differences between vehicles in terms of various driver-specific crash-relevant pieces of information, such as use of restraints, drug/alcohol use, fires, and speeding, with the goal being to assess whether a certain vehicle type or manufacturer predicts the behavior of the vehicle's driver. To potentially support interpretation of this plot, we include in subfigure (b) a distance-based plot of different vehicle classifications (i.e. Luxury, Non-luxury). \\
 
 \begin{figure}[H]
 \centering
@@ -183,11 +185,11 @@ Although suggestive of meaningful difference across manufacturers, a simple comp
 
 The plots don't indicate strong patterns of differentiation, but there are some noteworthy indicators. In particular, these results suggest that luxury sport/SUV drivers behave distinctively, as noted by the outlying values for the BMW/Land Rover\footnote{Note that this analysis considers all Jaguar models to manufactured by Land Rover} in figure (a), and for Luxury SUV and Sport vehicles in figure (b).
 
-To explore the relevance of automaker in the context of actual prediction, we draw on various classifiers, in order to assess (a) is there any relationship between the make of a car and the likelihood of a multi-fatality incident, and (b) how important is this relationship, when compared alongside other important indicators of driver behavior. To more easily address part (a), we employ logistic regression for ease of interpretation. For the latter point, we pursue SVM and AdaBoost-based classification for their greater predictive power.\footnote{Note again that the data in this report are drawn solely from accidents involving at least one fatality. Therefore, classification of multi-fatality accidents are predicting the likelihood of such an outcome, \textit{given that a fatal accident has already occurred.}}
+Second, to explore the relevance of automaker in the context of actual prediction, we draw on various classifiers, in order to assess (a) is there any relationship between the make of a car and the likelihood of a multi-fatality incident, and (b) how important is this relationship, when compared alongside other important indicators of driver behavior. To more easily address part (a), we employ logistic regression for ease of interpretation. For the latter point, we pursue SVM and AdaBoost-based classification for their greater predictive power.\footnote{Note again that the data in this report are drawn solely from accidents involving at least one fatality. Therefore, classification of multi-fatality accidents are predicting the likelihood of such an outcome, \textit{given that a fatal accident has already occurred.}}
 
 To explore this issue, we generated a binary 1-0 indicator for whether an incident involved more than 1 fatality, and tested the classification performance of a series of different models, the results of which are shown below. To overcome the class imbalance issue, we employ the resampling procedure employed by the SMOTE algorithm (for ``Synthetic Minority Over-sampling TEchnique"), developed by Chawla, et al. (2002). SMOTE uses a combination of over-sampling of the minority class and under-sampling of the majority to improve class balance.\\
 
-The below table shows relative test error rates for classification using logistic regression, support vector machine, and adaptive boosting methods. \\
+Table 2 below shows relative test error rates for classification using logistic regression, support vector machine, and adaptive boosting methods. \\
 
 \begin{table}[H]
 \centering
@@ -202,7 +204,7 @@ Accuracy & 0.75 & 0.80 & 0.79 \\
 \end{table}
 
 \textbf{Logistic Regression} \\
-The table immediately below shows odds ratio coefficients for each of the automakers considered in this analysis, with BMW as the omitted reference category. A negative coefficient indicates a decreasing likelihood of a multi-fatality wreck, while a positive coefficient indicates the opposite. Some similarities to Figure 3 above jump out. Subarus and Land Rovers, for example, are here associated with relatively low probability of multi-fatality wrecks. However, these results suggest, contrary to what we might have assumed from Figure 3, that Volkswagens, Hondas, and Mazdas have the highest positive relationship with the probability of high fatality. Both analyses, however, point to a common conclusion that the typical concerned motorist or non-motorist should feel more secure around Subarus and luxury car brands, and less so around vehicles produced by the largest automakers (Ford, etc.). 
+Table 3 below shows odds ratio coefficients for each of the automakers considered in this analysis, with BMW as the omitted reference category. A negative coefficient indicates a decreasing likelihood of a multi-fatality wreck, while a positive coefficient indicates the opposite. Some similarities to Figure 5 above jump out. Subarus and Land Rovers, for example, are here associated with relatively low probability of multi-fatality wrecks. However, these results suggest, contrary to what we might have assumed from Figure 5, that Volkswagens, Hondas, and Mazdas have the highest positive relationship with the probability of high fatality. Both analyses, however, point to a common conclusion that the typical concerned motorist or non-motorist should feel more secure around Subarus and luxury car brands, and less so around vehicles produced by the largest automakers (Ford, etc.). 
 
 \begin{table}[H]
 \centering
@@ -229,7 +231,7 @@ The table immediately below shows odds ratio coefficients for each of the automa
 \caption{Automaker Odds Ratios for Predicting Multi-Fatality Accident (Relative to BMW)} 
 \end{table}
 
-The below table consists of estimates of odds ratios for the other predictors considered in the logistic regression, in order to indicate their relationships with the outcome when controlling for a vehicle's make. Their relevance is discussed in greater detail below. In brief, there are some fairly common sense results here, such as that not wearing any restraint, driving too fast, being distracted, and consuming drugs/alcohol are all habits positively associated with the probability that a fatal wreck led to multiple deaths. Some other more curious results emerge, as well. For example, a higher record of previous crashes, DWI convictions, and license suspensions/revocations is actually negatively correlated with the likelihood of high fatality.
+Table 4 consists of estimates of odds ratios for the other predictors considered in the logistic regression, in order to indicate their relationships with the outcome when controlling for a vehicle's make. Their relevance is discussed in greater detail below. In brief, there are some fairly common sense results here, such as that not wearing any restraint, driving too fast, being distracted, and consuming drugs/alcohol are all habits positively associated with the probability that a fatal wreck led to multiple deaths. Some other more curious results emerge, as well. For example, a higher record of previous crashes, DWI convictions, and license suspensions/revocations is actually negatively correlated with the likelihood of a high-fatality collision.
 
 \begin{table}[H]
 \centering
@@ -271,15 +273,15 @@ For our concerned motorist or non-motorist, it is worth addressing the level of 
 \caption{Variable Importance - AdaBoost Algorithm}
 \end{figure}
 
-The below two sections explore in further detail the issues of driver impairment and hit-and-run incidents.
+This analysis of automakers contained some clues regarding different driver behavior factors. We explore two of those in more depth below. Specifically, the below two sections explore in further detail the issues of driver impairment and hit-and-run incidents. 
 
 \section*{Impairment}
 
-The concerned motorist should already know intuitively that level of impairment (for both drivers and pedestrians) is important. Here we explore this issue more fully. Impairment, as we are observing it, is a factor variable with 13 different possible values. We used a mix of classifiers to see if impairment is an influential predictor.
+The concerned motorist should already know intuitively that level of impairment (for both drivers and pedestrians) is important. Impairment, as we are observing it, is a factor variable with 13 different possible values. We used a mix of classifiers to see if impairment is an influential predictor on the probability of a multi-fatality incident.
 
 \textbf{Logistic Regression}
 
-Below is a table with the odds ratio estimated for each type of impairment. What is shown is that blind, deaf, and cane/crutches shows small/no effect on the response variable, but all of the other variable have a much larger effect on the response variable, with the impairment type of ``Other Impairment" having the largest odds ratio. What is interesting is influence of alcohol or drugs seems to have the smallest positive measure of effect, with subjects being in a wheelchair, being emotional, or being blacked out having a larger measure of effect.
+Table 5 below shows the odds ratio estimated for each type of impairment. We observe that blindness, deafness, and having a cane/crutches shows a minimal effect on the response variable, but all of the other variable have a much larger effect on the response variable, with the impairment type of ``Other Impairment" having the largest odds ratio. What is interesting is influence of alcohol or drugs seems to have the smallest positive measure of effect, with subjects being in a wheelchair, being emotional, or being blacked out having a larger estimated effect.
 
 \begin{table}[H]
 \centering
@@ -325,12 +327,12 @@ Error Rate & .121 & 0.0911 & 0.0804 \\
 
 These results show that the Bernoulli distribution has the largest occurrence of errors within the test data, while the AdaBoost distribution has the smallest occurrence of errors.
 
-\textbf{Decision Tree}
+\textbf{Decision Trees}
 
 Decision trees can also be useful in predicting whether a specific accident is a high fatality accident or not. We created a decision tree with the same predictors as before and obtained a test error rate of .0934. When comparing this to the logistic regression and the boosted regressions, we can see that the decision tree produces higher error rates than all of the regressions other than the error rate for Bernoulli GBM regression (the simplest model considered here). As a likely result of the large number of predictors and the large number of factors within each predictor, the decision tree has a larger error rate than other forms of classification.
 
 \section*{Hit-and-Run}
-In this section we will discuss hit-and-run behavior as it brings more risk of fatalities during traffic accidents. According to a 2014 NHTSA traffic safety factsheet (see references), nearly one in five pedestrians killed in traffic crashes were involved in hit-and-runs. As such, it is an especially relevant factor to consider for non-motorists. To assess relationships of various predictors with hit-and-runs, we run a logistic regression, with a binary 0-1 indicator for hit-and-run as the outcome, and representative driver behavior and natural features such as spending, past driving history and time of the accident are used as independent variables. We employ logistic regression primarily because the focus is on inference rather than prediction. With some model selection, we get the following regression result (with a test error rate of .07).
+In this section, we examine hit-and-runs as an outcome, for the concerned motorist would also want to understand which factors contribute to such behavior. According to a 2014 NHTSA traffic safety factsheet (see references), nearly one in five pedestrians killed in traffic crashes were involved in hit-and-runs. As such, it is an especially relevant factor to consider for non-motorists. To assess relationships of various predictors with hit-and-runs, we run a logistic regression, with a binary 0-1 indicator for hit-and-run as the outcome, and representative driver behavior and natural features such as spending, past driving history and time of the accident used as independent variables. We employ logistic regression primarily because the focus is on inference rather than prediction. With some model selection, we get the following regression result (with a test error rate of .07).
 
 Hit-and-runs are a relatively rare event. Thus, we again employed resampling techniques to adjust for class imbalance, oversampling the minority class (hit-and-run = 1) and undersampling the majority class (hit-and-run = 0). In comparing resampled data (results shown below) with the original imbalanced data set, there did not appear to be significant difference in coefficient estimates.
 
@@ -366,7 +368,7 @@ It is interesting to note that the indicator of multiple fatalities has a signif
 
 
 \section*{Environmental Factors}
-The concerned motorist may also worry about the weather, in addition to the issues we have considered throughout this report. A proper analysis of environmental factors is both beyond the scope of this analysis, and requires incorporating a richer set of weather data than the handful of indicators available in the FARS system. A quick initial check of the relevance of environmental conditions doesn't return many relevant results. The plot below shows data from Cook County, Illinois, chosen for its high number of traffic fatalities and variable weather\footnote{Especially when compared to Dallas, Phoenix, and LA County}. The vast majority of fatal collisions occur in clear weather, which is due in large part no doubt to the fact that it is simply clear much more often in Chicago than it is rainy or snowy! 
+The concerned motorist may also worry about the weather, in addition to the issues we have considered throughout this report. A proper analysis of environmental factors is both beyond the scope of this analysis, and requires incorporating a richer set of weather data than the handful of indicators available in the FARS system. A quick initial check of the relevance of environmental conditions doesn't return many relevant results. Figure 9 below shows data from Cook County, Illinois, chosen for its high number of traffic fatalities and variable weather\footnote{Especially when compared to Dallas, Phoenix, and LA County}. The vast majority of fatal collisions occur in clear weather, which is due in large part no doubt to the fact that it is simply clear much more often in Chicago than it is rainy or snowy! 
 
 \begin{figure}[H]
 \centering
@@ -379,9 +381,9 @@ The concerned motorist may also worry about the weather, in addition to the issu
 
 Many of the issues considered in this analysis will likely already have been considered by the well-prepared motorist or non-motorist. However, they bear repeating, alongside some recommendations that may surprise the average reader. In particular:
 
-Where to Drive: More fatal accidents do occur in high-population states, but there are also pockets of low-population regions (such as Idaho) that show a relatively high rate of fatal accidents. When choosing a place to live or travel in order to avoid a fatal collision, the concerned motorist should generally avoid states with massive populations, and look towards the Great Plains states (Montana, the Dakotas), or the smallest states in the country (e.g. Rhode Island, Connecticut). In addition, avoid highways in favor of smaller roads, when possible. 
+Where to Drive: More fatal accidents do occur in high-population states, but there are also pockets of low-population regions (such as Idaho) that show a relatively high rate of fatal accidents. When choosing a place to live or travel in order to avoid a fatal collision, the concerned motorist should generally avoid states with massive populations, and look towards the Great Plains states (Montana, the Dakotas), or the smallest states in the country (e.g. Rhode Island, Connecticut). In addition, avoid highways in favor of smaller roads, when possible, to benefit from generally lower travel speeds.
 
-When to Drive: Fatality rates are consistently highest between midnight and 5AM throughout much of the country. The hour of a crash is also a key determinant of the probability that an accident results in multiple fatalities, and involved a hit-and-run.
+When to Drive: Don't stay out too late or get up too early. Fatality rates are consistently highest between midnight and 5AM throughout much of the country. The hour of a crash is also a key determinant of the probability that an accident results in multiple fatalities, and involved a hit-and-run.
 
 Which Cars to Avoid: Steer clear of the largest automakers, and rest easier among Subarus, BMWs, Jaguars, and Range Rovers.
 
