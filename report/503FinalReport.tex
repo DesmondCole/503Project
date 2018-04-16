@@ -214,6 +214,32 @@ The below two sections explore in further detail the issues of driver impairment
 
 According to an NHTSA report in 2014, nearly one in five pedestrians killed were involved in hit-and-run crashes. In this section we will discuss hit-and-run behavior as it brings more risk of fatalities during traffic accident. We are interested in what characteristics are more correlated with hit-and-run. We generated a binary of 1 when there is hit-and-run and 0 otherwise. Since the focus is on inference rather than prediction, we used logistic regression, where hit-and-run as dependent variables and representative driver behavior and natural features such as spending, past driving history and time of the accident are used as independent variables. With some model selection, we get the following regression result.  
 
+\begin{table}[!htbp] \centering 
+	\caption{} 
+	\label{} 
+	\begin{tabular}{@{\extracolsep{5pt}}lc} 
+		\\[-1.8ex]\hline 
+		\hline \\[-1.8ex] 
+		& \multicolumn{1}{c}{\textit{Dependent variable:}} \\ 
+		\cline{2-2} 
+		\\[-1.8ex] & HitAndRun \\ 
+		\hline \\[-1.8ex] 
+		Distracted & 0.216$^{***}$ (0.025) \\ 
+		Drugs & 0.307$^{***}$ (0.048) \\ 
+		MultiFatality & $-$1.059$^{***}$ (0.050) \\ 
+		Speeding & 1.018$^{***}$ (0.029) \\ 
+		previous\_recorded\_crashes & 0.004 (0.020) \\ 
+		previous\_dwi\_convictions & 0.777$^{***}$ (0.040) \\ 
+		previous\_recorded\_suspensions\_and\_revocations & 0.158$^{***}$ (0.007) \\ 
+		DrunkDrivers & 0.110$^{***}$ (0.028) \\ 
+		daytime & $-$0.816$^{***}$ (0.032) \\ 
+		evening & 0.153$^{***}$ (0.031) \\ 
+		Constant & $-$1.270$^{***}$ (0.030) \\  
+		\hline \\[-1.8ex] 
+		\textit{Note:} Standard error is in bracket & \multicolumn{1}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+	\end{tabular} 
+\end{table} 
+
 According to the table, speeding, previous DWI convictions and drugs are highly correlated with an increase in hit-and-runs. There is also a significant reduction in probability of hit-and-runs during the daytime (7am to 6pm) than night and evening. Other risk factors are also associated with higher chances of hit-and-run. 
 
 The most surprising finding is that the indicator of multiple fatalities has a significantly negative coefficient. We believe there is a possibility of confounding variables. For example, hit-and-run crashes mostly involve pedestrians and likely to have single fatality. In addition, a multiple-fatality crash might mean a severe crash that the drivers may not even survive to commit hit-and-runs. With these two potential confounding variables, it is possible for multiple-fatality to have a negative coefficient.  
