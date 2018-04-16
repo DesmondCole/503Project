@@ -84,7 +84,7 @@ To tease out potential state-level variation in daily cycles, we used shape-base
 
 
 \section*{Traffic Fatality Risk Factor Analysis}
-We used a mix of classifiers to assess factors relevant to incident fatalities, with a particular focus on driver behavior and vehicle manufacturer. Our analysis begins with an overview of vehicle types/manufacturers, focusing on their relevance within the context of other predictors. We then separately examine different aspects of driver behavior, specifically driver impairment and whether a driver engaged in a hit and run during a given collision. Given that our dataset consists solely of fatal traffic incidents, we choose as a primary output incidents involving more than one fatality.
+We used a mix of classifiers to assess factors relevant to incident fatalities, with a particular focus on driver behavior and vehicle manufacturer. Our analysis begins with an overview of vehicle types/manufacturers, focusing on their relevance within the context of other predictors. We then separately examine different aspects of driver behavior, specifically driver impairment and whether a driver engaged in a hit-and-run during a given collision. Given that our dataset consists solely of fatal traffic incidents, we choose as a primary output incidents involving more than one fatality.
 
 In several cases, we had to grapple with significant class imbalance. For example, there are far more single-fatality incidents than multi-fatality incidents. As a result, optimal classification in the naive setting without any resampling will occasionally identify all incidents as single-fatality.   
 
@@ -175,7 +175,7 @@ For interpreting the sign of a given predictor's relationship with the incidence
 1 & 0.26 & Distracted \\ 
   2 & 1.40 & On Drugs \\ 
   3 & 0.73 & No Restraint \\ 
-  4 & 0.85 & Hit and Run \\ 
+  4 & 0.85 & Hit-and-Run \\ 
   5 & 0.66 & Speeding \\ 
   6 & -0.29 & Previous Recorded Crashes \\ 
   7 & -0.33 & Previous DWI Convictions \\ 
@@ -204,15 +204,16 @@ Finally, to assess the actual significance of automaker within the context of ot
 \caption{Variable Importance - AdaBoost Algorithm}
 \end{figure}
 
-The below two sections explore in further detail the issues of driver impairment and hit and run incidents.
+The below two sections explore in further detail the issues of driver impairment and hit-and-run incidents.
 
 \section*{Driver Impairment}
 
 (Teerth Insert Analysis Here)
 
 \section*{Hit-and-Run}
+In this section we will discuss hit-and-run behavior as it brings more risk of fatalities during traffic accident. According to a 2014 NHTSA traffic safety factsheet (see references), nearly one in five pedestrians killed in traffic crashes were involved in hit-and-runs. As such, it is an especially relevant factor to consider for non-motorists. To assess relationships of various predictors with hit-and-runs, we run a logistic regression, with a binary 0-1 indicator for hit-and-run as the outcome, and representative driver behavior and natural features such as spending, past driving history and time of the accident are used as independent variables. We employ logistic regression primarily because the focus is on inference rather than prediction. where hit-and-run as dependent variables . With some model selection, we get the following regression result.
 
-According to an NHTSA report in 2014, nearly one in five pedestrians killed were involved in hit-and-run crashes. In this section we will discuss hit-and-run behavior as it brings more risk of fatalities during traffic accident. We are interested in what characteristics are more correlated with hit-and-run. We generated a binary of 1 when there is hit-and-run and 0 otherwise. Since the focus is on inference rather than prediction, we used logistic regression, where hit-and-run as dependent variables and representative driver behavior and natural features such as spending, past driving history and time of the accident are used as independent variables. With some model selection, we get the following regression result.  
+Hit-and-runs are a relatively rare event. Thus, we again employed resampling techniques to adjust for class imbalance, oversampling the minority class (hit-and-run = 1) and undersampling the majority class (hit-and-run = 0). In comparing resampled data (results shown below) with the original imbalanced data set, there did not appear to be significant difference in coefficient estimates.
 
 \begin{table}[!htbp] \centering 
 	\caption{} 
@@ -222,27 +223,27 @@ According to an NHTSA report in 2014, nearly one in five pedestrians killed were
 		\hline \\[-1.8ex] 
 		& \multicolumn{1}{c}{\textit{Dependent variable:}} \\ 
 		\cline{2-2} 
-		\\[-1.8ex] & HitAndRun \\ 
+		\\[-1.8ex] & Hit-and-Run \\ 
 		\hline \\[-1.8ex] 
 		Distracted & 0.216$^{***}$ (0.025) \\ 
 		Drugs & 0.307$^{***}$ (0.048) \\ 
 		MultiFatality & $-$1.059$^{***}$ (0.050) \\ 
 		Speeding & 1.018$^{***}$ (0.029) \\ 
-		previous\_recorded\_crashes & 0.004 (0.020) \\ 
-		previous\_dwi\_convictions & 0.777$^{***}$ (0.040) \\ 
-		previous\_recorded\_suspensions\_and\_revocations & 0.158$^{***}$ (0.007) \\ 
+		Previous Recorded Crashes & 0.004 (0.020) \\ 
+		Previous DWI Convictions & 0.777$^{***}$ (0.040) \\ 
+		Previous Recorded Suspensions and Revocations & 0.158$^{***}$ (0.007) \\ 
 		DrunkDrivers & 0.110$^{***}$ (0.028) \\ 
-		daytime & $-$0.816$^{***}$ (0.032) \\ 
-		evening & 0.153$^{***}$ (0.031) \\ 
+		Daytime & $-$0.816$^{***}$ (0.032) \\ 
+		Evening & 0.153$^{***}$ (0.031) \\ 
 		Constant & $-$1.270$^{***}$ (0.030) \\  
 		\hline \\[-1.8ex] 
 		\textit{Note:} Standard error is in bracket & \multicolumn{1}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
 	\end{tabular} 
 \end{table} 
 
-According to the table, speeding, previous DWI convictions and drugs are highly correlated with an increase in hit-and-runs. There is also a significant reduction in probability of hit-and-runs during the daytime (7am to 6pm) than night and evening. Other risk factors are also associated with higher chances of hit-and-run. 
+The results above suggest that speeding, previous DWI convictions and drugs are highly correlated with an increase in hit-and-runs. There is also a significant reduction in probability of hit-and-runs during the daytime (7am to 6pm) compared with the night and evening.
 
-The most surprising finding is that the indicator of multiple fatalities has a significantly negative coefficient. We believe there is a possibility of confounding variables. For example, hit-and-run crashes mostly involve pedestrians and likely to have single fatality. In addition, a multiple-fatality crash might mean a severe crash that the drivers may not even survive to commit hit-and-runs. With these two potential confounding variables, it is possible for multiple-fatality to have a negative coefficient.  
+It is interesting to note that the indicator of multiple fatalities has a significantly negative coefficient. This may be due to the fact that hit-and-runs are commonly involved in collisions with pedestrians, which may be less likely to result in multiple fatalities when compared with multi-vehicle collisions. In addition, a multiple-fatality crash might mean a severe crash that is more likely to total a given car, preventing the driver from fleeing the crash.
 
 
 \section*{Environmental Factors}
