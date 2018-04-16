@@ -23,14 +23,15 @@
 \large Analysis of Major Traffic Fatality Predictors}}
 \author{Desmond Cole \\
 (Time Trends, Automaker/Vehicle Type, Environmental Factors, \\
-Report Introduction, General Editing, Conclusion) \\
+Report Introduction) \\
 \\
 Teerth Patel \\
-(Geographic Trends, Driver Impairment,
-General Editing, Conclusion) \\
+(Geographic Trends, Driver Impairment) \\
 \\
 Yunbin Peng \\
-(Hit-and-Run)}
+(Hit-and-Run) \\
+\\ 
+All authors contributed to general editing and the conclusion}
 
 \begin{document}
 \interfootnotelinepenalty=10000
@@ -329,7 +330,7 @@ These results show that the Bernoulli distribution has the largest occurrence of
 Decision trees can also be useful in predicting whether a specific accident is a high fatality accident or not. We created a decision tree with the same predictors as before and obtained a test error rate of .0934. When comparing this to the logistic regression and the boosted regressions, we can see that the decision tree produces higher error rates than all of the regressions other than the error rate for Bernoulli GBM regression (the simplest model considered here). As a likely result of the large number of predictors and the large number of factors within each predictor, the decision tree has a larger error rate than other forms of classification.
 
 \section*{Hit-and-Run}
-In this section we will discuss hit-and-run behavior as it brings more risk of fatalities during traffic accidents. According to a 2014 NHTSA traffic safety factsheet (see references), nearly one in five pedestrians killed in traffic crashes were involved in hit-and-runs. As such, it is an especially relevant factor to consider for non-motorists. To assess relationships of various predictors with hit-and-runs, we run a logistic regression, with a binary 0-1 indicator for hit-and-run as the outcome, and representative driver behavior and natural features such as spending, past driving history and time of the accident are used as independent variables. We employ logistic regression primarily because the focus is on inference rather than prediction. With some model selection, we get the following regression result.
+In this section we will discuss hit-and-run behavior as it brings more risk of fatalities during traffic accidents. According to a 2014 NHTSA traffic safety factsheet (see references), nearly one in five pedestrians killed in traffic crashes were involved in hit-and-runs. As such, it is an especially relevant factor to consider for non-motorists. To assess relationships of various predictors with hit-and-runs, we run a logistic regression, with a binary 0-1 indicator for hit-and-run as the outcome, and representative driver behavior and natural features such as spending, past driving history and time of the accident are used as independent variables. We employ logistic regression primarily because the focus is on inference rather than prediction. With some model selection, we get the following regression result (with a test error rate of .07).
 
 Hit-and-runs are a relatively rare event. Thus, we again employed resampling techniques to adjust for class imbalance, oversampling the minority class (hit-and-run = 1) and undersampling the majority class (hit-and-run = 0). In comparing resampled data (results shown below) with the original imbalanced data set, there did not appear to be significant difference in coefficient estimates.
 
@@ -378,13 +379,13 @@ The concerned motorist may also worry about the weather, in addition to the issu
 
 Many of the issues considered in this analysis will likely already have been considered by the well-prepared motorist or non-motorist. However, they bear repeating, alongside some recommendations that may surprise the average reader. In particular:
 
-Where to Drive: Fatality rates seem to be the highest on highways of less densely populated states. More fatal accidents do occur in higher population states, but population density suggests that more fatal accidents occur per capita for states with the largest areas. So, it is optimal to drive on local roads with lower populations in high densities, if at all possible.
+Where to Drive: More fatal accidents do occur in high-population states, but there are also pockets of low-population regions (such as Idaho) that show a relatively high rate of fatal accidents. When choosing a place to live or travel in order to avoid a fatal collision, the concerned motorist should generally avoid states with massive populations, and look towards the Great Plains states (Montana, the Dakotas), or the smallest states in the country (e.g. Rhode Island, Connecticut). In addition, avoid highways in favor of smaller roads, when possible. 
 
-When to Drive: Fatality rates are consistently highest between midnight and 5AM throughout much of the country. The hour of a crash is also a key determinant of the probability that an accident results in multiple fatalities.
+When to Drive: Fatality rates are consistently highest between midnight and 5AM throughout much of the country. The hour of a crash is also a key determinant of the probability that an accident results in multiple fatalities, and involved a hit-and-run.
 
 Which Cars to Avoid: Steer clear of the largest automakers, and rest easier among Subarus, BMWs, Jaguars, and Range Rovers.
 
-Which Drivers to Avoid: Drivers on drugs or alcohol, distracted drivers, drivers not wearing seatbelts, and drivers traveling at high speeds.
+Which Drivers to Avoid: Watch out for drivers who have a previous record of violations/convictions, are on drugs or alcohol or otherwise impaired, are distracted, are not wearing seatbelts, or are traveling at high speeds.
 
 
 \section*{References}

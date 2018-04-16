@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  16 APR 2018 10:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  16 APR 2018 11:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -210,18 +210,18 @@ LaTeX Warning: Label `fig:test' multiply defined.
 )
 \openout1 = `503FinalReport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -301,43 +301,43 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 39.
+LaTeX Font Info:    Try loading font information for U+msa on input line 40.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 39.
+LaTeX Font Info:    Try loading font information for U+msb on input line 40.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 42--43
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 52.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 53.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 52.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 53.
  [1]
 <heatmap.png, id=13, 803.25093pt x 760.34062pt>
 File: heatmap.png Graphic file (type png)
  <use heatmap.png>
-Package pdftex.def Info: heatmap.png used on input line 82.
+Package pdftex.def Info: heatmap.png used on input line 83.
 (pdftex.def)             Requested size: 300.59326pt x 284.53534pt.
 
 <choropleth.png, id=14, 983.17313pt x 760.34062pt>
 File: choropleth.png Graphic file (type png)
  <use choropleth.png>
-Package pdftex.def Info: choropleth.png used on input line 90.
+Package pdftex.def Info: choropleth.png used on input line 91.
 (pdftex.def)             Requested size: 294.32413pt x 227.61667pt.
 
 [2 <./heatmap.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 97--98
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
 
  []
 
@@ -345,25 +345,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 97--98
 File: WeightedNationalDayTrends.png Graphic file (type png)
 
 <use WeightedNationalDayTrends.png>
-Package pdftex.def Info: WeightedNationalDayTrends.png used on input line 105.
+Package pdftex.def Info: WeightedNationalDayTrends.png used on input line 106.
 (pdftex.def)             Requested size: 211.38458pt x 176.33983pt.
 
 <WeightedStatePlot.png, id=20, 2851.65375pt x 2378.8875pt>
 File: WeightedStatePlot.png Graphic file (type png)
 
 <use WeightedStatePlot.png>
-Package pdftex.def Info: WeightedStatePlot.png used on input line 111.
+Package pdftex.def Info: WeightedStatePlot.png used on input line 112.
 (pdftex.def)             Requested size: 211.38458pt x 176.33983pt.
  [3 <./choropleth.png>]
 <StateClusterPlot_Hourly.png, id=25, 3613.5pt x 1388.18625pt>
 File: StateClusterPlot_Hourly.png Graphic file (type png)
 
 <use StateClusterPlot_Hourly.png>
-Package pdftex.def Info: StateClusterPlot_Hourly.png used on input line 123.
+Package pdftex.def Info: StateClusterPlot_Hourly.png used on input line 124.
 (pdftex.def)             Requested size: 352.27348pt x 135.33173pt.
  [4 <./WeightedNationalDayTrends.png> <./WeightedStatePlot.png> <./StateCluster
 Plot_Hourly.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 152--153
+Underfull \hbox (badness 10000) in paragraph at lines 153--154
 
  []
 
@@ -371,15 +371,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 152--153
 File: ManufacturerRankingPlot.png Graphic file (type png)
 
 <use ManufacturerRankingPlot.png>
-Package pdftex.def Info: ManufacturerRankingPlot.png used on input line 158.
+Package pdftex.def Info: ManufacturerRankingPlot.png used on input line 159.
 (pdftex.def)             Requested size: 422.77664pt x 213.87637pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 154--161
+Underfull \hbox (badness 10000) in paragraph at lines 155--162
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 163--164
+Underfull \hbox (badness 10000) in paragraph at lines 164--165
 
  []
 
@@ -387,27 +387,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 163--164
 File: ManufacturerMDSPlot.png Graphic file (type png)
 
 <use ManufacturerMDSPlot.png>
-Package pdftex.def Info: ManufacturerMDSPlot.png used on input line 169.
+Package pdftex.def Info: ManufacturerMDSPlot.png used on input line 170.
 (pdftex.def)             Requested size: 234.8775pt x 211.15787pt.
 
 <VehicleTypeMDSPlot.png, id=41, 2806.485pt x 2523.4275pt>
 File: VehicleTypeMDSPlot.png Graphic file (type png)
 
 <use VehicleTypeMDSPlot.png>
-Package pdftex.def Info: VehicleTypeMDSPlot.png used on input line 175.
+Package pdftex.def Info: VehicleTypeMDSPlot.png used on input line 176.
 (pdftex.def)             Requested size: 234.8775pt x 211.15787pt.
  [6 <./ManufacturerRankingPlot.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--190
+Underfull \hbox (badness 10000) in paragraph at lines 190--191
 
  []
 
 [7 <./ManufacturerMDSPlot.png> <./VehicleTypeMDSPlot.png>] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 259--260
+Underfull \hbox (badness 10000) in paragraph at lines 260--261
 
  []
 
@@ -415,20 +415,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 259--260
 File: ImportancePlot_SVM.png Graphic file (type png)
 
 <use ImportancePlot_SVM.png>
-Package pdftex.def Info: ImportancePlot_SVM.png used on input line 263.
+Package pdftex.def Info: ImportancePlot_SVM.png used on input line 264.
 (pdftex.def)             Requested size: 426.75185pt x 215.45763pt.
  [9]
 <ImportancePlot_ADABoost.png, id=60, 3703.8375pt x 1869.98625pt>
 File: ImportancePlot_ADABoost.png Graphic file (type png)
 
 <use ImportancePlot_ADABoost.png>
-Package pdftex.def Info: ImportancePlot_ADABoost.png used on input line 269.
+Package pdftex.def Info: ImportancePlot_ADABoost.png used on input line 270.
 (pdftex.def)             Requested size: 426.75185pt x 215.45763pt.
  [10 <./ImportancePlot_SVM.png> <./ImportancePlot_ADABoost.png>] [11] [12]
 <Environmental.png, id=76, 2878.755pt x 1583.9175pt>
 File: Environmental.png Graphic file (type png)
  <use Environmental.png>
-Package pdftex.def Info: Environmental.png used on input line 372.
+Package pdftex.def Info: Environmental.png used on input line 373.
 (pdftex.def)             Requested size: 413.69702pt x 227.6199pt.
 
 [13 <./Environmental.png>] [14] (./503FinalReport.aux)
@@ -439,7 +439,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  4311 strings out of 492995
  65250 string characters out of 6132704
- 234426 words of memory out of 5000000
+ 234434 words of memory out of 5000000
  7780 multiletter control sequences out of 15000+600000
  14540 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -456,7 +456,7 @@ xlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
 live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texli
 ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texliv
 e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on 503FinalReport.pdf (15 pages, 3236926 bytes).
+Output written on 503FinalReport.pdf (15 pages, 3237268 bytes).
 PDF statistics:
  123 PDF objects out of 1000 (max. 8388607)
  72 compressed objects within 1 object stream
