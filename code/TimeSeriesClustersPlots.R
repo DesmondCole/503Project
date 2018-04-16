@@ -18,8 +18,8 @@ TimeData =  allfiles[[1]] %>%
     .(fatalaccidents = .N),
     by=.(date_of_crash,hour_of_crash,day_of_week,
          FIPS,state_name,Population)] %>% 
-  .[,week_of_crash := week(date_of_crash)]
- 
+
+   
 
 #Nationwide Hourly
 NationalData = TimeData[,.(fatalaccidents=sum(fatalaccidents)),by=.(hour_of_crash)] %>%
