@@ -77,6 +77,17 @@ We begin with a geographic and time-based overview of patterns of fatal traffic 
 
 Geographical data is extremely important, especially
 
+\begin{figure}[H]
+\centering
+  \includegraphics[width=15cm,height=8cm,keepaspectratio]{heatmap.png}
+\caption{Heatmap of all fatal accidents}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+  \includegraphics[width=15cm,height=8cm,keepaspectratio]{choropleth.png}
+\caption{Choropleth of Accidents per 1000 people per state}
+\end{figure}
 
 \subsection*{Time Trends - Hourly Cycle}
 At the national and state level, the cycle of fatal accidents throughout the day is fairly consistent. The below plot shows aggregate fatal accidents per thousand vehicles per hour for the United States, between 2015 and 2016. To account for traffic variability, we weighted the rate of fatal incidents according to hour-by-hour traffic flow allocations estimated by Batterman, et al. (see references). These same flow allocations are used to weight state-by-state hourly trends, under the assumption that state-by-state traffic flow patterns tend to be similar. \\
@@ -263,7 +274,39 @@ An important predictor for high fatality accidents seems to be driver impairment
 
 \textbf{Logistic Regression}
 
-The logistic regression we have 
+The odds ratio of the logistic regression gives a relative measure of effect from the predictor variable to the response variable. Below is a table with the odds ratio given for each type of impairment in the impairment variable.  What is shown is that blind, deaf, and cane/crutches shows small/no effect on the response variable, but all of the other variable have a much larger effect on the response variable, with the impairment type of "Other Impairment" having the largest odds ratio. What is interesting is influence of alcohol or drugs seems to have the smallest positive measure of effect, with subjects being in a wheelchair, being emotional, or begin blacked out having a larger measure of effect.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlr}
+  \hline
+ & Impairment & Odds \\ 
+  \hline
+1 & Blind & 0.20 \\ 
+  2 & Deaf & 0.19 \\ 
+  3 & Emotional & 13.43 \\ 
+  4 & Blackout & 13.89 \\ 
+  5 & Impaired Due to Previous Injury & 14.73 \\ 
+  6 & None/Apparently Normal & 14.76 \\ 
+  7 & Not Reported & 14.16 \\ 
+  8 & Wheelchair & 12.95 \\ 
+  9 & Other Impairment & 15.69 \\ 
+  10 & No Details & 0.18 \\ 
+  11 & Influence of Alcohol or Drugs & 12.06 \\ 
+  12 & Cane or Crutches & 0.05 \\ 
+  13 & Unknown & 14.03 \\ 
+   \hline
+\end{tabular}
+\caption{Predictor Odds Ratios}
+\end{table}
+
+The logistic regression we have generated shows a smaller error rate than the error rate given for the logistic regression of the car manufacturers. The error rate of the logistic regression is .088. This is directly, inversely related to the prediction accuracy given in the last section. A value of .088 error rate shows that the prediction we incorrect for that proportion of trials.
+
+\textbf{GBM}
+
+Another interesting type of classification is using generalized boosted models (GBM). GBM can be used to with several different distributions to show which variables have 
+
+\textbf{Decision Tree}
 
 \section*{Hit-and-Run}
 In this section we will discuss hit-and-run behavior as it brings more risk of fatalities during traffic accidents. According to a 2014 NHTSA traffic safety factsheet (see references), nearly one in five pedestrians killed in traffic crashes were involved in hit-and-runs. As such, it is an especially relevant factor to consider for non-motorists. To assess relationships of various predictors with hit-and-runs, we run a logistic regression, with a binary 0-1 indicator for hit-and-run as the outcome, and representative driver behavior and natural features such as spending, past driving history and time of the accident are used as independent variables. We employ logistic regression primarily because the focus is on inference rather than prediction. where hit-and-run as dependent variables . With some model selection, we get the following regression result.
