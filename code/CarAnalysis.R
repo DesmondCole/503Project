@@ -110,7 +110,8 @@ SummaryData = ClassificationData[,.(deathspermillion = 1000000*sum(number_of_fat
 CarPlot = ggplot(SummaryData,aes(x=reorder(Makers,-deathspermillion))) +
   geom_bar(aes(weight=deathspermillion),fill="dark green") + 
   labs(y = "Fatalities per Million Cars",x = "Manufacturer") + 
-  ggtitle("")
+  ggtitle("") + 
+  theme(axis.text.x = element_text(size=10))
 CarPlot
 ggsave("./report/ManufacturerRankingPlot.png",plot=CarPlot,device="png",width=15.2,height=7.69,units="in")
 
