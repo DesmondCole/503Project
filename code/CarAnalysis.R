@@ -110,7 +110,7 @@ SummaryData = ClassificationData[,.(deathspermillion = 1000000*sum(number_of_fat
 CarPlot = ggplot(SummaryData,aes(x=reorder(Makers,-deathspermillion))) +
   geom_bar(aes(weight=deathspermillion),fill="dark green") + 
   labs(y = "Fatalities per Million Cars",x = "Manufacturer") + 
-  ggtitle("Ranking of Manufacturer by Fatal Accidents")
+  ggtitle("")
 CarPlot
 ggsave("./report/ManufacturerRankingPlot.png",plot=CarPlot,device="png",width=15.2,height=7.69,units="in")
 
@@ -177,7 +177,6 @@ MDSPlot = ggplot(data=mdsresults,aes(x=X1,y=X2,label=Makers)) +
   geom_text_repel(aes(label=Makers),size=4.5) + 
   labs(x="Dim. 1",y="Dim. 2") + 
   scale_x_continuous(limits=c(-.05,.12))
-  ggtitle("Distance of Manufacturers according to Driver Behavior in Fatal Accidents")
 MDSPlot
 ggsave("./report/ManufacturerMDSPlot.png",plot=MDSPlot,device="png",
        width=9.32,height=8.38,units="in")
@@ -219,7 +218,6 @@ MDSPlot_type = ggplot(data=mdsresults_type,aes(x=X1,y=X2,label=Types)) +
   geom_text_repel(aes(label=Types),size=4.5,segment.alpha=0) + 
   labs(x="Dim. 1",y="Dim. 2") + 
   scale_x_continuous(limits=c(-.15,.20))
-  ggtitle("Distance of Types according to Driver Behavior in Fatal Accidents")
 MDSPlot_type
 
 ggsave("./report/VehicleTypeMDSPlot.png",plot=MDSPlot_type,device="png",
