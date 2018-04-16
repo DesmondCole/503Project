@@ -84,8 +84,10 @@ To tease out potential state-level variation in daily cycles, we used shape-base
 \end{table}
 
 
-\section*{Risks of Traffic Fatalities}
-We used a mix of classifiers to assess factors relevant to incident fatalities, with a particular focus on driver behavior and vehicle manufacturer. In many cases, we had to grapple with significant class imbalance. For example, there are far more single-fatality incidents than multi-fatality incidents. As a result, optimal classification in the naive setting without any resampling will occasionally identify all incidents as single-fatality.   
+\section*{Traffic Fatality Risk Factor Analysis}
+We used a mix of classifiers to assess factors relevant to incident fatalities, with a particular focus on driver behavior and vehicle manufacturer. Our analysis begins with an overview of vehicle types/manufacturers, focusing on their relevance within the context of other predictors. We then separately examine different aspects of driver behavior, specifically driver impairment and whether a driver engaged in a hit and run during a given collision. Given that our dataset consists solely of fatal traffic incidents, we choose as a primary output incidents involving more than one fatality
+
+In several cases, we had to grapple with significant class imbalance. For example, there are far more single-fatality incidents than multi-fatality incidents. As a result, optimal classification in the naive setting without any resampling will occasionally identify all incidents as single-fatality.   
 
 \subsection*{Driver Behavior}
 \textbf{Drugs/Alcohol}
@@ -152,7 +154,7 @@ To numerically explore this issue more fully, we draw on results of a logistic r
 \end{table}
 
 \subsection*{Multi-fatality Incidents}
-Here we discuss multi-fatality incidents more thoroughly. Every observation in the available data describes an instance of a given person dying, but what about multiple deaths? To explore this issue, we generated a binary 1-0 indicator for whether an incident involved more than 1 fatality, and tested the classification performance of a series of different models, the results of which are shown below. The resampling procedure used here is the SMOTE algorithm (for "Synthetic Minority Over-sampling TEchnique"), developed by Chawla, et al. (2002). SMOTE uses a combination of over-sampling of the minority class and under-sampling of the majority to improve class balance. \\
+Here we discuss multi-fatality incidents more thoroughly. Every observation in the available data describes an instance of a given person dying, but what about multiple deaths? To explore this issue, we generated a binary 1-0 indicator for whether an incident involved more than 1 fatality, and tested the classification performance of a series of different models, the results of which are shown below. The resampling procedure used here is the SMOTE algorithm (for ``Synthetic Minority Over-sampling TEchnique"), developed by Chawla, et al. (2002). SMOTE uses a combination of over-sampling of the minority class and under-sampling of the majority to improve class balance. \\
 
 The below table shows relative test error rates for classification using logistic regression, support vector machine, and adaptive boosting methods. \\
 
@@ -217,6 +219,14 @@ A proper analysis of environmental factors is both beyond the scope of this anal
   \includegraphics[width=15cm,height=8cm,keepaspectratio]{Environmental.png}
 \caption{Fatal Accidents in Cook County, by Atmospheric Condition}
 \end{figure}
+
+
+
+
+
+
+
+
 
 
 \section*{Conclusion}
