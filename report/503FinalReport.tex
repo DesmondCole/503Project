@@ -85,13 +85,9 @@ To tease out potential state-level variation in daily cycles, we used shape-base
 
 
 \section*{Traffic Fatality Risk Factor Analysis}
-We used a mix of classifiers to assess factors relevant to incident fatalities, with a particular focus on driver behavior and vehicle manufacturer. Our analysis begins with an overview of vehicle types/manufacturers, focusing on their relevance within the context of other predictors. We then separately examine different aspects of driver behavior, specifically driver impairment and whether a driver engaged in a hit and run during a given collision. Given that our dataset consists solely of fatal traffic incidents, we choose as a primary output incidents involving more than one fatality
+We used a mix of classifiers to assess factors relevant to incident fatalities, with a particular focus on driver behavior and vehicle manufacturer. Our analysis begins with an overview of vehicle types/manufacturers, focusing on their relevance within the context of other predictors. We then separately examine different aspects of driver behavior, specifically driver impairment and whether a driver engaged in a hit and run during a given collision. Given that our dataset consists solely of fatal traffic incidents, we choose as a primary output incidents involving more than one fatality.
 
 In several cases, we had to grapple with significant class imbalance. For example, there are far more single-fatality incidents than multi-fatality incidents. As a result, optimal classification in the naive setting without any resampling will occasionally identify all incidents as single-fatality.   
-
-\subsection*{Driver Behavior}
-\textbf{Drugs/Alcohol}
-\textbf{Distraction}
 
 \subsection*{Automakers}
 
@@ -127,7 +123,6 @@ The plots don't indicate strong patterns of differentiation, but there are some 
 
 To numerically explore this issue more fully, we draw on results of a logistic regression model (discussed more fully in the next section) to consider how a vehicle's manufacturer affects the likelihood of a multi-fatality collision.\footnote{Note again that the data here are drawn solely from accidents involving at least one fatality. Therefore, classification methods such as this are predicting the severity of an accident, \textit{given that one has already occurred.}}
 
-
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrl}
@@ -153,8 +148,8 @@ To numerically explore this issue more fully, we draw on results of a logistic r
 \caption{Automaker Odds Ratios for Predicting Multi-Fatality Accident (Relative to BMW)} 
 \end{table}
 
-\subsection*{Multi-fatality Incidents}
-Here we discuss multi-fatality incidents more thoroughly. Every observation in the available data describes an instance of a given person dying, but what about multiple deaths? To explore this issue, we generated a binary 1-0 indicator for whether an incident involved more than 1 fatality, and tested the classification performance of a series of different models, the results of which are shown below. The resampling procedure used here is the SMOTE algorithm (for ``Synthetic Minority Over-sampling TEchnique"), developed by Chawla, et al. (2002). SMOTE uses a combination of over-sampling of the minority class and under-sampling of the majority to improve class balance. \\
+\textbf{Automakers in the context of predicting multi-fatality incidents} \\
+To explore this issue, we generated a binary 1-0 indicator for whether an incident involved more than 1 fatality, and tested the classification performance of a series of different models, the results of which are shown below. To overcome the class imbalance issue, we employ the resampling procedure employed by the SMOTE algorithm (for ``Synthetic Minority Over-sampling TEchnique"), developed by Chawla, et al. (2002). SMOTE uses a combination of over-sampling of the minority class and under-sampling of the majority to improve class balance. \\
 
 The below table shows relative test error rates for classification using logistic regression, support vector machine, and adaptive boosting methods. \\
 
@@ -196,8 +191,7 @@ For interpreting the sign of a given predictor's relationship with the incidence
 \caption{Predictor Odds Ratios} 
 \end{table}
 
-
- examine the importance of certain features in predicting an accident with multiple fatalities. The below output illustrates variable importance rankings for the SVM and AdaBoost classifiers. The models don't completely agree on relative variable importance, but there are some key patterns. For example, key for both models is the fact that the hour of the crash is a dominant predictor of the likelihood a fatal accident resulted in multiple deaths. In addition, a driver's record, potential drug use, and driving speed are especially significant for predicting multi-fatality accidents. Interestingly, whether or not a driver was distracted (using a cellphone, for example), and whether the weather was clear or not, appear to be relatively less significant determinants of the likelihood that a fatal accident involved multiple deaths. Further assessment of this question would consider the affect of these less important predictors on non-fatal accidents, as well as fatal ones. \\
+Finally, to assess the actual significance of automaker within the context of other predictors, we reference the below output, which illustrates variable importance rankings for the SVM and AdaBoost classifiers. The models don't completely agree on relative variable importance, but there are some key patterns. For example, key for both models is the fact that the hour of crash is a dominant predictor of the likelihood a fatal accident resulted in multiple deaths. In addition, a driver's record, potential drug use, and driving speed are especially significant for predicting multi-fatality accidents. Interestingly, whether or not a driver was distracted (using a cellphone, for example), and whether the weather was clear or not, appear to be relatively less significant determinants of the likelihood that a fatal accident involved multiple deaths. Further assessment of this question would consider the affect of these less important predictors on non-fatal accidents, as well as fatal ones. Finally, this analysis suggests that, within the context of other fatality-relevant predictors, automaker is relatively unimportant. Accounting for various driver behaviors has captured much of the meaningful variation in the outcome. \\
 
 \begin{figure}[H]
 \centering
@@ -211,6 +205,17 @@ For interpreting the sign of a given predictor's relationship with the incidence
 \caption{Variable Importance - AdaBoost Algorithm}
 \end{figure}
 
+The below two sections explore in further detail the issues of driver impairment and hit and run incidents.
+
+\section*{Driver Impairment}
+
+(Teerth Insert Analysis Here)
+
+\section*{Hit-and-Run}
+
+(Yunbin Insert Analysis Here)
+
+
 \section*{Environmental Factors}
 A proper analysis of environmental factors is both beyond the scope of this analysis, and requires incorporating a richer set of weather data than the handful of indicators available in the FARS system. A quick initial check of the relevance of environmental conditions doesn't return many relevant results. The plot below shows data from Cook County, Illinois, chosen for its high number of traffic fatalities and variable weather\footnote{Especially when compared to Dallas, Phoenix, and LA County}. The vast majority of fatal collisions occur in clear weather, which is due in large part no doubt to the fact that it is simply clear much more often in Chicago than it is rainy or snowy! 
 
@@ -221,15 +226,10 @@ A proper analysis of environmental factors is both beyond the scope of this anal
 \end{figure}
 
 
-
-
-
-
-
-
-
-
 \section*{Conclusion}
+
+(To be updated once final analyses incorporated)
+
 
 \section*{References}
 \begin{hangparas}{1.27cm}{1}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  15 APR 2018 21:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  15 APR 2018 21:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -180,7 +180,23 @@ Package: hanging 2009/09/02 v1.2b hanging paragraphs and punctuation
 \h@ngcolonwd=\skip49
 \h@ngscolonwd=\skip50
 )
-No file 503FinalReport.aux.
+(./503FinalReport.aux
+
+LaTeX Warning: Label `fig:sub1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:sub1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sub2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:sub2' multiply defined.
+
+
+LaTeX Warning: Label `fig:test' multiply defined.
+
+)
 \openout1 = `503FinalReport.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
@@ -195,6 +211,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
 LaTeX Font Info:    ... okay on input line 26.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
 LaTeX Font Info:    ... okay on input line 26.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -316,12 +333,12 @@ Package pdftex.def Info: StateClusterPlot_Hourly.png used on input line 67.
 (pdftex.def)             Requested size: 352.27348pt x 135.33173pt.
  [2 <./WeightedNationalDayTrends.png> <./WeightedStatePlot.png> <./StateCluster
 Plot_Hourly.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 98--99
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--102
+Underfull \hbox (badness 10000) in paragraph at lines 96--98
 
  []
 
@@ -329,10 +346,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 100--102
 File: ManufacturerRankingPlot.png Graphic file (type png)
 
 <use ManufacturerRankingPlot.png>
-Package pdftex.def Info: ManufacturerRankingPlot.png used on input line 103.
+Package pdftex.def Info: ManufacturerRankingPlot.png used on input line 99.
 (pdftex.def)             Requested size: 352.27716pt x 178.22443pt.
  [3]
-Underfull \hbox (badness 10000) in paragraph at lines 106--107
+Underfull \hbox (badness 10000) in paragraph at lines 102--103
 
  []
 
@@ -340,65 +357,64 @@ Underfull \hbox (badness 10000) in paragraph at lines 106--107
 File: ManufacturerMDSPlot.png Graphic file (type png)
 
 <use ManufacturerMDSPlot.png>
-Package pdftex.def Info: ManufacturerMDSPlot.png used on input line 112.
+Package pdftex.def Info: ManufacturerMDSPlot.png used on input line 108.
 (pdftex.def)             Requested size: 234.8775pt x 211.15787pt.
 
 <VehicleTypeMDSPlot.png, id=33, 2806.485pt x 2523.4275pt>
 File: VehicleTypeMDSPlot.png Graphic file (type png)
 
 <use VehicleTypeMDSPlot.png>
-Package pdftex.def Info: VehicleTypeMDSPlot.png used on input line 118.
+Package pdftex.def Info: VehicleTypeMDSPlot.png used on input line 114.
 (pdftex.def)             Requested size: 234.8775pt x 211.15787pt.
  [4 <./ManufacturerRankingPlot.png> <./ManufacturerMDSPlot.png> <./VehicleTypeM
 DSPlot.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 157--158
+Underfull \hbox (badness 10000) in paragraph at lines 151--153
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 159--160
+Underfull \hbox (badness 10000) in paragraph at lines 154--155
 
  []
 
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 200--201
+
+Underfull \hbox (badness 10000) in paragraph at lines 194--195
 
  []
 
-<ImportancePlot_SVM.png, id=43, 3703.8375pt x 1869.98625pt>
+[5] <ImportancePlot_SVM.png, id=43, 3703.8375pt x 1869.98625pt>
 File: ImportancePlot_SVM.png Graphic file (type png)
 
 <use ImportancePlot_SVM.png>
-Package pdftex.def Info: ImportancePlot_SVM.png used on input line 204.
+Package pdftex.def Info: ImportancePlot_SVM.png used on input line 198.
 (pdftex.def)             Requested size: 426.75185pt x 215.45763pt.
  [6]
 <ImportancePlot_ADABoost.png, id=48, 3703.8375pt x 1869.98625pt>
 File: ImportancePlot_ADABoost.png Graphic file (type png)
 
 <use ImportancePlot_ADABoost.png>
-Package pdftex.def Info: ImportancePlot_ADABoost.png used on input line 210.
+Package pdftex.def Info: ImportancePlot_ADABoost.png used on input line 204.
 (pdftex.def)             Requested size: 426.75185pt x 215.45763pt.
-
-<Environmental.png, id=49, 2878.755pt x 1583.9175pt>
+ [7 <./ImportancePlot_SVM.png> <./ImportancePlot_ADABoost.png>] <Environmental.
+png, id=54, 2878.755pt x 1583.9175pt>
 File: Environmental.png Graphic file (type png)
- <use Environmental.png>
-Package pdftex.def Info: Environmental.png used on input line 219.
+
+<use Environmental.png>
+Package pdftex.def Info: Environmental.png used on input line 224.
 (pdftex.def)             Requested size: 413.69702pt x 227.6199pt.
+ [8 <./Environmental.png>] [9] (./503FinalReport.aux)
 
-[7 <./ImportancePlot_SVM.png> <./ImportancePlot_ADABoost.png>] [8 <./Environmen
-tal.png>] (./503FinalReport.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4216 strings out of 492995
- 63686 string characters out of 6132704
- 235097 words of memory out of 5000000
+ 4218 strings out of 492995
+ 63724 string characters out of 6132704
+ 237178 words of memory out of 5000000
  7699 multiletter control sequences out of 15000+600000
  14233 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,7n,39p,1180b,441s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,7n,39p,1258b,441s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
@@ -409,10 +425,10 @@ al/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/
 texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
 live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texl
 ive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on 503FinalReport.pdf (9 pages, 2533003 bytes).
+Output written on 503FinalReport.pdf (10 pages, 2534892 bytes).
 PDF statistics:
- 93 PDF objects out of 1000 (max. 8388607)
- 53 compressed objects within 1 object stream
+ 96 PDF objects out of 1000 (max. 8388607)
+ 55 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
