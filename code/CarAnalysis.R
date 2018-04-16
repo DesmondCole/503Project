@@ -325,7 +325,7 @@ SVMImpData$Var = gsub("_","\n",SVMImpData$Var)
 SVMIMPPlot = ggplot(data=SVMImpData,aes(x=reorder(Var,-Imp))) + 
   geom_bar(aes(weight=Imp),fill="dark green") + 
   labs(x = "Variable",y="Importance") + 
-  ggtitle("Variable Importance - SVM Classification") + 
+  ggtitle("") + 
   theme(axis.text.x = element_text(size=10))
 ggsave("./report/ImportancePlot_SVM.png",SVMIMPPlot,device="png",
        width=12.3,height=6.21,units="in")
@@ -345,8 +345,8 @@ levels(ADAImpData$Var) = gsub("_","\n",levels(ADAImpData$Var))
 ADAIMPPlot = ggplot(data=ADAImpData,aes(x=reorder(Var,-Imp))) + 
   geom_bar(aes(weight=Imp),fill="dark green") + 
   labs(x = "Variable",y="Importance") + 
-  ggtitle("Variable Importance - AdaBoost Classification") + 
-  theme(axis.text.x = element_text(size=10))
+  theme(axis.text.x = element_text(size=10)) + 
+  ggtitle("")
 ggsave("./report/ImportancePlot_ADABoost.png",ADAIMPPlot,device="png",
        width=12.3,height=6.21,units="in")
 

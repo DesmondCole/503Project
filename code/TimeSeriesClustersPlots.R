@@ -18,8 +18,8 @@ TimeData =  allfiles[[1]] %>%
     .(fatalaccidents = .N),
     by=.(date_of_crash,hour_of_crash,day_of_week,
          FIPS,state_name,Population)] %>% 
-
-   
+  .[,week_of_crash := week(date_of_crash)]
+ 
 
 #Nationwide Hourly
 NationalData = TimeData[,.(fatalaccidents=sum(fatalaccidents)),by=.(hour_of_crash)] %>%
@@ -50,8 +50,8 @@ NationalData = cbind(NationalData,CarsOnRoad = NationalTraffic$CarsOnRoad) %>%
   .[,WeightedAccidents := 1000*fatalaccidents/CarsOnRoad]
 WeightedNationalPlot = ggplot(data=NationalData,aes(x=hour_of_crash,y=WeightedAccidents)) + 
   geom_line() + 
-  labs(x="Time of Day",y="Fatal Accidents per Thousand Vehicles") + 
-  ggtitle("Accidents by Time of Day - Nationwide")
+  labs(x="Time of Day",y="Fatal Accidents per Thousand Vehicles")
+WeightedNationalPlot
 ggsave("./report/WeightedNationalDayTrends.png",plot=WeightedNationalPlot,
        device="png",width=9.47,height=7.9,units='in')
 
@@ -65,8 +65,7 @@ StateData = TimeData %>%
 StatePlot = ggplot(data=StateData,
                    aes(x=hour_of_crash,y=fatalaccidents,group=state_name)) +
   geom_line() + 
-  labs(x = "Time of Day",y="Total Fatal Accidents") + 
-  ggtitle("Fatal Accidents by Time of Day - State-by-State")
+  labs(x = "Time of Day",y="Total Fatal Accidents")
 StatePlot
 
 StateTraffic = fread("/Users/Desmond/Documents/GitHub/503Project/data/carsperstate.csv") %>%
@@ -82,8 +81,7 @@ StateData = StateData[StateTraffic,on="state_name"] %>%
 WeightedStatePlot = ggplot(data=StateData,
                    aes(x=Hour,y=weightedaccidents,group=state_name)) +
   geom_line() + 
-  labs(x = "Time of Day",y="Fatal Accidents per Thousand Vehicles") + 
-  ggtitle("Fatal Accidents by Time of Day - State-by-State")
+  labs(x = "Time of Day",y="Fatal Accidents per Thousand Vehicles")
 WeightedStatePlot
 ggsave("./report/WeightedStatePlot.png",plot=WeightedStatePlot,
        device="png",width=9.47,height=7.9,units='in')
@@ -96,12 +94,10 @@ stateclust = tsclust(StateTimeSeries[,-1],type="partitional",
                      k=2:6,preproc=zscore,distance="sbd",
                      centroid="shape",seed=5)
 clustplot = plot(stateclust[[1]]) + 
-  ggtitle("Hourly Fatal Accident Cycles by State Cluster") + 
-  labs(x = "",y="Fatal Accidents per Thousand Vehicles - Normalized")
+  labs(x = "",y="Fatal Accidents per Thousand Vehicles - Normalized") + 
+  ggtitle("")
 ggsave("./report/StateClusterPlot_Hourly.png",plot=clustplot,
        device='png',width=12,height=4.61,units='in')
-
-ClusterAssignments = cbind(StateTimeSeries$state_name,stateclust[[1]]@cluster)
 
 FitStats = lapply(stateclust,cvi)
 ClusterStats = data.table(t(FitStats[[1]]))
