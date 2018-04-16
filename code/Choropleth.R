@@ -35,8 +35,6 @@ library(plyr)
 
 distcenters <- ddply(usstate, .(id), summarize, clat = mean(lat), clong = mean(long))
 
-usstates <- left_join()
-
 ggplot() +
   geom_polygon(data = ordermerge, 
                aes(x = long, y = lat, group = group, fill = prop), 

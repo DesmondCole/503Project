@@ -7,11 +7,15 @@ setwd("C:/Users/Teerth/Downloads/503 Project Data")
 
 accident <- read.csv("accident.csv", header = TRUE)
 
-US <- get_map(location = "US", zoom = 4, scale = 2, maptype = "roadmap")
+US <- get_map(location = "united states", zoom= 3, scale = 4, maptype = "roadmap")
+
+
 
 ggmap(US) + 
   geom_point(aes(x = longitude, y = latitude), colour = "blue", 
-  alpha = 0.2, size = .6, data = accident)
+  alpha = 0.2, size = .1, data = accident) +
+  ylim(23,50) + 
+  xlim(-128, -67)
 
 ggmap(US) + 
   geom_density2d(aes(x = longitude, y = latitude), 

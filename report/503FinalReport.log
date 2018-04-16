@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.3.1)  16 APR 2018 07:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.3.1)  16 APR 2018 09:48
 entering extended mode
 **./503FinalReport.tex
 (503FinalReport.tex
@@ -317,118 +317,115 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 52.
-
-<heatmap.png, id=7, 803.25093pt x 760.34062pt>
+ [1]
+<heatmap.png, id=12, 803.25093pt x 760.34062pt>
 File: heatmap.png Graphic file (type png)
  <use heatmap.png>
 Package pdftex.def Info: heatmap.png used on input line 82.
-(pdftex.def)             Requested size: 240.46236pt x 227.61667pt.
- [1]
+(pdftex.def)             Requested size: 300.59326pt x 284.53534pt.
+
 <choropleth.png, id=13, 983.17313pt x 760.34062pt>
 File: choropleth.png Graphic file (type png)
  <use choropleth.png>
-Package pdftex.def Info: choropleth.png used on input line 88.
+Package pdftex.def Info: choropleth.png used on input line 90.
 (pdftex.def)             Requested size: 294.32413pt x 227.61667pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 93--94
+[2 <./heatmap.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 97--98
 
  []
 
-[2 <./heatmap.png (PNG copy)> <./choropleth.png>]
-<WeightedNationalDayTrends.png, id=18, 2851.65375pt x 2378.8875pt>
+<WeightedNationalDayTrends.png, id=17, 2851.65375pt x 2378.8875pt>
 File: WeightedNationalDayTrends.png Graphic file (type png)
 
 <use WeightedNationalDayTrends.png>
-Package pdftex.def Info: WeightedNationalDayTrends.png used on input line 101.
+Package pdftex.def Info: WeightedNationalDayTrends.png used on input line 105.
 (pdftex.def)             Requested size: 211.38458pt x 176.33983pt.
 
-<WeightedStatePlot.png, id=20, 2851.65375pt x 2378.8875pt>
+<WeightedStatePlot.png, id=19, 2851.65375pt x 2378.8875pt>
 File: WeightedStatePlot.png Graphic file (type png)
 
 <use WeightedStatePlot.png>
-Package pdftex.def Info: WeightedStatePlot.png used on input line 107.
+Package pdftex.def Info: WeightedStatePlot.png used on input line 111.
 (pdftex.def)             Requested size: 211.38458pt x 176.33983pt.
-
-<StateClusterPlot_Hourly.png, id=21, 3613.5pt x 1388.18625pt>
+ [3 <./choropleth.png>]
+<StateClusterPlot_Hourly.png, id=24, 3613.5pt x 1388.18625pt>
 File: StateClusterPlot_Hourly.png Graphic file (type png)
 
 <use StateClusterPlot_Hourly.png>
-Package pdftex.def Info: StateClusterPlot_Hourly.png used on input line 119.
+Package pdftex.def Info: StateClusterPlot_Hourly.png used on input line 123.
 (pdftex.def)             Requested size: 352.27348pt x 135.33173pt.
- [3 <./WeightedNationalDayTrends.png> <./WeightedStatePlot.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 148--149
+ [4 <./WeightedNationalDayTrends.png> <./WeightedStatePlot.png> <./StateCluster
+Plot_Hourly.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
 
  []
 
-<ManufacturerRankingPlot.png, id=30, 4577.1pt x 2315.65125pt>
+<ManufacturerRankingPlot.png, id=34, 4577.1pt x 2315.65125pt>
 File: ManufacturerRankingPlot.png Graphic file (type png)
 
 <use ManufacturerRankingPlot.png>
-Package pdftex.def Info: ManufacturerRankingPlot.png used on input line 154.
+Package pdftex.def Info: ManufacturerRankingPlot.png used on input line 158.
 (pdftex.def)             Requested size: 422.77664pt x 213.87637pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--157
+Underfull \hbox (badness 10000) in paragraph at lines 154--161
 
  []
 
-[4 <./StateClusterPlot_Hourly.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 159--160
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
 
  []
 
-<ManufacturerMDSPlot.png, id=36, 2806.485pt x 2523.4275pt>
+<ManufacturerMDSPlot.png, id=39, 2806.485pt x 2523.4275pt>
 File: ManufacturerMDSPlot.png Graphic file (type png)
 
 <use ManufacturerMDSPlot.png>
-Package pdftex.def Info: ManufacturerMDSPlot.png used on input line 165.
+Package pdftex.def Info: ManufacturerMDSPlot.png used on input line 169.
 (pdftex.def)             Requested size: 234.8775pt x 211.15787pt.
 
-<VehicleTypeMDSPlot.png, id=37, 2806.485pt x 2523.4275pt>
+<VehicleTypeMDSPlot.png, id=40, 2806.485pt x 2523.4275pt>
 File: VehicleTypeMDSPlot.png Graphic file (type png)
 
 <use VehicleTypeMDSPlot.png>
-Package pdftex.def Info: VehicleTypeMDSPlot.png used on input line 171.
+Package pdftex.def Info: VehicleTypeMDSPlot.png used on input line 175.
 (pdftex.def)             Requested size: 234.8775pt x 211.15787pt.
- [5 <./ManufacturerRankingPlot.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 183--184
+ [6 <./ManufacturerRankingPlot.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 187--188
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--186
+Underfull \hbox (badness 10000) in paragraph at lines 189--190
 
  []
 
-[6 <./ManufacturerMDSPlot.png> <./VehicleTypeMDSPlot.png>] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 255--256
+[7 <./ManufacturerMDSPlot.png> <./VehicleTypeMDSPlot.png>] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 259--260
 
  []
 
-<ImportancePlot_SVM.png, id=52, 3703.8375pt x 1869.98625pt>
+<ImportancePlot_SVM.png, id=55, 3703.8375pt x 1869.98625pt>
 File: ImportancePlot_SVM.png Graphic file (type png)
 
 <use ImportancePlot_SVM.png>
-Package pdftex.def Info: ImportancePlot_SVM.png used on input line 259.
+Package pdftex.def Info: ImportancePlot_SVM.png used on input line 263.
 (pdftex.def)             Requested size: 426.75185pt x 215.45763pt.
- [8]
-<ImportancePlot_ADABoost.png, id=56, 3703.8375pt x 1869.98625pt>
+ [9]
+<ImportancePlot_ADABoost.png, id=59, 3703.8375pt x 1869.98625pt>
 File: ImportancePlot_ADABoost.png Graphic file (type png)
 
 <use ImportancePlot_ADABoost.png>
-Package pdftex.def Info: ImportancePlot_ADABoost.png used on input line 265.
+Package pdftex.def Info: ImportancePlot_ADABoost.png used on input line 269.
 (pdftex.def)             Requested size: 426.75185pt x 215.45763pt.
- [9 <./ImportancePlot_SVM.png> <./ImportancePlot_ADABoost.png>] [10] [11]
-<Environmental.png, id=71, 2878.755pt x 1583.9175pt>
+ [10 <./ImportancePlot_SVM.png> <./ImportancePlot_ADABoost.png>] [11] [12]
+<Environmental.png, id=72, 2878.755pt x 1583.9175pt>
 File: Environmental.png Graphic file (type png)
  <use Environmental.png>
-Package pdftex.def Info: Environmental.png used on input line 352.
+Package pdftex.def Info: Environmental.png used on input line 372.
 (pdftex.def)             Requested size: 413.69702pt x 227.6199pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 359--360
-
- []
-
-[12 <./Environmental.png>] [13] (503FinalReport.aux)
+[13 <./Environmental.png>] [14] (503FinalReport.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -452,9 +449,9 @@ cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 ><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Prog
 ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on 503FinalReport.pdf (14 pages, 3304767 bytes).
+Output written on 503FinalReport.pdf (15 pages, 3308009 bytes).
 PDF statistics:
- 118 PDF objects out of 1000 (max. 8388607)
+ 121 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

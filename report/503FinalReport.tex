@@ -75,19 +75,23 @@ We begin with a geographic and time-based overview of patterns of fatal traffic 
 
 \subsection*{Geographic Patterns}
 
-Geographical data is extremely important, especially
+Geographical data is extremely important, especially when observing where high fatality accidents occur. We can use the geographical visualizations below to make some basic inferences about high fatality accidents. Plotting where fatal accidents occur allows us to determine which variables to evaluate.
 
 \begin{figure}[H]
 \centering
-  \includegraphics[width=15cm,height=8cm,keepaspectratio]{heatmap.png}
+  \includegraphics[width=15cm,height=10cm,keepaspectratio]{heatmap.png}
 \caption{Heatmap of all fatal accidents}
 \end{figure}
+
+What is seen in Figure 1 is that the majority of fatal accidents happen on the East Coast, around the major cities and around areas that are much more populous. This could counter the fact that high speed may not be as large a factor of fatal accidents as expected, as areas of low population would be expected of having a higher rate of speeding. The interpretation that high populous areas have higher incidences of fatal accidents, of course, is somewhat obvious, however what is not obvious is the fact that the accidents actually occur on the major roads and highways much more often. Most of the accidents occur can be seen to occur on the highways in Figure 1. This suggests that an important variable to include is road type, as it will most likely show some significant relationship with the response variable.
 
 \begin{figure}[H]
 \centering
   \includegraphics[width=15cm,height=8cm,keepaspectratio]{choropleth.png}
 \caption{Choropleth of Accidents per 1000 people per state}
 \end{figure}
+
+Observing accidents over population shows a different perspective of where fatal accidents occur. Idaho, for instance, had few incidences of fatal accidents in Figure 1, but when we look at Figure 2, Idaho has one of the highest proportions of accidents. Similarly, we can see that places that have high concentrations of fatal accidents, such as New York, Michigan, Kentucky, and Maryland, actually have much lower proportion of accidents per capita. Also, the more densely populated areas seem to have the highest number of fatal accidents per capita.
 
 \subsection*{Time Trends - Hourly Cycle}
 At the national and state level, the cycle of fatal accidents throughout the day is fairly consistent. The below plot shows aggregate fatal accidents per thousand vehicles per hour for the United States, between 2015 and 2016. To account for traffic variability, we weighted the rate of fatal incidents according to hour-by-hour traffic flow allocations estimated by Batterman, et al. (see references). These same flow allocations are used to weight state-by-state hourly trends, under the assumption that state-by-state traffic flow patterns tend to be similar. \\
@@ -304,9 +308,25 @@ The logistic regression we have generated shows a smaller error rate than the er
 
 \textbf{GBM}
 
-Another interesting type of classification is using generalized boosted models (GBM). GBM can be used to with several different distributions to show which variables have 
+Another interesting type of classification is using generalized boosted models (GBM). GBM can be used to with several different distributions to show which variables have influence on the response variable. There are three different distributions that can be used with this response variable: Bernoulli, Huber, and AdaBoost. Bernoulli applies when there is a 0-1 outcome on the response, Huber applies a Huberized hinge loss function on the response, and AdaBoost applies an exponential loss function on the response. The following table provides the error rates associated with each distribution.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cccc}
+  \hline
+ & Bernoulli & Huber & AdaBoost \\ 
+  \hline
+Error Rate & .121 & 0.0911 & 0.0804 \\ 
+   \hline
+\end{tabular}
+\caption{Test Set Prediction Error Rate} 
+\end{table}
+
+What we can see from these error rates is that the normal Bernoulli distribution has the largest occurrence of errors within the test data, while the AdaBoost distribution has the smallest occurrence of errors.
 
 \textbf{Decision Tree}
+
+Decision trees can also be useful in predicting whether a specific accident is a high fatality accident or not. We created a decision tree with the same predictors as before and evaluated the error rate from the tree. The error rate we received is .0934. When comparing this to the logistic regression and the boosted regressions, we can see that the decision tree produces higher error rates than all of the regressions other than the Bernoulli GBM regression error rate, which is the simplest of all of the models. Most likely due to the large number of predictors and the large number of factors within each predictor, the decision tree has a larger error rate than other forms of classification.
 
 \section*{Hit-and-Run}
 In this section we will discuss hit-and-run behavior as it brings more risk of fatalities during traffic accidents. According to a 2014 NHTSA traffic safety factsheet (see references), nearly one in five pedestrians killed in traffic crashes were involved in hit-and-runs. As such, it is an especially relevant factor to consider for non-motorists. To assess relationships of various predictors with hit-and-runs, we run a logistic regression, with a binary 0-1 indicator for hit-and-run as the outcome, and representative driver behavior and natural features such as spending, past driving history and time of the accident are used as independent variables. We employ logistic regression primarily because the focus is on inference rather than prediction. where hit-and-run as dependent variables . With some model selection, we get the following regression result.
@@ -356,11 +376,9 @@ The concerned motorist may also worry about the weather, in addition to the issu
 
 \section*{Conclusion}
 
-(To be further updated once geographic analysis is incorporated) \\
-
 Many of the issues considered in this analysis will likely already have been considered by the well-prepared motorist or non-motorist. However, they bear repeating, alongside some recommendations that may surprise the average reader. In particular:
 
-Where to Drive: (TEERTH)
+Where to Drive: Fatality rates seem to be the highest on highways of less densely packed states. More fatal accidents do occur in higher population states, but population density seems to indicate that more accidents occur per capita for larger states in area. So, it is optimal to drive on local roads with lower populations in high densities, if at all possible.
 
 When to Drive: Fatality rates are consistently highest between midnight and 5AM throughout much of the country. The hour of a crash is also a key determinant of the probability that an accident results in multiple fatalities.
 
