@@ -41,7 +41,7 @@ Yunbin Peng \\
 \subsection*{Executive Summary}
 In the United States, approximately 35-40,000 people die in vehicle-related incidents every year. The fatality rate declined significantly in the second half of the 20th century, and continued to decline in the 21st. However, the decline has plateaued in recent years, to a rate of just over 1 death per 100 million vehicle miles traveled (VMT). Understanding and tackling the problem of crash fatalities has motivated considerable improvements and investments in vehicle design, road design, and scientific knowledge of human motor skills and reaction times. \\ 
 
-With this analysis, we set out to survey the distribution of vehicle-related fatalities across geography and time, and explore a number of driver-specific characteristics to assess dominant contributors to the incidence and extent of vehicle-related deaths. We use this analysis to develop a limited profile of the circumstances associated with traffic fatalities, and a set of corresponding recommendations for the concerned motorist or non-motorist. Our results suggest that luxury autos, daytime driving, and rural areas tend to be the safest circumstances for driving, and that drivers who are impaired (via drugs/alcohol or some mental/physical ailment) are to be avoided.  
+With this analysis, we set out to survey the distribution of vehicle-related fatalities across geography and time, and explore a number of driver-specific characteristics to assess dominant contributors to the incidence and extent of vehicle-related deaths. We use this analysis to develop a limited profile of the circumstances associated with traffic fatalities, and a set of corresponding recommendations for the concerned motorist or non-motorist. Our results suggest that luxury autos, daytime driving, and rural areas tend to be safer circumstances for driving, and that drivers who are impaired (via drugs/alcohol or some mental/physical ailment) are to be avoided.  
 
 \subsection*{Data}
 The data used for this analysis are gathered by the National Highway Traffic Safety Administration (NHTSA), a branch of the U.S. Department of Transportation. NHTSA gathers traffic fatality data using the Fatality Analysis Reporting System (FARS), a nationwide census of various information regarding fatalities occurring in motor vehicle crashes. FARS contains a rich set of different features, with information on crash circumstances, areas of damage, police reports, emergency response times, and vehicle characteristics. We focus specifically on data from 2015 and 2016, and subset a choice set of predictors of interest, paying particular attention to the following broad indicators of driver behavior:
@@ -83,7 +83,7 @@ We begin with a geographical overview of where most fatal accidents occur, shown
 \caption{Heatmap of all fatal accidents}
 \end{figure}
 
-Figure 1 shows that the majority of fatal accidents happen on the East Coast, around major cities and areas that are much more populous. This weighs against the notion that that high speed may not be as large a factor of fatal accidents as expected, as areas of low population would be expected of having a higher rate of speeding. The notion that high populous areas have more fatal accidents is fairly trivial. However, what is not obvious is the fact that the accidents actually occur on the major roads and highways much more often. Most of the fatal accidents can be seen to occur on the highways in Figure 1. This suggests that road type is an important factor to consider.
+Figure 1 shows that the majority of fatal accidents happen on the East Coast, around major cities and areas that are much more populous. The notion that densely populous areas have more fatal accidents is fairly trivial. However, what is not obvious is the fact that the accidents actually occur on the major roads and highways much more often. Most of the fatal accidents can be seen to occur on the highways in Figure 1. This suggests that road type is an important factor to consider.
 
 \begin{figure}[H]
 \centering
@@ -91,9 +91,9 @@ Figure 1 shows that the majority of fatal accidents happen on the East Coast, ar
 \caption{Choropleth of Accidents per 1000 people per state}
 \end{figure}
 
-Observing accidents over population shows a different perspective of where fatal accidents occur. Idaho, for instance, had few incidences of fatal accidents in Figure 1, but when we look at Figure 2, Idaho has one of the highest proportions of accidents. Similarly, we can see that places that have high concentrations of fatal accidents, such as New York, Michigan, Kentucky, and Maryland, actually have much lower proportion of accidents per capita. Also, the more densely populated areas seem to have the highest number of fatal accidents per capita.
+In Figure 2, we weight the number of accidents per state by the state's population. These results show a different perspective of where fatal accidents occur. Idaho, for instance, had few incidences of fatal accidents in Figure 1, but when we look at Figure 2, Idaho has one of the highest proportions of accidents. Similarly, we can see that places that have high concentrations of fatal accidents, such as New York, Michigan, Kentucky, and Maryland, actually have much lower proportion of accidents per capita. Also, the more densely populated areas seem to have the highest number of fatal accidents per capita.
 
-\subsection*{Time Trends - Hourly Cycle}
+\subsection*{Time Trends}
 At the national and state level, the cycle of fatal accidents throughout the day is fairly consistent. The below plot shows aggregate fatal accidents per thousand vehicles per hour for the United States, between 2015 and 2016. To account for traffic variability, we weighted the rate of fatal incidents according to hour-by-hour traffic flow allocations estimated by Batterman, et al. (see references). These same flow allocations are used to weight state-by-state hourly trends, under the assumption that state-by-state traffic flow patterns tend to be similar. \\
 
 At the state level, the daily fatal accident cycle is roughly similar. Estimating the overall traffic flow for each state using state-level vehicle registrations, combined with the flow allocations estimated by Batterman, et al. (2015), returns state-level cycles that closely mirror the overall national trend.
@@ -272,43 +272,43 @@ For our concerned motorist or non-motorist, it is worth addressing the level of 
 
 The below two sections explore in further detail the issues of driver impairment and hit-and-run incidents.
 
-\section*{Driver Impairment}
+\section*{Impairment}
 
-An important predictor for high fatality accidents seems to be driver impairment. Impairment, as we are observing it, is a factor variable with 13 different possible values that focus on different types of impairment. On this new variable, we performed several different types of classifications methods to see whether impairment is an influential predictor.
+The concerned motorist should already know intuitively that level of impairment (for both drivers and pedestrians) is important. Here we explore this issue more fully. Impairment, as we are observing it, is a factor variable with 13 different possible values. We used a mix of classifiers to see if impairment is an influential predictor.
 
 \textbf{Logistic Regression}
 
-The odds ratio of the logistic regression gives a relative measure of effect from the predictor variable to the response variable. Below is a table with the odds ratio given for each type of impairment in the impairment variable.  What is shown is that blind, deaf, and cane/crutches shows small/no effect on the response variable, but all of the other variable have a much larger effect on the response variable, with the impairment type of ``Other Impairment" having the largest odds ratio. What is interesting is influence of alcohol or drugs seems to have the smallest positive measure of effect, with subjects being in a wheelchair, being emotional, or begin blacked out having a larger measure of effect.
+Below is a table with the odds ratio estimated for each type of impairment. What is shown is that blind, deaf, and cane/crutches shows small/no effect on the response variable, but all of the other variable have a much larger effect on the response variable, with the impairment type of ``Other Impairment" having the largest odds ratio. What is interesting is influence of alcohol or drugs seems to have the smallest positive measure of effect, with subjects being in a wheelchair, being emotional, or being blacked out having a larger measure of effect.
 
-\begin{table}[ht]
+\begin{table}[H]
 \centering
 \begin{tabular}{rlr}
   \hline
- & Impairment & Odds \\ 
+ Impairment & Odds \\ 
   \hline
-1 & Blind & 0.20 \\ 
-  2 & Deaf & 0.19 \\ 
-  3 & Emotional & 13.43 \\ 
-  4 & Blackout & 13.89 \\ 
-  5 & Impaired Due to Previous Injury & 14.73 \\ 
-  6 & None/Apparently Normal & 14.76 \\ 
-  7 & Not Reported & 14.16 \\ 
-  8 & Wheelchair & 12.95 \\ 
-  9 & Other Impairment & 15.69 \\ 
-  10 & No Details & 0.18 \\ 
-  11 & Influence of Alcohol or Drugs & 12.06 \\ 
-  12 & Cane or Crutches & 0.05 \\ 
-  13 & Unknown & 14.03 \\ 
+Blind & 0.20 \\ 
+  Deaf & 0.19 \\ 
+  Emotional & 13.43 \\ 
+  Blackout & 13.89 \\ 
+  Impaired Due to Previous Injury & 14.73 \\ 
+  None/Apparently Normal & 14.76 \\ 
+  Not Reported & 14.16 \\ 
+  Wheelchair & 12.95 \\ 
+  Other Impairment & 15.69 \\ 
+  No Details & 0.18 \\ 
+  Influence of Alcohol or Drugs & 12.06 \\ 
+  Cane or Crutches & 0.05 \\ 
+  Unknown & 14.03 \\ 
    \hline
 \end{tabular}
 \caption{Predictor Odds Ratios}
 \end{table}
 
-The logistic regression we have generated shows a smaller error rate than the error rate given for the logistic regression of the car manufacturers. The error rate of the logistic regression is .088. This is directly, inversely related to the prediction accuracy given in the last section. A value of .088 error rate shows that the prediction we incorrect for that proportion of trials.
+The logistic regression we have generated shows a smaller error rate (.088) than the error rate given for the logistic regression of the car manufacturers.\footnote{Note that error rate is inversely related to prediction accuracy} This suggests, alongside the results shown in figures 7 and 8, that overall impairment is a more important measure of fatality risk than a car's make.
 
 \textbf{GBM}
 
-Another interesting type of classification is using generalized boosted models (GBM). GBM can be used to with several different distributions to show which variables have influence on the response variable. There are three different distributions that can be used with this response variable: Bernoulli, Huber, and AdaBoost. Bernoulli applies when there is a 0-1 outcome on the response, Huber applies a Huberized hinge loss function on the response, and AdaBoost applies an exponential loss function on the response. The following table provides the error rates associated with each distribution.
+We also consider classification using generalized boosted models (GBM). GBM can be used with several different distributions to show which variables have influence on the response variable. There are three different distributions that can be used with this response variable: Bernoulli, Huber, and AdaBoost. Bernoulli applies when there is a 0-1 outcome on the response, Huber applies a Huberized hinge loss function on the response, and AdaBoost applies an exponential loss function on the response. The following table provides the error rates associated with each distribution.
 
 \begin{table}[H]
 \centering
@@ -322,18 +322,18 @@ Error Rate & .121 & 0.0911 & 0.0804 \\
 \caption{Test Set Prediction Error Rate} 
 \end{table}
 
-What we can see from these error rates is that the normal Bernoulli distribution has the largest occurrence of errors within the test data, while the AdaBoost distribution has the smallest occurrence of errors.
+These results show that the Bernoulli distribution has the largest occurrence of errors within the test data, while the AdaBoost distribution has the smallest occurrence of errors.
 
 \textbf{Decision Tree}
 
-Decision trees can also be useful in predicting whether a specific accident is a high fatality accident or not. We created a decision tree with the same predictors as before and evaluated the error rate from the tree. The error rate we received is .0934. When comparing this to the logistic regression and the boosted regressions, we can see that the decision tree produces higher error rates than all of the regressions other than the Bernoulli GBM regression error rate, which is the simplest of all of the models. Most likely due to the large number of predictors and the large number of factors within each predictor, the decision tree has a larger error rate than other forms of classification.
+Decision trees can also be useful in predicting whether a specific accident is a high fatality accident or not. We created a decision tree with the same predictors as before and obtained a test error rate of .0934. When comparing this to the logistic regression and the boosted regressions, we can see that the decision tree produces higher error rates than all of the regressions other than the error rate for Bernoulli GBM regression (the simplest model considered here). As a likely result of the large number of predictors and the large number of factors within each predictor, the decision tree has a larger error rate than other forms of classification.
 
 \section*{Hit-and-Run}
-In this section we will discuss hit-and-run behavior as it brings more risk of fatalities during traffic accidents. According to a 2014 NHTSA traffic safety factsheet (see references), nearly one in five pedestrians killed in traffic crashes were involved in hit-and-runs. As such, it is an especially relevant factor to consider for non-motorists. To assess relationships of various predictors with hit-and-runs, we run a logistic regression, with a binary 0-1 indicator for hit-and-run as the outcome, and representative driver behavior and natural features such as spending, past driving history and time of the accident are used as independent variables. We employ logistic regression primarily because the focus is on inference rather than prediction. where hit-and-run as dependent variables . With some model selection, we get the following regression result.
+In this section we will discuss hit-and-run behavior as it brings more risk of fatalities during traffic accidents. According to a 2014 NHTSA traffic safety factsheet (see references), nearly one in five pedestrians killed in traffic crashes were involved in hit-and-runs. As such, it is an especially relevant factor to consider for non-motorists. To assess relationships of various predictors with hit-and-runs, we run a logistic regression, with a binary 0-1 indicator for hit-and-run as the outcome, and representative driver behavior and natural features such as spending, past driving history and time of the accident are used as independent variables. We employ logistic regression primarily because the focus is on inference rather than prediction. With some model selection, we get the following regression result.
 
 Hit-and-runs are a relatively rare event. Thus, we again employed resampling techniques to adjust for class imbalance, oversampling the minority class (hit-and-run = 1) and undersampling the majority class (hit-and-run = 0). In comparing resampled data (results shown below) with the original imbalanced data set, there did not appear to be significant difference in coefficient estimates.
 
-\begin{table}[!htbp] \centering 
+\begin{table}[H] \centering 
 	\label{} 
 	\begin{tabular}{@{\extracolsep{5pt}}lc} 
 		\\[-1.8ex]\hline 
@@ -378,7 +378,7 @@ The concerned motorist may also worry about the weather, in addition to the issu
 
 Many of the issues considered in this analysis will likely already have been considered by the well-prepared motorist or non-motorist. However, they bear repeating, alongside some recommendations that may surprise the average reader. In particular:
 
-Where to Drive: Fatality rates seem to be the highest on highways of less densely packed states. More fatal accidents do occur in higher population states, but population density seems to indicate that more accidents occur per capita for larger states in area. So, it is optimal to drive on local roads with lower populations in high densities, if at all possible.
+Where to Drive: Fatality rates seem to be the highest on highways of less densely populated states. More fatal accidents do occur in higher population states, but population density suggests that more fatal accidents occur per capita for states with the largest areas. So, it is optimal to drive on local roads with lower populations in high densities, if at all possible.
 
 When to Drive: Fatality rates are consistently highest between midnight and 5AM throughout much of the country. The hour of a crash is also a key determinant of the probability that an accident results in multiple fatalities.
 
