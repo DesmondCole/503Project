@@ -1,4 +1,3 @@
-#Quick Project Description
 
 Overview:
 This project is an overview of traffic fatality data provided by NHTSA. Our analysis surveys various predictors of high-fatality incidents, differences among automakers, and the geographic and date/time distributions of fatal collisions. 
