@@ -111,7 +111,7 @@ CarPlot = ggplot(SummaryData,aes(x=reorder(Makers,-deathspermillion))) +
   geom_bar(aes(weight=deathspermillion),fill="dark green") + 
   labs(y = "Fatalities per Million Cars",x = "Manufacturer") + 
   ggtitle("") + 
-  theme(axis.text.x = element_text(size=10))
+  theme(axis.text.x = element_text(size=12))
 CarPlot
 ggsave("./report/ManufacturerRankingPlot.png",plot=CarPlot,device="png",width=15.2,height=7.69,units="in")
 

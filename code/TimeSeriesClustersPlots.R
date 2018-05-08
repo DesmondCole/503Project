@@ -110,27 +110,27 @@ ClusterResult = xtable(ClusterStats,caption="Time Series Cluster Validity Indice
                        digits = c(0,0,3,3,3,3,3,3,3),include.rownames=FALSE)
 ClusterResult
 stateclust[[2]]
-
-#Nationwide Weekly
-NationalWeekly = TimeData[,.(fatalaccidents=sum(fatalaccidents)),by=.(week_of_crash)] %>%
-  .[]
-  NationalData = TimeData[,.(fatalaccidents=sum(fatalaccidents)),by=.(hour_of_crash)] %>%
-  .[order(hour_of_crash)]
-
-
-
-#State-level Weekly - Clustering
-StateData_Weekly = TimeData %>%
-  .[TotalAccidents_State,on="state_name"] %>%
-  .[,.(fatalaccidents = sum(fatalaccidents)/totalaccidents),
-    by = .(week_of_crash,state_name,totalaccidents)]
-
-StateTimeSeries = dcast(StateData,state_name ~ week_of_crash,value.var="fatalaccidents")
-StateTimeSeries[is.na(StateTimeSeries)] = 0
-
-stateclust = tsclust(StateTimeSeries[,-1],type="partitional",
-                     k=2:6,preproc=zscore,distance="sbd",
-                     centroid="shape")
+# 
+# #Nationwide Weekly
+# NationalWeekly = TimeData[,.(fatalaccidents=sum(fatalaccidents)),by=.(week_of_crash)] %>%
+#   .[]
+#   NationalData = TimeData[,.(fatalaccidents=sum(fatalaccidents)),by=.(hour_of_crash)] %>%
+#   .[order(hour_of_crash)]
+# 
+# 
+# 
+# #State-level Weekly - Clustering
+# StateData_Weekly = TimeData %>%
+#   .[TotalAccidents_State,on="state_name"] %>%
+#   .[,.(fatalaccidents = sum(fatalaccidents)/totalaccidents),
+#     by = .(week_of_crash,state_name,totalaccidents)]
+# 
+# StateTimeSeries = dcast(StateData,state_name ~ week_of_crash,value.var="fatalaccidents")
+# StateTimeSeries[is.na(StateTimeSeries)] = 0
+# 
+# stateclust = tsclust(StateTimeSeries[,-1],type="partitional",
+#                      k=2:6,preproc=zscore,distance="sbd",
+#                      centroid="shape")
 
 
 
